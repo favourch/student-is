@@ -47,10 +47,13 @@ class LoginController extends BaseController {
 	 */
 	public function checkuser($email, $password){
 		
-		$user = UsersModel::where("email = ?", $email);
+		$user = UsersModel::where("email = ?", $email)->all();
 
-		if ($user) {
-			View::renderJSON(array("result" => $user));
+		if ($user->num_rows() > 0) {
+			View::renderJSON(array("success" => $user));
+		}
+		else {
+			View::renderJSON(array("error" => "User not found!"));
 		}
 
 	}
