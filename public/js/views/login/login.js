@@ -24,6 +24,7 @@ define([
 
 			e.preventDefault();
 			$(".alert-danger").hide();
+			$(".submit-button").text("Please wait...");
 
 			var email = $("#username").val();
 			var pass = $("#password").val();
@@ -43,10 +44,11 @@ define([
 					else {
 						$(".alert-danger").text("Login Success!").show();
 					}
-					
+					$(".submit-button").text("Login");
 				},
 				error: function(err){
 					$(".alert-danger").text("Login Failed!").show();
+					$(".submit-button").text("Login");
 					console.log(err)
 				}
 			});
