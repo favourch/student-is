@@ -26,8 +26,23 @@ define([
 
 			var email = $("#username").val();
 			var pass = $("#password").val();
+			var url = baseURL + "login/checkuser";
 
-			console.log(email, pass);
+			$.ajax({
+				url: url,
+				type: "post",
+				data: {
+					email: email,
+					password: pass
+				},
+				success: function(data){
+					console.log("Success");
+				},
+				error: function(err){
+					console.log(err)
+				}
+			});
+			
 		}
 		
 	});
