@@ -16,7 +16,7 @@ use Libraries\CronLibrary\SampleCronController;
 use Models\UsersModel;
 use Helpers\Url\Url;
 
-class HomeController extends BaseController {
+class LoginController extends BaseController {
 
 	/**
 	 * @var bool Set to true to enable method filters in this controller
@@ -34,7 +34,7 @@ class HomeController extends BaseController {
 		$data['title'] = $this->site_title;
 		$data['request_time'] = $this->request_exec_time();
 
-		View::render('index',$data);
+		View::render('login.index',$data);
 
 	}
 
