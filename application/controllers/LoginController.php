@@ -37,23 +37,22 @@ class LoginController extends BaseController {
 		View::render('login.index',$data);
 
 	}
-
+	
 	/**
-	 * This method initializes a cron job in the library which executes a series of queries in the 
-	 * database to keep user information in synch
-	 *
-	 * @param null
-	 * @return void
+	 * This method performs user authentication
+	 * @param string $email The user email
+	 * @param string $password The use password
+	 * @return JSON authentication results
+	 * @throws null This  method does not throw an error
 	 */
-	public function CronInit(){
+	public function checkuser($email, $password){
+		
+		$user = UsersModel::where("email = ?", $email);
 
-		//create an instance of the cronController class
-		$cronControllerObject = new SampleCronController();
-
-		//call the method to lauch the cron job operation
-		$cronControllerObject->init();
+		if ($user) {
+			View::renderJSON(array("result" => $user));
+		}
 
 	}
-	
 }
 
