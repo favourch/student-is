@@ -23,10 +23,11 @@ define([
 		authUser: function(e){
 
 			e.preventDefault();
+			$(".alert-danger").hide();
 
 			var email = $("#username").val();
 			var pass = $("#password").val();
-			var url = baseURL + "login/checkuser";
+			var url = baseURL + "login.checkuser";
 
 			$.ajax({
 				url: url,
@@ -36,9 +37,16 @@ define([
 					password: pass
 				},
 				success: function(data){
-					console.log("Success");
+					if (data['error']) {
+						$(".alert-danger").text(data['error']).show();
+					}
+					else {
+						$(".alert-danger").text("Login Success!").show();
+					}
+					
 				},
 				error: function(err){
+					$(".alert-danger").text("Login Failed!").show();
 					console.log(err)
 				}
 			});
