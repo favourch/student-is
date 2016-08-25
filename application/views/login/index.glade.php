@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="{{Url::base()}}css/bootstrap.min.css">
      <!--    LOAD CUSTOM STYLES    -->
     <link rel="stylesheet" href="">    
+    <script type="text/javascript">
+    	baseURL = "{{Url::base()}}";
+    </script>
     <script type="text/javascript" data-main="js/main" src="js/libs/require.js" ></script>
 </head>
 <body>
