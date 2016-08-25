@@ -41,7 +41,7 @@ return array(
 	/**
 	 *Set the Site Title
 	 */
-	'title' => 'Gliver Framework',
+	'title' => 'Student Management Information System',
 	/**
 	 *Set the protocol for this url
 	 */
