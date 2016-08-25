@@ -69,7 +69,7 @@ return array(
 		/**
 		 *Set the default controller
 		 */
-		'controller' => 'Home',
+		'controller' => 'Login',
 		/**
 		 *Set default action
 		 */
