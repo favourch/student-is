@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="{{ Url::assets('css/style.css') }}">
     
+    <script type="text/javascript" data-main="js/main" src="js/libs/require.js" ></script>
 </head>
 <body>
 <div class="gliverContainer clearfix">
