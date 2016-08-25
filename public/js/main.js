@@ -37,14 +37,8 @@ require.config({
 require([
 	'backbone',
 	'routers/router', 
-	'views/index',
-	'views/home', 
-	'views/blog', 
-	'views/about', 
-	'views/contact', 
-	], function (
-		Backbone, Router, IndexView, HomeView,
-		BlogView, AboutView, ContactView) {
+	'views/login/login' 
+	], function (Backbone, Router, LoginView) {
 	
 	// Initialize routing and start Backbone.history()
 	var App = new Router();
@@ -68,5 +62,5 @@ require([
 	Backbone.history.start();
 
 	// Initialize the application view
-	new IndexView;
+	new LoginView;
 });
