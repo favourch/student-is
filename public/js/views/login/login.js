@@ -9,14 +9,25 @@ define([
 	var LoginView = Backbone.View.extend({
 
 		el: $(".container"),
-		
-		title: "Blog - Business Casual - Start Bootstrap Theme",
-
+	
 		template: _.template(LoginTemplate),
 
+		events: {
+			'submit #login-form' : 'authUser'
+		},
+
 		initialize: function(){
-			$("title").html(this.title);
 			this.$el.html(this.template());
+		},
+
+		authUser: function(e){
+
+			e.preventDefault();
+
+			var email = $("#username").val();
+			var pass = $("#password").val();
+
+			console.log(email, pass);
 		}
 		
 	});
