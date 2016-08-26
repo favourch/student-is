@@ -1,7 +1,7 @@
 <?php namespace Controllers;
 
 /**
- *This controller handles user authentication
+ *This class loads the application homepage
  *@author Geoffrey Oliver <geoffrey.oliver2@gmail.com>
  *@copyright 2015 - 2020 Geoffrey Oliver
  *@category Controllers
@@ -17,7 +17,7 @@ use Models\UsersModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 
-class LoginController extends BaseController {
+class HomeController extends BaseController {
 
 	/**
 	 * @var bool Set to true to enable method filters in this controller
@@ -35,31 +35,9 @@ class LoginController extends BaseController {
 		$data['title'] = $this->site_title;
 		$data['request_time'] = $this->request_exec_time();
 
-		View::render('login.index',$data);
+		View::render('home.index',$data);
 
 	}
 	
-	/**
-	 * This method performs user authentication
-	 * @param string $email The user email
-	 * @param string $password The use password
-	 * @return JSON authentication results
-	 * @throws null This  method does not throw an error
-	 */
-	public function checkuser($email, $password){
-		
-		$user = UsersModel::where("email = ?", Input::get('email'))
-							->where("password = ?", md5(Input::get('password')))
-							->all();
-
-		if ($user->num_rows() > 0) {
-
-			View::renderJSON(array("success" => Input::get('email')));
-		}
-		else {
-			View::renderJSON(array("error" => "$email"));
-		}
-
-	}
 }
 
