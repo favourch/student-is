@@ -1,7 +1,6 @@
 define([
-	'jquery',
 	'backbone'
-	], function($, Backbone){
+	], function(Backbone){
 
 	var AppRouter = Backbone.Router.extend({
 		
@@ -11,7 +10,9 @@ define([
 			'home' : 'home',
 			'about' : 'about',
 			'blog' : 'blog',
-			'contact' : 'contact'
+			'contact' : 'contact',
+			'admin' : 'admin',
+			'dashboard' : 'dashboard'
 		}
 
 	});
