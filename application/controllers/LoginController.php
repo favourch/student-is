@@ -14,6 +14,7 @@
 use Drivers\Templates\View;
 use Libraries\CronLibrary\SampleCronController;
 use Models\UsersModel;
+use Models\TokenModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 
@@ -50,14 +51,30 @@ class LoginController extends BaseController {
 		
 		$user = UsersModel::where("email = ?", Input::get('email'))
 							->where("password = ?", md5(Input::get('password')))
-							->all();
+							->first();
 
 		if ($user->num_rows() > 0) {
+			
+			$user = $user->result_array()[0];
+			$token = md5($user['email'] + time());
 
-			View::renderJSON(array("success" => Input::get('email')));
+			TokenModel::save(array(
+				'email' => $user['email'],
+				'first_name' => $user['first_name'],
+				'last_name' => $user['last_name'],
+				'token' => $token,
+				'duration' => 3600
+				)
+			);
+
+			View::renderJSON(array(
+				"user" => $user,
+				"token" => $token
+				)
+			);
 		}
 		else {
-			View::renderJSON(array("error" => "$email"));
+			View::renderJSON(array("error" => "Invalid username or password supplied!"));
 		}
 
 	}
