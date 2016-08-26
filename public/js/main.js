@@ -22,6 +22,12 @@ require.config({
 		},
 		bootstrap:{
 			deps: ['jquery']
+		},
+		tablesorter:{
+			deps: ['jquery']
+		},
+		jqueryui:{
+			deps: ['jquery']
 		}
 	},
 	paths: {
@@ -30,7 +36,9 @@ require.config({
 		backbone: 'libs/backbone',
 		bootstrap: 'libs/bootstrap.min',
 		backboneLocalstorage: 'libs/backbone.localstorage',
-		text: 'libs/require.text'
+		text: 'libs/require.text',
+		tablesorter: 'libs/jquery.tablesorter.min',
+		jqueryui: 'libs/jquery-ui.min'
 	}
 });
 
@@ -41,9 +49,11 @@ require([
 	'views/home', 
 	'views/signup', 
 	'views/about', 
-	'views/contact',	], function (
+	'views/contact',
+	'views/admin',
+	'views/dashboard'	], function (
 		Backbone, Router, LoginView, HomeView,
-		SignupView, AboutView, ContactView) {
+		SignupView, AboutView, ContactView, AdminView, DashView) {
 	
 	// Initialize routing and start Backbone.history()
 	var App = new Router();
@@ -66,6 +76,14 @@ require([
 
 	App.on('route:contact', function(){
 		new ContactView;
+	});
+
+	App.on('route:admin', function(){
+		new AdminView;
+	});	
+
+	App.on('route:dashboard', function(){
+		new DashView;
 	});
 
 	Backbone.history.start();
