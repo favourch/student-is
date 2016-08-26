@@ -7,7 +7,7 @@
     <title>{{$title}}</title>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{Url::base()}}css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{Url::base()}}css/business-casual.css">
+    <!--<link rel="stylesheet" id="customCSS" href="{{Url::base()}}css/business-casual.css">-->
      <!--    LOAD CUSTOM STYLES    -->
     <link rel="stylesheet" href="">    
     <script type="text/javascript">
@@ -18,6 +18,7 @@
     <script type="text/javascript" data-main="js/main" src="js/libs/require.js" ></script>
 </head>
 <body>
+<div id="wrapper">
     <div class="brand">Student Information System</div>
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
@@ -60,8 +61,12 @@
         <!-- /.container -->
     </nav>
 
-    <div class="container main-body">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="container main-body">
 
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -73,7 +78,9 @@
             </div>
         </div>
     </footer>
-
+    
+</div>
+<!-- /#wrapper -->
 </body>
 </html>
 
