@@ -8,9 +8,9 @@ define([
 
 	var ContactView = Backbone.View.extend({
 
-		el: $("body"),
+		el: $(".main-body"),
 		
-		title: "Contact - Business Casual - Start Bootstrap Theme",
+		title: "Contact - Student Information System",
 
 		template: _.template(ContactTemplate),
 

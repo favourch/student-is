@@ -8,9 +8,9 @@ define([
 
 	var IndexView = Backbone.View.extend({
 
-		el: $("body"),
+		el: $(".main-body"),
 
-		title: "Business Casual - Start Bootstrap Theme",
+		title: "Home - Student Information System",
 
 		template: _.template(IndexTemplate),
 

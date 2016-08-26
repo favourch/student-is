@@ -8,9 +8,9 @@ define([
 
 	var BlogView = Backbone.View.extend({
 
-		el: $("body"),
+		el: $(".main-body"),
 		
-		title: "Blog - Business Casual - Start Bootstrap Theme",
+		title: "Signup - Student Information System",
 
 		template: _.template(BlogTemplate),
 

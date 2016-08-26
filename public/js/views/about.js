@@ -8,9 +8,9 @@ define([
 
 	var AboutView = Backbone.View.extend({
 
-		el: $("body"),
+		el: $(".main-body"),
 
-		title: "About - Business Casual - Start Bootstrap Theme",
+		title: "About - Student Information System",
 
 		template: _.template(AboutTemplate),
 
