@@ -47,10 +47,8 @@ define([
 						$(".alert-danger").text('success').show(500);
 						tokenString = data['token'];
 						userData = data['user'];
-						window.location.replace(baseURL + '#dashboard');
+						window.location.replace(baseURL + '#admin');
 					}
-
-					
 					
 				},
 				error: function(err){
