@@ -6,7 +6,7 @@
  * @copyright 2015 - 2020 Geoffrey Bans
  * @category Models
  * @package Models\UsersModel
- * @link https://github.com/gliver-mvc/gliver
+ * @link https://github.com/geoffreybans/student-is
  * @license http://opensource.org/licenses/MIT MIT License
  * @version 1.0.1
  */

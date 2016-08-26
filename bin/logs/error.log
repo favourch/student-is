@@ -111,3 +111,245 @@ Drivers\Routes\RouteException : The class Controllers\Login/indexController is u
 Drivers\Routes\RouteException : The class Controllers\Login/oddController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
 #1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
 #2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login/checkuserController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_NOTICE Object of class Drivers\Database\MySQL\MySQLResponseObject could not be converted to int in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (52) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(52): handler(8, 'Object of class...', 'C:\\xampp\\htdocs...', 52, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Object of class Drivers\Database\MySQL\MySQLResponseObject could not be converted to int in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (52) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(52): handler(8, 'Object of class...', 'C:\\xampp\\htdocs...', 52, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Object of class Drivers\Database\MySQL\MySQLResponseObject could not be converted to int in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (52) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(52): handler(8, 'Object of class...', 'C:\\xampp\\htdocs...', 52, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Object of class Drivers\Database\MySQL\MySQLResponseObject could not be converted to int in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (52) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(52): handler(8, 'Object of class...', 'C:\\xampp\\htdocs...', 52, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Object of class Drivers\Database\MySQL\MySQLResponseObject could not be converted to int in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (52) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(52): handler(8, 'Object of class...', 'C:\\xampp\\htdocs...', 52, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Object of class Drivers\Database\MySQL\MySQLResponseObject could not be converted to int in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (52) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(52): handler(8, 'Object of class...', 'C:\\xampp\\htdocs...', 52, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_ERROR Call to undefined method Drivers\Database\MySQL\MySQLResponseObject::count() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (52) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 52)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Call to undefined method Drivers\Database\MySQL\MySQLResponseObject::count() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (52) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 52)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Call to undefined method Drivers\Database\MySQL\MySQLResponseObject::count() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (52) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 52)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Call to undefined function Controllers\all() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (50) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 50)
+#1 [internal function]: shut()
+#2 {main}
+E_PARSE syntax error, unexpected '}' in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (57) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(4, 'syntax error, u...', 'C:\\xampp\\htdocs...', 57)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Class 'Helpers\Input' not found in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (51) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Class 'Helpers\\...', 'C:\\xampp\\htdocs...', 51)
+#1 [internal function]: shut()
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/login/loginController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/indexController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/login/loginController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/indexController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_NOTICE Undefined property: Drivers\Database\MySQL\MySQLResponseObject::$email in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (58) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(58): handler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 58, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Undefined property: Drivers\Database\MySQL\MySQLResponseObject::$email in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (58) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(58): handler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 58, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Undefined property: Drivers\Database\MySQL\MySQLResponseObject::$email in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (58) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(58): handler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 58, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_RECOVERABLE_ERROR Object of class Drivers\Database\MySQL\MySQLResponseObject could not be converted to string in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (55) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(55): handler(4096, 'Object of class...', 'C:\\xampp\\htdocs...', 55, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_ERROR Call to undefined method Drivers\Database\MySQL\MySQLResponseObject::count() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (55) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 55)
+#1 [internal function]: shut()
+#2 {main}
+E_RECOVERABLE_ERROR Object of class stdClass could not be converted to string in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (55) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(55): handler(4096, 'Object of class...', 'C:\\xampp\\htdocs...', 55, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_ERROR Call to undefined method stdClass::count() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (55) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 55)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Call to undefined method stdClass::count() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (55) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 55)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Call to undefined method stdClass::rows() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (55) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 55)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Cannot access private property Drivers\Database\MySQL\MySQLResponseObject::$num_rows in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (56) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Cannot access p...', 'C:\\xampp\\htdocs...', 56)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Call to undefined method Drivers\Database\MySQL\MySQLResponseObject::count() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (56) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 56)
+#1 [internal function]: shut()
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_NOTICE Undefined property: Drivers\Database\MySQL\MySQLResponseObject::$email in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (57) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(57): handler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 57, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Undefined property: Drivers\Database\MySQL\MySQLResponseObject::$email in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (57) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(57): handler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 57, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Undefined property: Drivers\Database\MySQL\MySQLResponseObject::$email in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (57) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(57): handler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 57, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Undefined property: stdClass::$email in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (58) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(58): handler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 58, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_ERROR Cannot use object of type stdClass as array in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (57) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Cannot use obje...', 'C:\\xampp\\htdocs...', 57)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Call to undefined method Drivers\Database\MySQL\MySQLResponseObject::first() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (57) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 57)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Cannot access private property Drivers\Database\MySQL\MySQLResponseObject::$first in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (57) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Cannot access p...', 'C:\\xampp\\htdocs...', 57)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Cannot use object of type stdClass as array in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (58) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Cannot use obje...', 'C:\\xampp\\htdocs...', 58)
+#1 [internal function]: shut()
+#2 {main}
+E_NOTICE Trying to get property of non-object in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (59) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(59): handler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 59, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Trying to get property of non-object in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (60) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(60): handler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 60, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_NOTICE Trying to get property of non-object in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (60) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(60): handler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 60, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_ERROR Call to undefined method Models\TokenModel::create() in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (61) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 61)
+#1 [internal function]: shut()
+#2 {main}
+Drivers\Database\MySQL\MySQLException Unknown column 'date_created' in 'field list'<span class="query-string"> (INSERT INTO tokens (email, first_name, last_name, token, duration, date_created) VALUES ('admin@admin.com', 'Bans', 'Admin', '67ec88a92dae529517dcc89c89053fae', '3600', '2016-08-26 10:26:03')) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(875) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(187): Drivers\Database\MySQL\MySQLQuery->save(Array, true)
+#1 C:\xampp\htdocs\student-is\application\controllers\LoginController.php(68): Drivers\Models\BaseModelClass::save(Array)
+#2 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
