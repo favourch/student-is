@@ -56,7 +56,7 @@ class LoginController extends BaseController {
 		if ($user->num_rows() > 0) {
 			
 			$user = $user->result_array()[0];
-			$token = md5($user['email'] + time());
+			$token = sha1(base64_encode($user['email'] + time()));
 
 			TokenModel::save(array(
 				'email' => $user['email'],
@@ -68,7 +68,12 @@ class LoginController extends BaseController {
 			);
 
 			View::renderJSON(array(
-				"user" => $user,
+				"user" => array(
+					'email' => $user['email'],
+					'first_name' => $user['first_name'],
+					'last_name' => $user['last_name'],
+					'user_type' => $user['user_type']
+					),
 				"token" => $token
 				)
 			);
