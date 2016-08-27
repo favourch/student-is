@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'text!templates/dashboard/header.html',
+	'text!templates/partials/dash-header.html',
 	'text!templates/dashboard/nav.html',
 	'text!templates/dashboard/home.html',
 	'tablesorter',
@@ -26,7 +26,8 @@ define([
 			       
 			$("title").html(this.title);
 			this.$el.html(this.template({
-				user: userData
+				user: userData,
+				token: tokenString
 			}));
 		}
 		
