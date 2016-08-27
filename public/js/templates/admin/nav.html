@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" >Student IS Control Panel</a>
+                <a class="navbar-brand" href="#admin/home/<%= token %>" >Student IS Control Panel</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -97,17 +97,17 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= user['first_name'] %>  <%= user['last_name'] %> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="#admin/profile/<%= token %>"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                            <a href="#admin/inbox/<%= token %>"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="#admin/settings/<%= token %>"><i class="fa fa-fw fa-gear"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#login/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="#login/logout/<%= token %>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -131,7 +131,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active"><a href="#admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
+                    <li class="active"><a href="#admin/home/<%= token %>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
                     <li class="active"><a href="javascript: ;" data-toggle="collapse" data-target="#finance_options"><i class="fa fa-fw fa-table"></i> Finance</a>
 						<ul id="finance_options" class="collapse">
 							<li><a href="#">Make Payment</a></li>
@@ -140,14 +140,14 @@
 					</li>
                     <li class="active"><a href="javascript: ;" data-toggle="collapse" data-target="#client_options"><i class="fa fa-fw fa-table"></i> Clients</a>
 						<ul id="client_options" class="collapse">
-							<li><a href="#admin/add_client">Add Client</a></li>
-							<li><a href="#">Manage Clients</a></li>
+							<li><a href="#admin/add_client/<%= token %>">Add Client</a></li>
+							<li><a href="#admin/manage_clients/<%= token %>">Manage Clients</a></li>
 						</ul>
 					</li>
 					<li class="active"><a href="javascript: ;" data-toggle="collapse" data-target="#system_options"><i class="fa fa-fw fa-wrench"></i>System <i class="fa fa-fw fa-caret-down"></i></a>
 						<ul id="system_options" class="collapse">
-							<li><a href="#">Add Users</a></li>
-							<li><a href="#">Delete Users</a></li>
+							<li><a href="#admin/add_users/<%= token %>">Add Users</a></li>
+							<li><a href="#admin/delete_users/<%= token %>">Delete Users</a></li>
 						</ul>
 					</li>
                 </ul>
