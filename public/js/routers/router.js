@@ -12,7 +12,9 @@ define([
 			'blog' : 'blog',
 			'contact' : 'contact',
 			'admin' : 'admin',
-			'dashboard' : 'dashboard'
+			'dashboard' : 'dashboard',
+			'admissions' : 'admissions',
+			'academics' : 'academics'
 		}
 
 	});
