@@ -41,11 +41,22 @@ class AdminController extends BaseController {
 	}
 	
 	/**
+	 * This method returns a list of all clients in the database
+	 * @param string $token The access token string
+	 * @return JSON object of clients
+	 */
+	public function getAddClient($token){
+
+		$clients = ClientModel::all();
+		View::renderJSON($clients->result_array());
+		
+	}
+	/**
 	 * This method adds a new client to the database
 	 * @param string $token The token to authenticate request
 	 * @return JSON
 	 */
-	public function addClient($token){
+	public function postAddClient($token){
 
 		$client = json_decode($_POST['model']);
 		
@@ -68,11 +79,22 @@ class AdminController extends BaseController {
 	}
 	
 	/**
+	 * This  methods returns all the users in the database
+	 * @param string $token The access token
+	 * @return JSON
+	 */
+	public function getAddUser($token){
+
+		$users = UserModel::all();
+		View::renderJSON($users->result_array());
+
+	}
+	/**
 	 * This method adds a new user to the database
 	 * @param string $token The token to authenticate request
 	 * @return JSON
 	 */
-	public function addUser($token){
+	public function postAddUser($token){
 		
 		$user = json_decode($_POST['model']);
 		
