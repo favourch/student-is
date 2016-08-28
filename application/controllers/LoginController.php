@@ -13,7 +13,7 @@
 
 use Drivers\Templates\View;
 use Libraries\CronLibrary\SampleCronController;
-use Models\UsersModel;
+use Models\UserModel;
 use Models\TokenModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
@@ -49,7 +49,7 @@ class LoginController extends BaseController {
 	 */
 	public function checkuser($email, $password){
 		
-		$user = UsersModel::where("email = ?", Input::get('email'))
+		$user = UserModel::where("email = ?", Input::get('email'))
 							->where("password = ?", md5(Input::get('password')))
 							->first();
 
