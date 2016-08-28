@@ -1,7 +1,7 @@
 <?php namespace Models;
 
 /**
- * This models handles authentication token creation and updating
+ * This model creates access tokens
  * @author Geoffrey Bans <geoffreybans@gmail.com>
  * @copyright 2015 - 2020 Geoffrey Bans
  * @category Models
