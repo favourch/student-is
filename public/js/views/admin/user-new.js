@@ -3,7 +3,7 @@ define([
 	'underscore',
 	'backbone',
 	'collections/users',
-	'text!templates/admin/adduser.html',
+	'text!templates/admin/user-new.html',
 	'jqueryui',
 	'bootstrap'
 	], function($, _, Backbone, Users, addUserTpl){
@@ -48,7 +48,7 @@ define([
 
 			Users.create(newUser, {
 				success: function(){
-					$(".success-message").html("Client added successfully!").show(400);
+					$(".success-message").html("User added successfully!").show(400);
 					$(".submit-button").html("Submit");
 				},
 				error: function(){
@@ -56,7 +56,7 @@ define([
 					$(".submit-button").html("Submit");
 				}
 			});
-			
+
 			this.clearNewUser()
 		},
 

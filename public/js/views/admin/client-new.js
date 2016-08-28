@@ -3,7 +3,7 @@ define([
 	'underscore',
 	'backbone',
 	'collections/clients',
-	'text!templates/admin/addclient.html',
+	'text!templates/admin/client-new.html',
 	'jqueryui',
 	'bootstrap'
 	], function($, _, Backbone, Clients, addClientTpl){
