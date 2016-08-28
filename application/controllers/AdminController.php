@@ -13,7 +13,8 @@
 
 use Drivers\Templates\View;
 use Libraries\CronLibrary\SampleCronController;
-use Models\UsersModel;
+use Models\UserModel;
+use Models\ClientModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 
@@ -39,5 +40,55 @@ class AdminController extends BaseController {
 
 	}
 	
+	/**
+	 * This method adds a new client to the database
+	 * @param string $token The token to authenticate request
+	 * @return JSON
+	 */
+	public function addClient($token){
+
+		$client = json_decode($_POST['model']);
+		
+		$client = array(
+			'institution' => $client->institution,
+			'first_name' => $client->first_name,
+			'last_name' => $client->last_name,
+			'phone' => $client->phone,
+			'email' => $client->email,
+			'address' => $client->address,
+			'code' => $client->code,
+			'city' => $client->city
+		);
+
+		$create = ClientModel::save($client);
+		$new = ClientModel::getById($create->lastInsertId());
+		
+		View::renderJSON($new->result_array()[0]);
+
+	}
+	
+	/**
+	 * This method adds a new user to the database
+	 * @param string $token The token to authenticate request
+	 * @return JSON
+	 */
+	public function addUser($token){
+		
+		$user = json_decode($_POST['model']);
+		
+		$client = array(
+			'first_name' => $user->first_name,
+			'last_name' => $user->last_name,
+			'password' => md5($user->password),
+			'email' => $user->email,			
+			'user_type' => $user->user_type
+		);
+
+		$create = UserModel::save($client);
+		$new = UserModel::getById($create->lastInsertId());
+		
+		View::renderJSON($new->result_array()[0]);	
+	}
+
 }
 
