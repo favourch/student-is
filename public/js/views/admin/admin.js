@@ -2,15 +2,22 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'views/admin/client',
 	'views/admin/client-new',
+	'views/admin/user',
 	'views/admin/user-new',
+	'collections/users',
+	'collections/clients',
 	'text!templates/partials/dash-header.html',
 	'text!templates/admin/nav.html',
 	'text!templates/admin/home.html',
-	'tablesorter',
+	'text!templates/admin/users.html',
+	'text!templates/admin/clients.html',
 	'jqueryui',
 	'bootstrap'
-	], function($, _, Backbone, addClient, addUser, HeaderTpl, NavTpl, HomeTpl){
+	], function(
+		$, _, Backbone, ClientView, clientNew, UserView, userNew, UsersCol, ClientsCol, HeaderTpl, 
+		NavTpl, HomeTpl, UsersTpl, ClientsTpl ){
 	
 	var Admin = Backbone.View.extend({
 
@@ -19,6 +26,10 @@ define([
 		title: "Student Information System",
 
 		homeTemplate: _.template(NavTpl + HomeTpl),
+
+		usersTpl:  _.template(UsersTpl),
+
+		clientsTpl:  _.template(ClientsTpl),
 
 		initialize: function(page, token){
 
@@ -42,32 +53,77 @@ define([
 				 	break;
 				case 'clients':
 
-					this.clients();
+					$("title").html("Clients - " + this.title);
+					
+					this.$main.html(this.clientsTpl());
+					this.$clientsList = this.$("#clients-table");
+					
+					this.listenTo(ClientsCol, 'add', this.addOneClient);
+					this.listenTo(ClientsCol, 'reset', this.addAllClients);
+
+					ClientsCol.fetch({
+						reset: true
+					});
+
 					break;			
 
 				case 'clientnew':
 
 					$("title").html("Add Client - " + this.title);
-					var view = new addClient;
+					var view = new clientNew;
 					this.$main.html(view.render().el);
 					break;
 					
 				case 'users':
 
-					this.users();
+					$("title").html("Users - " + this.title);
+					
+					this.$main.html(this.usersTpl());
+					this.$usersList = this.$("#users-table");
+					
+					this.listenTo(UsersCol, 'add', this.addOneUser);
+					this.listenTo(UsersCol, 'reset', this.addAllUsers);
+
+					UsersCol.fetch({
+						reset: true
+					});
+
 					break;
 
 				case 'usernew':
 
 					$("title").html("Add User - " + this.title);
-					var view = new addUser;
+					var view = new userNew;
 					this.$main.html(view.render().el);
 					break;
 
 			}
 			       
-		}
+		},
 
+		addOneUser: function(user){
+			var view = new UserView({
+				model: user 
+			});
+			this.$usersList.append(view.render().el);
+		},
+
+		addAllUsers: function(){
+			this.$usersList.empty();
+			UsersCol.each(this.addOneUser, this);
+		},		
+
+		addOneClient: function(client){
+			var view = new ClientView({
+				model: client 
+			});
+			this.$clientsList.append(view.render().el);
+		},
+
+		addAllClients: function(){
+			this.$clientsList.empty();
+			ClientsCol.each(this.addOneClient, this);
+		},
 	});
 
 	return Admin;
