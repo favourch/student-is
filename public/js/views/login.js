@@ -62,9 +62,9 @@ define([
 						userData = data['user'];
 
 						if (data['user']['user_type'] == 1) {
-							window.location.replace(baseURL + '#admin');
+							window.location.replace(baseURL + '#admin/home/' + data['token']);
 						} else{
-							window.location.replace(baseURL + '#dashboard');
+							window.location.replace(baseURL + '#dashboard/home/' + data['token']);
 						}
 						
 					}
