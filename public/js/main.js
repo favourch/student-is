@@ -50,7 +50,7 @@ require([
 	'views/signup', 
 	'views/about', 
 	'views/contact',
-	'views/admin',
+	'views/admin/admin',
 	'views/dashboard',
 	'views/admissions',
 	'views/academics'	], function (
@@ -80,20 +80,20 @@ require([
 		new Contact;
 	});
 
-	App.on('route:admin', function(){
-		new Admin;
+	App.on('route:admin', function(page, token){
+		new Admin(page, token);
 	});	
 
-	App.on('route:dashboard', function(){
-		new Dashboard;
+	App.on('route:dashboard', function(page, token){
+		new Dashboard(page, token);
 	});	
 
-	App.on('route:admissions', function(){
-		new Admissions;
+	App.on('route:admissions', function(page, token){
+		new Admissions(page, token);
 	});	
 
-	App.on('route:academics', function(){
-		new Academics;
+	App.on('route:academics', function(page, token){
+		new Academics(page, token);
 	});
 
 	Backbone.history.start();
