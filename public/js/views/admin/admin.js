@@ -45,7 +45,7 @@ define([
 					this.clients();
 					break;			
 
-				case 'addClient':
+				case 'clientnew':
 
 					$("title").html("Add Client - " + this.title);
 					var view = new addClient;
@@ -57,7 +57,7 @@ define([
 					this.users();
 					break;
 
-				case 'addUser':
+				case 'usernew':
 
 					$("title").html("Add User - " + this.title);
 					var view = new addUser;
