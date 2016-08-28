@@ -11,10 +11,10 @@ define([
 			'about' : 'about',
 			'blog' : 'blog',
 			'contact' : 'contact',
-			'admin' : 'admin',
-			'dashboard' : 'dashboard',
-			'admissions' : 'admissions',
-			'academics' : 'academics'
+			'admin/:page/:token' : 'admin',
+			'dashboard/:page/:token' : 'dashboard',
+			'admissions/:page/:token' : 'admissions',
+			'academics/:page/:token' : 'academics'
 		}
 
 	});
