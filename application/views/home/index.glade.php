@@ -83,7 +83,7 @@
 <!-- /#wrapper -->
 
 <div id="error-handle-script">
-    
+    <!-- place javascript code to handle ajax 401 and 403 errors -->
 </div>
 
 <div class="modal fade" id="popup-401" data-keyboard="false" data-backdrop="static">
