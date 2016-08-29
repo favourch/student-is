@@ -4,9 +4,10 @@ define([
 	'backbone',
 	'text!templates/partials/landing-nav.html',
 	'text!templates/partials/landing-footer.html',
+	'text!templates/partials/ajax-error-script.html',
 	'text!templates/home.html',
 	'bootstrap'
-	], function($, _, Backbone, Nav, Footer, IndexTemplate){
+	], function($, _, Backbone, Nav, Footer, AjaxErrorTpl, IndexTemplate){
 
 	var IndexView = Backbone.View.extend({
 
@@ -15,6 +16,8 @@ define([
 		title: "Home - Student Information System",
 
 		template: _.template(Nav + IndexTemplate + Footer),
+
+		ajaxErrorTpl: _.template(AjaxErrorTpl),
 
 		initialize: function(){
 			//this will ensure the css is only added once
@@ -27,6 +30,9 @@ define([
 				$(".dash-header-css").remove();	
 			}
 
+			//add the code to handle ajax error codes
+			$("#error-handle-script").empty().html(this.ajaxErrorTpl());
+			
 			$("title").html(this.title);
 			this.$el.html(this.template());
 		}
