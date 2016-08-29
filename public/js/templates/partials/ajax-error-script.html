@@ -1,0 +1,19 @@
+<script type="text/javascript">
+	$(document).ajaxError(function(jqXHR, textStatus, errorThrown) {  
+	    if(textStatus.status == 401) {
+	      	$("#popup-401").modal("show");
+	      	$(".popup-error-modal").click(function(){
+	            $("#popup-403").modal("hide");
+	            $("#popup-401").modal("hide");
+			}); 
+	    } 
+	    else if(textStatus.status == 403) {
+	      	$("#popup-403").modal("show");
+	      	$(".popup-error-modal").click(function(){
+	            $("#popup-403").modal("hide");
+	            $("#popup-401").modal("hide");
+			}); 
+	    }
+
+	});
+</script>
