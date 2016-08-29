@@ -81,6 +81,26 @@
     
 </div>
 <!-- /#wrapper -->
+
+<div class="modal fade" id="popup-401" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="alert alert-danger">Login is required to access this feature. Please <a class="popup-error-modal" href="{{Url::base()}}#login">login here...</a></p>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="popup-403" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="alert alert-danger">Reastricted access to this feature. Please <a class="popup-error-modal" href="{{Url::base()}}#login">login here...</a></p>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </body>
 </html>
 
