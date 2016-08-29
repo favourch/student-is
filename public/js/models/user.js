@@ -13,7 +13,7 @@ define([
 			address: '',
 			code: '',
 			city: '',
-			user_role: 3
+			user_role: 2
 		}
 
 	});
