@@ -53,7 +53,7 @@ return array(
 	/**
 	 *The url component separator character
 	 */
-	'url_component_separator' => '.',
+	'url_component_separator' => '/',
 	/**
 	*The default upload file path
 	*/
