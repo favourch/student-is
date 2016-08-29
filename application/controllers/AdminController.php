@@ -14,6 +14,7 @@
 use Drivers\Templates\View;
 use Libraries\CronLibrary\SampleCronController;
 use Models\UserModel;
+use Models\TokenModel;
 use Models\ClientModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
@@ -23,7 +24,29 @@ class AdminController extends BaseController {
 	/**
 	 * @var bool Set to true to enable method filters in this controller
 	 */
-	public $enable_method_filters = false;
+	public $enable_method_filters = true;
+
+	/**
+	 * The method checks for user authentication and authorization
+	 * @param null
+	 * @return void
+	 */
+	public function  auth(){
+		$token = Input::get('token');
+		$tokenExists = TokenModel::where('token = ?', $token)
+									->all();
+
+		if (!$tokenExists->num_rows()) {
+			header('HTTP/1.0 403 Forbidden');
+			die('Login required!');
+
+		}
+		elseif ($tokenExists->result_array()[0]['user_role'] != 1 OR $tokenExists->result_array()[0]['user_role'] != 2) {
+			header('HTTP/1.0 401 Unauthorized'); 
+			die('Restricted access!');
+		}
+
+	}
 
 	/**
 	 * This method loads the homepage. 
@@ -42,6 +65,7 @@ class AdminController extends BaseController {
 	
 	/**
 	 * This method returns a list of all clients in the database
+	 * @before auth
 	 * @param string $token The access token string
 	 * @return JSON object of clients
 	 */
@@ -53,6 +77,7 @@ class AdminController extends BaseController {
 	}
 	/**
 	 * This method adds a new client to the database
+	 * @before auth
 	 * @param string $token The token to authenticate request
 	 * @return JSON
 	 */
@@ -80,6 +105,7 @@ class AdminController extends BaseController {
 	
 	/**
 	 * This  methods returns all the users in the database
+	 * @before auth
 	 * @param string $token The access token
 	 * @return JSON
 	 */
@@ -91,6 +117,7 @@ class AdminController extends BaseController {
 	}
 	/**
 	 * This method adds a new user to the database
+	 * @before auth
 	 * @param string $token The token to authenticate request
 	 * @return JSON
 	 */
@@ -103,7 +130,7 @@ class AdminController extends BaseController {
 			'last_name' => $user->last_name,
 			'password' => md5($user->password),
 			'email' => $user->email,			
-			'user_type' => $user->user_type
+			'user_role' => $user->user_type
 		);
 
 		$create = UserModel::save($client);
