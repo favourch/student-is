@@ -50,12 +50,13 @@ require([
 	'views/signup', 
 	'views/about', 
 	'views/contact',
+	'views/logout',
 	'views/admin/admin',
 	'views/dashboard',
 	'views/admissions',
 	'views/academics'	], function (
 		Backbone, Router, Login, Home, Signup, About, Contact, 
-		Admin, Dashboard, Admissions, Academics) {
+		Logout, Admin, Dashboard, Admissions, Academics) {
 	
 	// Initialize routing and start Backbone.history()
 	var App = new Router();
@@ -78,6 +79,10 @@ require([
 
 	App.on('route:contact', function(){
 		new Contact;
+	});	
+
+	App.on('route:logout', function(token){
+		new Logout(token);
 	});
 
 	App.on('route:admin', function(page, token){

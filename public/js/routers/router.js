@@ -11,6 +11,7 @@ define([
 			'about' : 'about',
 			'blog' : 'blog',
 			'contact' : 'contact',
+			'logout/:token' : 'logout',
 			'admin/:page/:token' : 'admin',
 			'dashboard/:page/:token' : 'dashboard',
 			'admissions/:page/:token' : 'admissions',
