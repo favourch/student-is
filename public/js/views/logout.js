@@ -14,7 +14,7 @@ define([
 				url: url,
 				type: "get",
 				success: function(){
-					window.location.replace(baseURL + '#home');
+					window.location.replace(baseURL);
 				}
 
 			});

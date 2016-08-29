@@ -19,3 +19,12 @@ Drivers\Routes\RouteException : The class Controllers\Js/templates/blogControlle
 Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
 #1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
 #2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Js/templates/blogController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
