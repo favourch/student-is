@@ -82,6 +82,10 @@
 </div>
 <!-- /#wrapper -->
 
+<div id="error-handle-script">
+    
+</div>
+
 <div class="modal fade" id="popup-401" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
