@@ -36,7 +36,7 @@ define([
 		authUser: function(e){
 
 			e.preventDefault();
-			$(".alert-danger").hide(500);
+			$(".alert-login-error").hide(500);
 			$(".submit-button").text("Please wait...");
 
 			var email = $("#username").val();
@@ -53,15 +53,15 @@ define([
 				success: function(data){
 
 					if (data['error'] != null) {
-						$(".alert-danger").text(data['error']).show(500);
+						$(".alert-login-error").text(data['error']).show(500);
 						$(".submit-button").text("Login");
 					}
 					else {
-						$(".alert-danger").text('success').show(500);
+						$(".alert-login-error").text('success').show(500);
 						tokenString = data['token'];
 						userData = data['user'];
 
-						if (data['user']['user_type'] == 1) {
+						if (data['user']['user_role'] == 1) {
 							window.location.replace(baseURL + '#admin/home/' + data['token']);
 						} else{
 							window.location.replace(baseURL + '#dashboard/home/' + data['token']);
@@ -71,7 +71,7 @@ define([
 					
 				},
 				error: function(err){
-					$(".alert-danger").text("Login Failed!").show(500);
+					$(".alert-login-error").text("Login Failed!").show(500);
 					$(".submit-button").text("Login");
 					console.log(err)
 				}
