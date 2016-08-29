@@ -45,7 +45,7 @@ require.config({
 require([
 	'backbone',
 	'routers/router', 
-	'views/login',
+	'views/login/login',
 	'views/home', 
 	'views/signup', 
 	'views/about', 
