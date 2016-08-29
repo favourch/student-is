@@ -63,7 +63,8 @@ class LoginController extends BaseController {
 				'first_name' => $user['first_name'],
 				'last_name' => $user['last_name'],
 				'token' => $token,
-				'duration' => 3600
+				'duration' => 3600,
+				'user_role' => $user['user_role']
 				)
 			);
 
@@ -72,7 +73,7 @@ class LoginController extends BaseController {
 					'email' => $user['email'],
 					'first_name' => $user['first_name'],
 					'last_name' => $user['last_name'],
-					'user_type' => $user['user_type']
+					'user_role' => $user['user_role']
 					),
 				"token" => $token
 				)
