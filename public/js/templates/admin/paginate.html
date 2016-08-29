@@ -1,0 +1,27 @@
+      <!-- begin pagination -->
+      <div class="col-md-4">
+        <div class="btn-group" role="group" aria-label="...">
+          <% if @page != 1 %>
+
+            <% if !@query.nil? || !@filter.nil? %>
+              <a class="btn btn-default" href="/admin/findusers?<%= @query_hash %>&page=1"><i class="text-primary">First</i></a>
+              <a class="btn btn-default" href="/admin/findusers?<%= @query_hash %>&page=<%= @page - 1 %>"><i class="text-primary">&laquo;Prev</i></a>           
+            <% else %>
+              <a class="btn btn-default" href="/admin/findusers?page=1"><i class="text-primary">First</i></a>
+              <a class="btn btn-default" href="/admin/findusers?page=<%= @page - 1 %>"><i class="text-primary">&laquo;Prev</i></a>
+            <% end %>
+
+          <% end %>
+          <% if @page != @pages %>
+            <% if !@query.nil? || !@filter.nil? %>
+              <a class="btn btn-default" href="/admin/findusers?<%= @query_hash %>&page=<%= @page + 1 %>"><i class="text-primary">Next&raquo;</i></a>
+              <a class="btn btn-default" href="/admin/findusers?<%= @query_hash %>&page=<%= @pages %>"><i class="text-primary">Last</i></a>
+            <% else %>
+              <a class="btn btn-default" href="/admin/findusers?page=<%= @page + 1 %>"><i class="text-primary">Next&raquo;</i></a>
+              <a class="btn btn-default" href="/admin/findusers?page=<%= @pages %>"><i class="text-primary">Last</i></a>
+            <% end %>
+
+          <% end %>
+        </div>
+      </div>
+      <!-- end pagination -->
