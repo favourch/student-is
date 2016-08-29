@@ -55,7 +55,10 @@ define([
 
 					$("title").html("Clients - " + this.title);
 					
-					this.$main.html(this.clientsTpl());
+					this.$main.html(this.clientsTpl({
+						baseURL: baseURL,
+						token: tokenString
+					}));
 					this.$clientsList = this.$("#clients-table");
 					
 					this.listenTo(ClientsCol, 'add', this.addOneClient);
@@ -78,7 +81,10 @@ define([
 
 					$("title").html("Users - " + this.title);
 					
-					this.$main.html(this.usersTpl());
+					this.$main.html(this.usersTpl({
+						baseURL: baseURL,
+						token: tokenString
+					}));
 					this.$usersList = this.$("#users-table");
 					
 					this.listenTo(UsersCol, 'add', this.addOneUser);

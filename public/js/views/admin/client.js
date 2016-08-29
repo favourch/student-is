@@ -5,7 +5,7 @@ define([
 	'text!templates/admin/client.html'
 	], function($, _, Backbone, clientTpl){
 
-	var ClientView = Backbone.View.extend({
+	var Client = Backbone.View.extend({
 
 		tagName: 'tr',
 
@@ -13,7 +13,8 @@ define([
 
 		events: {
 			'click .edit' : 'editUser',
-			'click .destroy' : 'clear'
+			'click .destroy' : 'clear',
+			'click .delete-client' : 'deleteClient'
 		},
 
 		initialize: function(){
@@ -31,12 +32,13 @@ define([
 			this.$input.focus();
 		},
 
-		clear: function(){
+		deleteClient: function(evt){
+			evt.preventDefault();
 			this.model.destroy();
 		}
 
 	});
 
-	return ClientView;
+	return Client;
 
 });

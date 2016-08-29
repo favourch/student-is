@@ -46,7 +46,7 @@ define([
 
 			var email = $("#username").val();
 			var pass = $("#password").val();
-			var url = baseURL + "login.checkuser";
+			var url = baseURL + "login/checkuser";
 
 			$.ajax({
 				url: url,
