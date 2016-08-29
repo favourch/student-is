@@ -90,7 +90,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <p class="alert alert-danger">Login is required to access this feature. Please <a class="popup-error-modal" href="{{Url::base()}}#login">login here...</a></p>
+        <p class="alert alert-danger">Session expired. Please <a class="popup-error-modal" href="{{Url::base()}}#login">login here...</a> to continue.</p>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -100,7 +100,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <p class="alert alert-danger">Reastricted access to this feature. Please <a class="popup-error-modal" href="{{Url::base()}}#login">login here...</a></p>
+        <p class="alert alert-danger">Reastricted access. Please <a class="popup-error-modal" href="{{Url::base()}}#login">login here...</a> to continue.</p>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

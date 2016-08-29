@@ -35,41 +35,48 @@ class AdminController extends BaseController {
 		$token = Input::get('token');
 		$tokenExists = TokenModel::where('token = ?', $token)
 									->all();
-
-		if (!$tokenExists->num_rows()) {
+		//invalid token used/no access token provided
+		if (!$tokenExists->num_rows()) {		 
 			header('HTTP/1.0 403 Forbidden');
 			die('Login required!');
-
 		}
+		//check for expired token
+		elseif ($tokenExists->result_array()[0]['logout'] === true) {
+			header('HTTP/1.0 403 Forbidden');
+			die('Login required!');
+		}
+		//unathorized user access to admin controller
 		elseif ($tokenExists->result_array()[0]['user_role'] != 1 AND $tokenExists->result_array()[0]['user_role'] != 2) {
 			header('HTTP/1.0 401 Unauthorized'); 
 			die('Restricted access!');
 		}
+		else {
+			//check for expired timestamp
+			$token = $tokenExists->result_array()[0];
+			$timestamp = strtotime($token['date_modified'] OR $token['date_created']);
+
+			if (($timestamp + $token['duration']) > time()) {
+				header('HTTP/1.0 403 Forbidden');
+				die('Login required!');
+			}
+
+			//extend token lifespan
+			TokenModel::where('id = ?', $token['id'])
+						->save(array(
+							'duration' => 3600
+							)
+						);
+		}
 
 	}
 
-	/**
-	 * This method loads the homepage. 
-	 * @param int $id The user id
-	 * @return void
-	 */
-	public function getIndex( $id)
-	{
-
-		$data['title'] = $this->site_title;
-		$data['request_time'] = $this->request_exec_time();
-
-		View::render('home.index',$data);
-
-	}
-	
 	/**
 	 * This method returns a list of all clients in the database
 	 * @before auth
 	 * @param string $token The access token string
 	 * @return JSON object of clients
 	 */
-	public function getAddClient($token){
+	public function getClients($token){
 
 		$clients = ClientModel::all();
 		View::renderJSON($clients->result_array());
@@ -81,7 +88,7 @@ class AdminController extends BaseController {
 	 * @param string $token The token to authenticate request
 	 * @return JSON
 	 */
-	public function postAddClient($token){
+	public function postClients($token){
 
 		$client = json_decode($_POST['model']);
 		
@@ -109,7 +116,7 @@ class AdminController extends BaseController {
 	 * @param string $token The access token
 	 * @return JSON
 	 */
-	public function getAddUser($token){
+	public function getUsers($token){
 
 		$users = UserModel::all();
 		View::renderJSON($users->result_array());
@@ -121,7 +128,7 @@ class AdminController extends BaseController {
 	 * @param string $token The token to authenticate request
 	 * @return JSON
 	 */
-	public function postAddUser($token){
+	public function postUsers($token){
 		
 		$user = json_decode($_POST['model']);
 		

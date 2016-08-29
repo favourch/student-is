@@ -31,10 +31,7 @@ class HomeController extends BaseController {
 	 */
 	public function getIndex( $id)
 	{
-
 		$data['title'] = $this->site_title;
-		$data['request_time'] = $this->request_exec_time();
-
 		View::render('home.index',$data);
 
 	}

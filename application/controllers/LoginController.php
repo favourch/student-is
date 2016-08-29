@@ -24,21 +24,6 @@ class LoginController extends BaseController {
 	 * @var bool Set to true to enable method filters in this controller
 	 */
 	public $enable_method_filters = false;
-
-	/**
-	 * This method loads the homepage. 
-	 * @param int $id The user id
-	 * @return void
-	 */
-	public function getIndex( $id)
-	{
-
-		$data['title'] = $this->site_title;
-		$data['request_time'] = $this->request_exec_time();
-
-		View::render('login.index',$data);
-
-	}
 	
 	/**
 	 * This method performs user authentication
@@ -50,13 +35,13 @@ class LoginController extends BaseController {
 	public function checkuser($email, $password){
 		
 		$user = UserModel::where("email = ?", Input::get('email'))
-							->where("password = ?", md5(Input::get('password')))
+							->where("password = ?", md5(sha1(Input::get('password'))))
 							->first();
 
 		if ($user->num_rows() > 0) {
 			
 			$user = $user->result_array()[0];
-			$token = sha1(base64_encode($user['email'] + time()));
+			$token = sha1(md5($user['email'] + time()));
 
 			TokenModel::save(array(
 				'email' => $user['email'],
@@ -83,6 +68,25 @@ class LoginController extends BaseController {
 			View::renderJSON(array("error" => "Invalid username or password supplied!"));
 		}
 
+	}
+
+	/**
+	 * This method logs out a user and makes the token invalid
+	 * @param string $token The access token to log out
+	 * @return void
+	 */
+	public function logout($token){
+		if ($token) {
+			$checkT = TokenModel::where('token = ?', $token)
+							->first();
+			if ($checkT->num_rows() > 0) {
+				TokenModel::where('token = ?', $token)
+						->save(array(
+							'logout' => true
+							)
+						);
+			}
+		}
 	}
 }
 
