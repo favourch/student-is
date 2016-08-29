@@ -41,7 +41,7 @@ class AdminController extends BaseController {
 			die('Login required!');
 
 		}
-		elseif ($tokenExists->result_array()[0]['user_role'] != 1 OR $tokenExists->result_array()[0]['user_role'] != 2) {
+		elseif ($tokenExists->result_array()[0]['user_role'] != 1 AND $tokenExists->result_array()[0]['user_role'] != 2) {
 			header('HTTP/1.0 401 Unauthorized'); 
 			die('Restricted access!');
 		}
