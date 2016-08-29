@@ -5,6 +5,7 @@ define([
 	var AppRouter = Backbone.Router.extend({
 		
 		routes: {
+			'' : 'home',
 			'login' : 'login',
 			'signup' : 'signup',
 			'home' : 'home',
