@@ -55,14 +55,31 @@ define([
 				success: function(){
 					$(".success-message").html("Client added successfully!").show(400);
 					$(".submit-button").html("Submit");
+					this.clearNewUser()
 				},
 				error: function(){
-					$(".error-message").html("Please check the errors below!").show(400);
-					$(".submit-button").html("Submit");
+				    if(textStatus.status == 401) {
+				      	$("#popup-401").modal("show");
+				      	$(".popup-error-modal").click(function(){
+				            $("#popup-403").modal("hide");
+				            $("#popup-401").modal("hide");
+        				}); 
+				    } 
+				    else if(textStatus.status == 403) {
+				      	$("#popup-403").modal("show");
+				      	$(".popup-error-modal").click(function(){
+				            $("#popup-403").modal("hide");
+				            $("#popup-401").modal("hide");
+        				}); 
+				    }
+				    else {
+				    	$(".error-message").html("Please check the errors below!").show(400);
+						$(".submit-button").html("Submit");
+
+					}
 				}
 			});
 
-			this.clearNewClient()
 		},
 
 		clearNewClient: function(){
