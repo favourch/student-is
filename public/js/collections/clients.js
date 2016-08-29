@@ -11,7 +11,7 @@ define([
 		model: Client,
 		
 		url: function () {
-			return baseURL + "admin.addclient?token=" + tokenString;
+			return baseURL + "admin.clients?token=" + tokenString;
 		},
 
 		//todos sorted by their original insertion order
