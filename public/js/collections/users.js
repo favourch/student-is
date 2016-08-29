@@ -9,7 +9,7 @@ define([
 		model: User,
 
 		url: function () {
-			return baseURL + "admin.adduser." +  tokenString;
+			return baseURL + "admin.adduser?token=" +  tokenString;
 		},
 
 		//todos sorted by their original insertion order
