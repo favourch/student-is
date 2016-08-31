@@ -4,6 +4,9 @@ define([
 	'models/user'
 	], function(_, Backbone, User){
 
+	Backbone.emulateHTTP = true;
+	Backbone.emulateJSON = true;
+
 	var UsersCollection = Backbone.Collection.extend({
 
 		model: User,
