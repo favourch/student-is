@@ -53,10 +53,10 @@ require([
 	'views/logout',
 	'views/admin/admin',
 	'views/dashboard',
-	'views/admissions',
+	'views/students/students',
 	'views/academics'	], function (
 		Backbone, Router, Login, Home, Signup, About, Contact, 
-		Logout, Admin, Dashboard, Admissions, Academics) {
+		Logout, Admin, Dashboard, Students, Academics) {
 	
 	// Initialize routing and start Backbone.history()
 	var App = new Router();
@@ -93,8 +93,8 @@ require([
 		new Dashboard(page, token);
 	});	
 
-	App.on('route:admissions', function(page, token){
-		new Admissions(page, token);
+	App.on('route:students', function(page, token){
+		new Students(page, token);
 	});	
 
 	App.on('route:academics', function(page, token){
