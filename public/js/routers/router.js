@@ -15,7 +15,7 @@ define([
 			'logout/:token' : 'logout',
 			'admin/:page/:token' : 'admin',
 			'dashboard/:page/:token' : 'dashboard',
-			'admissions/:page/:token' : 'admissions',
+			'students/:page/:token' : 'students',
 			'academics/:page/:token' : 'academics'
 		}
 
