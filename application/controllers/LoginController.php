@@ -47,6 +47,7 @@ class LoginController extends BaseController {
 				'email' => $user['email'],
 				'first_name' => $user['first_name'],
 				'last_name' => $user['last_name'],
+				'client_id' => $user['client_id'],
 				'token' => $token,
 				'duration' => 3600,
 				'user_role' => $user['user_role']
