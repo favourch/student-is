@@ -107,7 +107,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#login/logout/<%= token %>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="#logout/<%= token %>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -116,14 +116,14 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active"><a href="#dashboard/home/<%= token %>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
-                    <li class="active"><a href="javascript: ;" data-toggle="collapse" data-target="#reg_options"><i class="fa fa-fw fa-edit"></i> Registration</a>
+                    <li class="active"><a href="javascript: ;" data-toggle="collapse" data-target="#reg_options"><i class="fa fa-fw fa-edit"></i> Students</a>
 						<ul id="reg_options" class="collapse">
 						
-							<li><a href="#admissions/records/<%= token %>">View Records</a></li>
-							<li><a href="#admissions/classes/<%= token %>">Classes</a></li>
-							<li><a href="#admissions/addNewStudent/<%= token %>">Add New Student</a></li>
-							<li><a href="#admissions/records/<%= token %>">View Records</a></li>
-							<li><a href="#admissions/edit_records/<%= token %>">Edit Records</a></li>
+							<li><a href="#students/all/<%= token %>">View All</a></li>
+							<li><a href="#students/classes/<%= token %>">Classes</a></li>
+							<li><a href="#students/new/<%= token %>">Add New Student</a></li>
+							<li><a href="#students/records/<%= token %>">View Records</a></li>
+							<li><a href="#students/edit_records/<%= token %>">Edit Records</a></li>
 						
 						</ul>
 					</li>
