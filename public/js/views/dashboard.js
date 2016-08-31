@@ -8,7 +8,7 @@ define([
 	'tablesorter',
 	'jqueryui',
 	'bootstrap'
-	], function($, _, Backbone, HeaderTemplate, NavTemplate,HomeTemplate){
+	], function($, _, Backbone, HeaderTemplate, NavTemplate, HomeTemplate){
 
 	var DashView = Backbone.View.extend({
 
