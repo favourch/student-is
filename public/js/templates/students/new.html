@@ -1,0 +1,106 @@
+			
+			<!-- activate the date picker -->
+			<script>
+			$(function(){
+				$('#datepicker').datepicker({
+					changeMonth:true,
+					changeYear:true,
+					yearRange: "-100:+0",
+					dateFormat:"DD, MM d, yy",
+					altField: "#dob",
+					altFormat: "@",
+					//appendText: "(yyyy-mm-dd)"
+				});	
+			});			
+			$(function(){
+				$('#datepicker').datepicker({
+					changeMonth:true,
+					changeYear:true,
+					yearRange: "-100:+0",
+					dateFormat:"DD, MM d, yy",
+					altField: "#doa",
+					altFormat: "@",
+				});				
+			});
+			</script>
+				
+				<!-- .row -->
+				<div class="row">
+					<!-- first-column col-lg-6 -->
+					<div class="col-lg-12">
+						<p class="lead">Add a New Student</p>
+						<p class="alert alert-error error-message" style="display:none;"></p>
+						<p class="alert alert-success success-message" style="display:none;"></p>
+					</div>
+					<div class="col-lg-12">				
+						<!-- form-group -->
+						<form id="new-student" action="#" method="post">
+						<div class="col-lg-6">
+							
+							<hr>
+							<p class="lead">Personal Information</p>
+							<input type="text" name="first_name" id="first_name" class="form-control" required placeholder="First Name">
+							<br>
+							<input type="text" name="middle_name" id="middle_name" class="form-control" required placeholder="Middle Name">
+							<br>
+							<input type="text" name="last_name" id="last_name" class="form-control" required placeholder="Last Name">
+							<br>
+							<input class="hidden" type="text" id="dob" name="dob" />
+							<input type="date" name="datepicker" id="datepicker" class="form-control" placeholder="Date of Birth">
+							<br>
+							<input type="text" name="pob" id="pob" class="form-control" placeholder="Place of Birth">
+							<br>
+							<input type="text" name="bcn" id="bcn" class="form-control" placeholder="Birth Certificate Number">
+							<br>
+							<select name="sex" id="sex" class="form-control">
+								<option>--SEX--</option>
+								<option value="M">MALE</option>
+								<option value="F">FEMALE</option>											
+							</select>
+							<br>
+							<select name="nationality" class="form-control">
+								<option>--Nationality--</option>
+								<option value="Kenya">Kenya</option>
+								<option value="Uganda">Uganda</option>
+								<option value="Tanzania">Tanzania</option>
+								<option value="Somalia">Somalia</option>
+								<option value="Sudan">Sudan</option>
+								<option value="Ethiopia">Ethiopia</option>
+								<option value="Eritrea">Eritrea</option>
+								<option value="Djibouti">Djibouti</option>
+								<option value="Rwanda">Rwanda</option>
+								<option value="Burundi">Burundi</option>
+							</select>
+							<br>
+							<input type="date" name="doa" id="doa" class="form-control" placeholder="Date of Admission" required>
+							<br>
+							<input type="text" class="form-control" name="class" id="class" placeholder="Class" required>
+						</div>
+						<div class="col-lg-6">
+							<hr>
+							<p class="lead">Contact Information</p>
+							<input type="text" name="address" class="form-control" id="address" placeholder="P.O.BOX 32424, B Hills" required>
+							<br>
+							<input type="text" name="code" id="code" class="form-control" placeholder="Postal Code" required>
+							<br>
+							<input type="text" name="town" id="town" class="form-control" placeholder="Town" required>
+
+							<hr>
+							<p class="lead">Parent/Guardian Details</p>
+							<input type="text" name="pg_f_name" id="pg_f_name" class="form-control" placeholder="First Name" required>
+							<br>
+							<input type="text" name="pg_l_name" id="pg_l_name" class="form-control" placeholder="Last Name" required>
+							<br>
+							<input type="text" name="phone" id="pg_phone" class="form-control" placeholder="Phone Number" required>
+							<br>
+							<input type="email" name="pg_email" id="pg_email" class="form-control" placeholder="Email Address" required>
+							<br>
+							<button type="submit" class="btn btn-primary submit-button"><i class="fa fa-fw fa-check"></i>Save</button>
+													
+						</div>
+						</form>
+						<!-- /.form-group -->
+					</div>
+					<!-- /.second-column -->
+				</div>
+				<!-- /.row -->
