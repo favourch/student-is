@@ -92,7 +92,8 @@ class AdminController extends BaseController {
 
 		$client = json_decode($_POST['model']);
 		
-		$client = array(
+		//create new client
+		$newclient = array(
 			'institution' => $client->institution,
 			'first_name' => $client->first_name,
 			'last_name' => $client->last_name,
@@ -103,16 +104,19 @@ class AdminController extends BaseController {
 			'city' => $client->city
 		);
 
-		$create = ClientModel::save($client);
-		$clientId = $create->lastInsertId;
+		$create = ClientModel::save($newclient);
+		$clientId = $create->lastInsertId();
 
 		$password = substr(md5(uniqid(mt_rand(), true)), 0, 8);
+
+		//create user for new client
 		UserModel::save(array(
 			'first_name' => $client->first_name,
 			'last_name' => $client->last_name,
 			'email' => $client->email,
 			'password' => md5(sha1($client->email)),
-			'client_id' => $clientId
+			'client_id' => $clientId,
+			'user_role' => 3
 			)
 		);
 
@@ -158,7 +162,7 @@ class AdminController extends BaseController {
 			'last_name' => $user->last_name,
 			'password' => md5(sha1($user->password)),
 			'email' => $user->email,			
-			'user_role' => $user->user_type
+			'user_role' => 2
 		);
 
 		$create = UserModel::save($client);
