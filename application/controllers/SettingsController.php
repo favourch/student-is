@@ -17,6 +17,9 @@ use Models\ClassModel;
 use Models\TokenModel;
 use Models\ClientModel;
 use Models\StudentModel;
+use Models\ExamModel;
+use Models\SubjectModel;
+use Models\StreamModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 
@@ -120,5 +123,65 @@ class SettingsController extends BaseController {
 		View::renderJSON($new->result_array()[0]);	
 	}
 	
+	/**
+	 * This method returns a list of all class streams for a client
+	 * @param null
+	 * @return Object JSON
+	 */
+	public function getStreams(){
+		$streams = StreamModel::where('client_id = ?', $this->client_id)
+							->all();
+		View::renderJSON($classes->result_array());
+	}	
+
+	/**
+	 * This method creates/updates/deletes class streams for a client
+	 * @param int $class_id The is of the class to update/delete
+	 * @return Object JSON
+	 */
+	public function postStreams($class_id){
+		
+	}
+
+	/**
+	 * This method returns a list of all class subjects for a client
+	 * @param null
+	 * @return Object JSON
+	 */
+	public function getSubjects(){
+		$subjects = SubjectModel::where('client_id = ?', $this->client_id)
+							->all();
+		View::renderJSON($subjects->result_array());
+	}		
+
+	/**
+	 * This method creates/deletes/updates class subjects for a client
+	 * @param int $subject_id The unique id of the subject to delete/update
+	 * @return Object JSON
+	 */
+	public function postSubjects($subject_id){
+		
+	}	
+
+	/**
+	 * This method returns a list of all class exams for a client
+	 * @param null
+	 * @return Object JSON
+	 */
+	public function getExams(){
+		$exams = ExamModel::where('client_id = ?', $this->client_id)
+							->all();
+		View::renderJSON($exams->result_array());
+	}
+
+	/**
+	 * This method creates/updates/deletes class exams for a client
+	 * @param int $exam_id The unique id for this exam to update/delete
+	 * @return Object JSON
+	 */
+	public function postExams($exam_id){
+		
+	}	
+
 }
 
