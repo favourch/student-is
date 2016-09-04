@@ -8,10 +8,7 @@ define([
 		defaults: {
 			client_id: '',
 			name: '',
-			streams: {},
-			subjects: {},
-			exams: {},
-			population: 0
+			description: ''
 		}
 
 	});
