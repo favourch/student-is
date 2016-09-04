@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'collections/users',
+	'collections/admin/users',
 	'text!templates/admin/user-new.html',
 	'jqueryui',
 	'bootstrap'
