@@ -2,34 +2,71 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'views/students/all',
-	'views/students/new'
-	], function($, _, Backbone, All, Student){
+	'collections/users/students',
+	'views/students/student',
+	'views/students/new',
+	'views/students/classes',
+	'text!templates/students/all.html'
+	], function($, _, Backbone, StudentsCol, studentView, newStudent, AllClasses, AllStudents){
 
-	var Admissions = Backbone.View.extend({
-		
+	var Students = Backbone.View.extend({
+
+		allStudents: _.template(AllStudents),
+
+		title: "Student Information System",
+		 
 		initialize: function(page, token){
 			
 			$("title").html(this.title);
+			this.$main = $(".container-fluid");
 
 			switch(page){
 
 				case 'all':
-					var view = new All;
-					$(".container-fluid").html(view.render().el);
+					
+					this.$main.html(this.allStudents({
+						token: tokenString
+					}));
+					$("title").html("Students - " + this.title);
+					
+					this.$studentsList = $("#students-table");
+					
+					//set event listeners for new students
+					this.listenTo(StudentsCol, 'add', this.addOneStudent);
+					this.listenTo(StudentsCol, 'reset', this.addAllStudents);
+
+					//fetch list of all students from the database
+					StudentsCol.fetch({
+						reset: true
+					});
 
 					break;
 				case 'new':
-					var view = new Student;
-					$(".container-fluid").html(view.render().el);
+
+					//load the add new student form
+					var view = new newStudent;
+					this.$main.html(view.render().el);
 
 					break;
+
 			}
 	       
+		},
+
+		addOneStudent: function(student){
+			var view = new studentView({
+				model: student 
+			});
+			this.$studentsList.append(view.render().el);
+		},
+
+		addAllStudents: function(){
+			this.$studentsList.empty();
+			StudentsCol.each(this.addOneStudent, this);
 		}
 		
 	});
 
-	return Admissions;
+	return Students;
 
 });
