@@ -3,12 +3,12 @@ define([
 	'underscore',
 	'backbone',
 	'collections/users/users',
-	'views/settings/class-new',
 	'views/settings/user-new',
 	'views/settings/user',
 	'views/settings/profile',
+	'views/settings/classes',
 	'text!templates/settings/users-all.html'
-	], function($, _, Backbone, UsersCol, newClass, newUser, User, Profile, usersTpl){
+	], function($, _, Backbone, UsersCol, newUser, User, Profile, classesView, usersTpl){
 
 	var Settings = Backbone.View.extend({
 
@@ -24,7 +24,7 @@ define([
 
 				case 'adduser':
 					
-					this.$main.html(this.allTpl({
+					this.$main.html(this.usersTpl({
 						token: tokenString
 					}));
 
@@ -40,11 +40,6 @@ define([
 					});
 
 					break;
-				case 'addclass':
-					var view = new newStudent;
-					this.$main.html(view.render().el);
-
-					break;
 				case 'users':
 
 					break;
@@ -52,7 +47,11 @@ define([
 
 					break;
 				case 'classes':
-
+					//update the page title
+					$("title").html("Classes - " + this.title);
+					//load the classes view
+					var view = new classesView;
+					this.$main.html(view.render().el);
 					break;
 			}
 	       
