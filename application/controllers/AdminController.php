@@ -172,7 +172,7 @@ class AdminController extends BaseController {
 		$message += "Email: {$user->email} \r\n Password: $user->password\r\n  You can login using this link Url::base()";
 		$headers = "From: geoffreybans@gmail.com \r\n Reply-To: geoffreybans@gmail.com \r\n X-Mailer: PHP/ phpversion()";
 		// In case any of our lines are larger than 70 characters, we should use wordwrap()
-		//$message = wordwrap($message, 70, "\r\n");
+		$message = wordwrap($message, 70, "\r\n");
 		// Send email
 		mail($user->email, 'Student IS - Account Created', $message, $headers);
 		
