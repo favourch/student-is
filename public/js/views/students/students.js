@@ -5,9 +5,8 @@ define([
 	'collections/users/students',
 	'views/students/student',
 	'views/students/new',
-	'views/students/classes',
 	'text!templates/students/all.html'
-	], function($, _, Backbone, StudentsCol, studentView, newStudent, AllClasses, AllStudents){
+	], function($, _, Backbone, StudentsCol, studentView, newStudent, AllStudents){
 
 	var Students = Backbone.View.extend({
 
