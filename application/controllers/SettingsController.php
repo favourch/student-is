@@ -13,6 +13,7 @@
 
 use Drivers\Templates\View;
 use Models\UserModel;
+use Models\ClassModel;
 use Models\TokenModel;
 use Models\ClientModel;
 use Models\StudentModel;
@@ -37,104 +38,6 @@ class SettingsController extends BaseController {
 	protected $client = array();
 
 	/**
-	 * The method checks for client admin login
-	 * @param null
-	 * @return void
-	 */
-	public function  authAdmin(){
-
-		$token = Input::get('token');
-		$tokenExists = TokenModel::where('token = ?', $token)
-									->all();
-		//invalid token used/no access token provided
-		if (!$tokenExists->num_rows()) {		 
-			header('HTTP/1.0 403 Forbidden');
-			die('Login required!1');
-		}
-		//check for expired token
-		elseif ($tokenExists->result_array()[0]['logout'] === true) {
-			header('HTTP/1.0 403 Forbidden');
-			die('Login required!2');
-		}
-		//unathorized user access to admin controller
-		elseif ($tokenExists->result_array()[0]['user_role'] != 3) {
-			header('HTTP/1.0 401 Unauthorized'); 
-			die('Restricted access!');
-		}
-		else {
-			//check for expired timestamp
-			$token = $tokenExists->result_array()[0];
-			$timestamp = strtotime($token['date_modified'] OR $token['date_created']);
-
-			if (($timestamp + $token['duration']) > time()) {
-				header('HTTP/1.0 403 Forbidden');
-				die('Login required!3');
-			}
-
-			//extend token lifespan
-			TokenModel::where('id = ?', $token['id'])
-						->save(array(
-							'duration' => 3600
-							)
-						);
-
-			//set the value of the client id
-			$this->client_id = $token['client_id'];
-			$this->client = $token;
-
-		}
-
-	}
-
-	/**
-	 * The method checks for client regular user login
-	 * @param null
-	 * @return void
-	 */
-	public function  authUser(){
-
-		$token = Input::get('token');
-		$tokenExists = TokenModel::where('token = ?', $token)
-									->all();
-		//invalid token used/no access token provided
-		if (!$tokenExists->num_rows()) {		 
-			header('HTTP/1.0 403 Forbidden');
-			die('Login required!1');
-		}
-		//check for expired token
-		elseif ($tokenExists->result_array()[0]['logout'] === true) {
-			header('HTTP/1.0 403 Forbidden');
-			die('Login required!2');
-		}
-		//unathorized user access to admin controller
-		elseif ($tokenExists->result_array()[0]['user_role'] != 3 AND $tokenExists->result_array()[0]['user_role'] != 4) {
-			header('HTTP/1.0 401 Unauthorized'); 
-			die('Restricted access!');
-		}
-		else {
-			//check for expired timestamp
-			$token = $tokenExists->result_array()[0];
-			$timestamp = strtotime($token['date_modified'] OR $token['date_created']);
-
-			if (($timestamp + $token['duration']) > time()) {
-				header('HTTP/1.0 403 Forbidden');
-				die('Login required!3');
-			}
-
-			//extend token lifespan
-			TokenModel::where('id = ?', $token['id'])
-						->save(array(
-							'duration' => 3600
-							)
-						);
-
-			//set the value of the client id
-			$this->client_id = $token['client_id'];
-
-		}
-
-	}
-	/**
 	 * This method returns a list of all users for this client in the database
 	 * @before authAdmin
 	 * @param null
@@ -156,7 +59,6 @@ class SettingsController extends BaseController {
 	public function postUsers(){
 
 		$user = json_decode($_POST['model']);
-		
 		$password = substr(md5(uniqid(mt_rand(), true)), 0, 8);
 		
 		$newUser = array(
@@ -182,6 +84,40 @@ class SettingsController extends BaseController {
 		$new = UserModel::getById($create->lastInsertId());
 		View::renderJSON($new->result_array()[0]);	
 		
+	}
+
+	/**
+	 * This methods gets all classes in the database for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return Object JSON
+	 */
+	public function getClasses(){
+		$classes = ClassModel::where('client_id = ?', $this->client_id)
+							->all();
+		View::renderJSON($classes->result_array());
+	}	
+
+	/**
+	 * This methods creates/updates/deletes all classes in the database for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return Object JSON
+	 */
+	public function postClasses(){
+		
+		$class = json_decode($_POST['model']);		
+		$newClass = array(
+			'name' => $class->name,
+			'streams' => $class->streams,
+			'subjects' => $class->subjects,
+			'exams' => $class->exams,			
+			'client_id' => $this->client_id
+		);
+
+		$create = ClassModel::save($newClass);
+		$new = ClassModel::getById($create->lastInsertId());
+		View::renderJSON($new->result_array()[0]);	
 	}
 	
 }
