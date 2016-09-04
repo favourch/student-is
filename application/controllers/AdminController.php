@@ -27,52 +27,8 @@ class AdminController extends BaseController {
 	public $enable_method_filters = true;
 
 	/**
-	 * The method checks for user authentication and authorization
-	 * @param null
-	 * @return void
-	 */
-	public function  auth(){
-		$token = Input::get('token');
-		$tokenExists = TokenModel::where('token = ?', $token)
-									->all();
-		//invalid token used/no access token provided
-		if (!$tokenExists->num_rows()) {		 
-			header('HTTP/1.0 403 Forbidden');
-			die('Login required!1');
-		}
-		//check for expired token
-		elseif ($tokenExists->result_array()[0]['logout'] === true) {
-			header('HTTP/1.0 403 Forbidden');
-			die('Login required!2');
-		}
-		//unathorized user access to admin controller
-		elseif ($tokenExists->result_array()[0]['user_role'] != 1 AND $tokenExists->result_array()[0]['user_role'] != 2) {
-			header('HTTP/1.0 401 Unauthorized'); 
-			die('Restricted access!');
-		}
-		else {
-			//check for expired timestamp
-			$token = $tokenExists->result_array()[0];
-			$timestamp = strtotime($token['date_modified'] OR $token['date_created']);
-
-			if (($timestamp + $token['duration']) > time()) {
-				header('HTTP/1.0 403 Forbidden');
-				die('Login required!3');
-			}
-
-			//extend token lifespan
-			TokenModel::where('id = ?', $token['id'])
-						->save(array(
-							'duration' => 3600
-							)
-						);
-		}
-
-	}
-
-	/**
 	 * This method returns a list of all clients in the database
-	 * @before auth
+	 * @before authSiteUser
 	 * @param null
 	 * @return JSON object of clients
 	 */
@@ -84,7 +40,7 @@ class AdminController extends BaseController {
 	}
 	/**
 	 * This method adds a new client to the database
-	 * @before auth
+	 * @before authSiteUser
 	 * @param null
 	 * @return JSON
 	 */
@@ -137,7 +93,7 @@ class AdminController extends BaseController {
 	
 	/**
 	 * This  methods returns all the users in the database
-	 * @before auth
+	 * @before authSiteUser
 	 * @param null
 	 * @return JSON
 	 */
@@ -149,7 +105,7 @@ class AdminController extends BaseController {
 	}
 	/**
 	 * This method adds a new user to the database
-	 * @before auth
+	 * @before authSiteUser
 	 * @param null
 	 * @return JSON
 	 */
