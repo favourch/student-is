@@ -1,7 +1,7 @@
 define([
 	'underscore',
 	'backbone',
-	'models/user'
+	'models/users/user'
 	], function(_, Backbone, User){
 
 	Backbone.emulateHTTP = true;
@@ -12,7 +12,7 @@ define([
 		model: User,
 
 		url: function () {
-			return baseURL + "admin/users?token=" +  tokenString;
+			return baseURL + "settings/users?token=" +  tokenString;
 		},
 
 		//todos sorted by their original insertion order
