@@ -119,15 +119,12 @@
                     <li class="active"><a href="javascript: ;" data-toggle="collapse" data-target="#reg_options"><i class="fa fa-fw fa-edit"></i> Students</a>
 						<ul id="reg_options" class="collapse">
 						
-							<li><a href="#students/all/<%= token %>">View All</a></li>
-							<li><a href="#students/classes/<%= token %>">Classes</a></li>
+                            <li><a href="#students/all/<%= token %>">Students</a></li>
 							<li><a href="#students/new/<%= token %>">Add New Student</a></li>
-							<li><a href="#students/records/<%= token %>">View Records</a></li>
-							<li><a href="#students/edit_records/<%= token %>">Edit Records</a></li>
 						
 						</ul>
 					</li>
-					<li class="active"><a href="javascript: ;" data-toggle="collapse" data-target="#academics_options"><i class="fa fa-fw fa-file"></i> Examinations</a>
+					<li class="active"><a href="javascript: ;" data-toggle="collapse" data-target="#academics_options"><i class="fa fa-fw fa-file"></i> Academics</a>
 						<ul id="academics_options" class="collapse">
 						
 							<li><a href="#academics/spreadsheets/<%= token %>">Spreadsheets</a></li>
@@ -142,9 +139,10 @@
 					</li>
 					<li class="active"><a href="javascript: ;" data-toggle="collapse" data-target="#system_options"><i class="fa fa-fw fa-wrench"></i>System </a>
 						<ul id="system_options" class="collapse">
-						
-							<li><a href="#settings/addNewUser/<%= token %>">Add Users</a></li>
-							<li><a href="#settings/manageUsers/<%= token %>">Manage Users</a></li>
+						      
+                            <li><a href="#settings/classes/<%= token %>">Classes</a></li>
+                            <li><a href="#settings/adduser/<%= token %>">Add Users</a></li>
+							<li><a href="#settings/users/<%= token %>">All Users</a></li>
 							<li><a href="#settings/profile/<%= token %>">Update Profile</a></li>
 						
 						</ul>
