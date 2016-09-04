@@ -43,7 +43,7 @@ define([
 				sex: $("#sex").val(),
 				nationality: $("#nationality").val(),
 				doa: $("#doa").val(),
-				class: $("#class").val(),
+				clas: $("#class").val(),
 				address: $("#address").val(),
 				code: $("#code").val(),
 				town: $("#town").val(),
