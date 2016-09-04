@@ -131,50 +131,5 @@ class StudentsController extends BaseController {
 
 	}
 	
-	/**
-	 * This  methods returns all the users in the database
-	 * @before auth
-	 * @param null
-	 * @return JSON
-	 */
-	public function getUsers(){
-
-		$users = UserModel::all();
-		View::renderJSON($users->result_array());
-
-	}
-	/**
-	 * This method adds a new user to the database
-	 * @before auth
-	 * @param null
-	 * @return JSON
-	 */
-	public function postUsers(){
-		
-		$user = json_decode($_POST['model']);
-		
-		$client = array(
-			'first_name' => $user->first_name,
-			'last_name' => $user->last_name,
-			'password' => md5(sha1($user->password)),
-			'email' => $user->email,			
-			'user_role' => $user->user_type
-		);
-
-		$create = UserModel::save($client);
-
-		// The message
-		$message = "Hello {$user->first_name} {$user->last_name} your account for Student Infomation System software has been created.\r\n";
-		$message += "Email: {$user->email} \r\n Password: $user->password\r\n  You can login using this link Url::base()";
-		$headers = "From: geoffreybans@gmail.com \r\n Reply-To: geoffreybans@gmail.com \r\n X-Mailer: PHP/ phpversion()";
-		// In case any of our lines are larger than 70 characters, we should use wordwrap()
-		//$message = wordwrap($message, 70, "\r\n");
-		// Send email
-		mail($user->email, 'Student IS - Account Created', $message, $headers);
-		
-		$new = UserModel::getById($create->lastInsertId());
-		View::renderJSON($new->result_array()[0]);	
-	}
-
 }
 
