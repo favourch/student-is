@@ -11,6 +11,10 @@ define([
 
 		template: _.template(classTpl),
 
+		events: {
+			'click .destroy' : 'deleteClass'
+		},
+
 		initialize: function(){
 
 			//some code here...			       
@@ -21,6 +25,11 @@ define([
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
 
+		},
+
+		deleteClass: function(evt){
+			evt.preventDefault();
+			this.model.destroy();
 		}
 
 	});
