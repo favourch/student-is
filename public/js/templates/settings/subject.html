@@ -1,8 +1,10 @@
 
-	<td><%= subject_name %></td>
-	<td><%= subject_abbr %></td>
-	<td><%= description %></td>
+	<td><span class="subject-name"><%= subject_name %></span><input type="text" class="form-control hidden subject-name-input" value="<%= subject_name %>"></td>
+	<td><span class="subject-abbr"><%= subject_abbr %></span><input type="text" class="form-control hidden subject-abbr-input" value="<%= subject_abbr %>"></td>
+	<td><span class="subject-desc"><%= description %></span><input type="text" class="form-control hidden subject-desc-input" value="<%= description %>"></td>
 	<td><%= date_created %></td>
-	<td><button class="btn btn-success btn-sm editSubject"><i class="fa fa-edit fa-lg"></i> Edit</button></td>		
-	<td><button class="btn btn-danger btn-sm deleteSubject"><i class="fa fa-trash-o fa-lg"></i> Delete</button></td>		
-
+	<td>
+		<button class="btn btn-success btn-sm editSubject"><i class="fa fa-edit fa-lg"></i> Edit</button>
+		<button class="btn btn-primary btn-sm editDone hidden"><i class="fa fa-check fa-lg"></i> Done</button>
+	</td>		
+	<td><button class="btn btn-danger btn-sm deleteSubject"><i class="fa fa-trash-o fa-lg"></i> Delete</button></td>

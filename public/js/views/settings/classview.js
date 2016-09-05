@@ -110,6 +110,14 @@ define([
 				success: function(){
 					$(".success-message").html("Stream added successfully!").show(400);
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
+
+					//empty the form
+					stream_name: $("#new-stream-name").val('');
+					stream_abbr: $("#new-stream-abbr").val('');
+					description: $("#new-stream-description").val('');
+
+					//fade out the modal
+					$("#add_new_stream").modal("hide");
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 				    
@@ -169,6 +177,15 @@ define([
 				success: function(){
 					$(".success-message").html("Subject added successfully!").show(400);
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
+					
+					//empty the form
+					subject_name: $("#new-subject-name").val('');
+					subject_abbr: $("#new-subject-abbr").val('');
+					description: $("#new-subject-description").val('');
+
+					//fade out the modal
+					$("#add_new_subject").modal("hide");
+
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 				    
@@ -228,6 +245,14 @@ define([
 				success: function(){
 					$(".success-message").html("Exam added successfully!").show(400);
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
+					
+					//empty the form
+					exam_name: $("#new-exam-name").val('');
+					exam_abbr: $("#new-exam-abbr").val('');
+					description: $("#new-exam-description").val('');
+
+					//fade out the modal
+					$("#add_new_exam").modal("hide");
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 				    

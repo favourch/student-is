@@ -3,6 +3,9 @@ define([
 	'backbone'
 	], function(_, Backbone){
 
+	Backbone.emulateHTTP = true;
+	Backbone.emulateJSON = true;
+
 	var Subject = Backbone.Model.extend({
 
 		defaults: {

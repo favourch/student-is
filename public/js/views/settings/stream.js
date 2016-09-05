@@ -13,6 +13,7 @@ define([
 
 		events: {
 			'click .editStream' : 'editStream',
+			'click .editDone' : 'editDone',
 			'click .deleteStream' : 'deleteStream'
 		},
 
@@ -25,12 +26,59 @@ define([
 		render: function(){
 
 			this.$el.html(this.template(this.model.toJSON()));
-			return this;
+			
+			//get the handles for the input fields 
+			this.$nameLabel = this.$(".stream-name");
+			this.$abbrLabel = this.$(".stream-abbr");
 
+			this.$nameInput = this.$(".stream-name-input");
+			this.$abbrInput = this.$(".stream-abbr-input");
+
+			this.$editStream = this.$(".editStream");
+			this.$editDone = this.$(".editDone");
+
+			return this;
 		},
 
 		editStream: function(){
+			//toggle visibility 
+			this.$nameLabel.addClass("hidden");
+			this.$abbrLabel.addClass("hidden");
 
+			this.$nameInput.removeClass("hidden");
+			this.$abbrInput.removeClass("hidden");
+
+			this.$nameInput.focus();
+			this.$editStream.addClass("hidden");
+			this.$editDone.removeClass("hidden");
+		},
+
+		editDone: function(){
+			//toggle visibility 
+			this.$nameLabel.removeClass("hidden");
+			this.$abbrLabel.removeClass("hidden");
+
+			this.$nameInput.addClass("hidden");
+			this.$abbrInput.addClass("hidden");
+
+			this.$editStream.removeClass("hidden");
+			this.$editDone.addClass("hidden");
+
+			//check the new values
+			var name = this.$nameInput.val().trim();
+			var abbr = this.$abbrInput.val().trim();
+
+			//ensure a name and abbreviation are provided
+			if (name && abbr) {
+				this.model.save({
+					stream_name: name,
+					stream_abbr: abbr
+				}, {
+					url: baseURL + 'settings/streams/' + this.model.get('id') + '?token=' + tokenString,
+				});
+
+				this.model.trigger('change');
+			} 		
 		},
 
 		deleteStream: function(){

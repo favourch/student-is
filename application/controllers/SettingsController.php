@@ -187,6 +187,7 @@ class SettingsController extends BaseController {
 			ClassModel::where('id = ?', $class_id)
 						->delete();
 		}	
+
 	}
 	
 	/**
@@ -237,8 +238,24 @@ class SettingsController extends BaseController {
 			View::renderJSON($stream);	
 		}
 		else{
-			StreamModel::where('id = ?', $stream_id)
+			//this is an UPDATE request
+			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
+				$streamData = json_decode($_POST['model']);
+				$updateStream = array(
+					'stream_name' => $streamData->stream_name,
+					'stream_abbr' => $streamData->stream_abbr
+				);
+
+				StreamModel::where('id = ?', $stream_id)
+							->save($updateStream);
+
+			}
+			//this is a DELETE request
+			else{
+				StreamModel::where('id = ?', $stream_id)
 						->delete();
+			}	
+
 		}
 
 	}
@@ -283,11 +300,27 @@ class SettingsController extends BaseController {
 			View::renderJSON($subject);			
 		}
 		else{
-			SubjectModel::where('id = ?', $subject_id)
+			//this is an UPDATE request
+			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
+				$subjectData = json_decode($_POST['model']);
+				$updateSubject = array(
+					'subject_name' => $subjectData->subject_name,
+					'subject_abbr' => $subjectData->subject_abbr,
+					'description' => $subjectData->description
+				);
+
+				SubjectModel::where('id = ?', $subject_id)
+							->save($updateSubject);
+
+			}
+			//this is a DELETE request
+			else{
+				SubjectModel::where('id = ?', $subject_id)
 						->delete();
+			}
+
 		}
 	
-
 	}	
 
 	/**
@@ -311,7 +344,7 @@ class SettingsController extends BaseController {
 	 */
 	public function postExams($exam_id){
 
-		//check for a CREATE request
+		//this is a CREATE request
 		if(!$exam_id){
 
 			$examData = json_decode($_POST['model']);		
@@ -330,8 +363,26 @@ class SettingsController extends BaseController {
 			View::renderJSON($exam);	
 		}
 		else{
-			ExamModel::where('id = ?', $exam_id)
-						->delete();
+
+			//this is an UPDATE request
+			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
+				$examData = json_decode($_POST['model']);
+				$updateExam = array(
+					'exam_name' => $examData->exam_name,
+					'exam_abbr' => $examData->exam_abbr,
+					'description' => $examData->description
+				);
+
+				ExamModel::where('id = ?', $exam_id)
+							->save($updateExam);
+
+			}
+			//this is a DELETE request
+			else{
+				ExamModel::where('id = ?', $exam_id)
+							->delete();
+			}
+
 		}		
 
 	}	

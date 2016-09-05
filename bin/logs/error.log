@@ -2216,3 +2216,234 @@ Drivers\Routes\RouteException : The class Controllers\Login.logout.51f746e35e568
 Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
 #1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
 #2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.67454f2ba6181af08e1b7a25d2ebd282783f0df8Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.1ad3d9254b6a0aad563e5be279be79d3bd7ad84bController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.747d7e0661507fbbb4a592354f10f6d47b39032aController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.d1015f0102fe12e9a836b991d6d9e7d798883f08Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.16c32b2f085405e8146c1914a9596a399cb88545Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.9dfe581ca279fbea925973539d071468902456beController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.521e6f279104f9262dc49189186ba893c1e4a846Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.c658fbd184fcbc54ff0c40f9ebfe7948a93884e5Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.f9cec3c9f71ddbd36735e9271e714825239946d9Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.f46e9d0e74fb5d4bd37d355b2bba466bbd1d3797Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.c2c2b061ae3ef517fceb8019d0e7b74f812b2d45Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.f557808f83cf61c790369a2caefdd2b283957601Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.d481cbddd84bcbdb6207e1c613ee4531e415ded5Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.eddd4d0ace931f99c6422df697aaf10ea1e3a726Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.ed79e27863a83dd21f36e498ea7cc59813af1d57Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.53c3fe21e3b527c7b037dc1b3b44ce1e2f4c18e8Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.503267abbb5370022fd64461081faa8c2906a46fController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.3382aad5d54fca30728485ca6d5209bfb2887c37Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.fe56dce4bee25717fbf33972bba2b2ab5077fe28Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.c06d7c9358ec62636ce0549a3496dd9cf0fb1cd9Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.14d5c575c86b5adaacdf6debfa7586e10cd33f6dController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.762f3057077c3900fb3d76200a1da6e43f41e28aController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.0e0fbbf8c9233a82c077584332499e4d29264fadController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.509f518916229f28f649fc3150762eacd625ae4bController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.70b22d99039d3b398acb994fbffe65c42d216725Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.e45dfe97c4b3c779aaac6ee93fec1b38bb1c60e4Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.e8e0f7de160e8ab24c090c8be58a8ea21b254cabController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.b56754f3b5914fde4a0f824e196f03adcd96c1e0Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.d1d0630989734275221c323d04e532d8602565f3Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Database\MySQL\MySQLException Unknown column 'stream_name' in 'field list'<span class="query-string"> (UPDATE subjects SET stream_name='SOUTH', stream_abbr='S...', description='', date_modified='2016-09-05 11:46:19' WHERE id = '4' ) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(875) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(187): Drivers\Database\MySQL\MySQLQuery->save(Array, true)
+#1 C:\xampp\htdocs\student-is\application\controllers\SettingsController.php(251): Drivers\Models\BaseModelClass::save(Array)
+#2 [internal function]: Controllers\SettingsController->postStreams('4')
+#3 C:\xampp\htdocs\student-is\system\start.php(214): call_user_func_array(Array, Array)
+
+E_NOTICE Undefined index: _method in C:\xampp\htdocs\student-is\application\controllers\SettingsController.php on line (369) As seen from  C:\xampp\htdocs\student-is\application\controllers\SettingsController.php(369): handler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 369, Array)
+#1 [internal function]: Controllers\SettingsController->postExams('8')
+#2 C:\xampp\htdocs\student-is\system\start.php(214): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+Drivers\Database\MySQL\MySQLException Unknown column 'stream_name' in 'field list'<span class="query-string"> (UPDATE subjects SET stream_name='WEST', stream_abbr='Wessss', description='Campas point..', date_modified='2016-09-05 11:47:49' WHERE id = '6' ) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(875) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(187): Drivers\Database\MySQL\MySQLQuery->save(Array, true)
+#1 C:\xampp\htdocs\student-is\application\controllers\SettingsController.php(251): Drivers\Models\BaseModelClass::save(Array)
+#2 [internal function]: Controllers\SettingsController->postStreams('6')
+#3 C:\xampp\htdocs\student-is\system\start.php(214): call_user_func_array(Array, Array)
+
+Drivers\Database\MySQL\MySQLException Unknown column 'stream_name' in 'field list'<span class="query-string"> (UPDATE subjects SET stream_name='WEST', stream_abbr='Wess', description='Campas point..', date_modified='2016-09-05 11:48:38' WHERE id = '6' ) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(875) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(187): Drivers\Database\MySQL\MySQLQuery->save(Array, true)
+#1 C:\xampp\htdocs\student-is\application\controllers\SettingsController.php(251): Drivers\Models\BaseModelClass::save(Array)
+#2 [internal function]: Controllers\SettingsController->postStreams('6')
+#3 C:\xampp\htdocs\student-is\system\start.php(214): call_user_func_array(Array, Array)
+
+Drivers\Routes\RouteException : The class Controllers\Login.logout.f350ecf87719789742930fd2766f25ad39d82a56Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_NOTICE Undefined index: _method in C:\xampp\htdocs\student-is\application\controllers\SettingsController.php on line (368) As seen from  C:\xampp\htdocs\student-is\application\controllers\SettingsController.php(368): handler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 368, Array)
+#1 [internal function]: Controllers\SettingsController->postExams('10')
+#2 C:\xampp\htdocs\student-is\system\start.php(214): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+Drivers\Database\MySQL\MySQLException Unknown column 'stream_name' in 'field list'<span class="query-string"> (UPDATE subjects SET stream_name='WEST', stream_abbr='Wes...', date_modified='2016-09-05 11:55:25' WHERE id = '6' ) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(875) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(187): Drivers\Database\MySQL\MySQLQuery->save(Array, true)
+#1 C:\xampp\htdocs\student-is\application\controllers\SettingsController.php(250): Drivers\Models\BaseModelClass::save(Array)
+#2 [internal function]: Controllers\SettingsController->postStreams('6')
+#3 C:\xampp\htdocs\student-is\system\start.php(214): call_user_func_array(Array, Array)
+
+Drivers\Routes\RouteException : The class Controllers\Login.logout.a051fcf42e16bb1773de74ddc4d04c463e9989b7Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
