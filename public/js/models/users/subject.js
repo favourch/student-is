@@ -9,7 +9,8 @@ define([
 			subject_name: '',
 			subject_abbr: '',
 			class_id: 0,
-			description: ''
+			description: '',
+			date_created: 'Just now'
 		}
 
 	});

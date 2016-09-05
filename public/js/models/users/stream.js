@@ -9,7 +9,9 @@ define([
 			stream_name: '',
 			stream_abbr: '',
 			class_id: 0,
-			description: ''
+			description: '',
+			population: 0,
+			date_created: 'Just now'
 		}
 
 	});

@@ -36,7 +36,10 @@ define([
 
 					//fetch list of all students from the database
 					StudentsCol.fetch({
-						reset: true
+						reset: true,
+						data: $.param({ 
+							token: tokenString
+						})
 					});
 
 					break;

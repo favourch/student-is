@@ -65,7 +65,10 @@ define([
 					this.listenTo(ClientsCol, 'reset', this.addAllClients);
 
 					ClientsCol.fetch({
-						reset: true
+						reset: true,
+						data: $.param({ 
+							token: tokenString
+						})
 					});
 
 					break;			
@@ -91,7 +94,10 @@ define([
 					this.listenTo(UsersCol, 'reset', this.addAllUsers);
 
 					UsersCol.fetch({
-						reset: true
+						reset: true,
+						data: $.param({ 
+							token: tokenString
+						})
 					});
 
 					break;

@@ -9,7 +9,8 @@ define([
 			exam_name: '',
 			exam_abbr: '',
 			class_id: 0,
-			description: ''
+			description: '',
+			date_created: ''
 		}
 
 	});
