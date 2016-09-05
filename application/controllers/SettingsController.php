@@ -42,7 +42,7 @@ class SettingsController extends BaseController {
 
 	/**
 	 * This method returns a list of all users for this client in the database
-	 * @before authAdmin
+	 * @before authClientUser
 	 * @param null
 	 * @return JSON object of users
 	 */
@@ -55,7 +55,7 @@ class SettingsController extends BaseController {
 	}
 	/**
 	 * This method adds a new user for a client to the database
-	 * @before authAdmin
+	 * @before authClientAdmin
 	 * @param null
 	 * @return JSON
 	 */
@@ -98,7 +98,37 @@ class SettingsController extends BaseController {
 	public function getClasses(){
 		$classes = ClassModel::where('client_id = ?', $this->client_id)
 							->all();
-		View::renderJSON($classes->result_array());
+		//populate class properties
+		if ($classes->num_rows() > 0) {
+			
+			$return = array();
+			foreach ($classes->result_array() as $class) {
+				$class['streams'] = StreamModel::where('client_id = ?', $this->client_id)
+												->where('class_id = ?', $class['id'])
+												->count()
+												->num_rows();
+				$class['subjects'] = SubjectModel::where('client_id = ?', $this->client_id)
+												->where('class_id = ?', $class['id'])
+												->count()
+												->num_rows();
+				$class['exams'] = ExamModel::where('client_id = ?', $this->client_id)
+												->where('class_id = ?', $class['id'])
+												->count()
+												->num_rows();
+				$class['population'] = StudentModel::where('client_id = ?', $this->client_id)
+												->where('class_id = ?', $class['id'])
+												->count()
+												->num_rows();
+				$return[] = $class;
+			}
+
+			View::renderJSON($return);
+		}
+		else{
+			//return empty array if there are no classes yet
+			View::renderJSON(array());
+		}
+		
 	}	
 
 	/**
@@ -112,15 +142,21 @@ class SettingsController extends BaseController {
 		$class = json_decode($_POST['model']);		
 		$newClass = array(
 			'name' => $class->name,
-			'streams' => $class->streams,
-			'subjects' => $class->subjects,
-			'exams' => $class->exams,			
+			'description' => $class->description,
 			'client_id' => $this->client_id
 		);
 
 		$create = ClassModel::save($newClass);
 		$new = ClassModel::getById($create->lastInsertId());
-		View::renderJSON($new->result_array()[0]);	
+		$class = $new->result_array()[0];
+
+		//populate class metadata like the streams, subjects e.t.c
+		$class['streams'] = 0;
+		$class['subjects'] = 0;
+		$class['exams'] = 0;
+		$class['population'] = 0;
+
+		View::renderJSON($class);	
 	}
 	
 	/**
