@@ -12,7 +12,7 @@ define([
 		model: User,
 
 		url: function () {
-			return baseURL + "settings/users?token=" +  tokenString;
+			return baseURL + "settings/users";
 		},
 
 		//todos sorted by their original insertion order

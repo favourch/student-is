@@ -12,7 +12,7 @@ define([
 		model: Subject,
 
 		url: function () {
-			return baseURL + "settings/subjects?token=" +  tokenString;
+			return baseURL + "settings/subjects";
 		},
 
 		//todos sorted by their original insertion order

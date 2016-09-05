@@ -12,7 +12,7 @@ define([
 		model: Client,
 		
 		url: function () {
-			return baseURL + "admin/clients?token=" + tokenString;
+			return baseURL + "admin/clients";
 		},
 
 		//todos sorted by their original insertion order

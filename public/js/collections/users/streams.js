@@ -12,7 +12,7 @@ define([
 		model: stream,
 
 		url: function () {
-			return baseURL + "settings/streams?token=" +  tokenString;
+			return baseURL + "settings/streams";
 		},
 
 		//todos sorted by their original insertion order
