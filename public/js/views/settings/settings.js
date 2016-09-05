@@ -29,6 +29,9 @@ define([
 					//load the classes view
 					var view = new classesView();
 					break;
+				case 'viewclass':
+
+					break;
 			}
 	       
 		}

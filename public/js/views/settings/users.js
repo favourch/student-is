@@ -15,7 +15,7 @@ define([
 		template: _.template(usersTpl),
 
 		events: {
-			'submit #add-new-user' : 'addUserPost',
+			'submit #add-new-user' : 'addUserPost'
 		},
 
 		initialize: function(){
@@ -72,6 +72,7 @@ define([
 			});
 
 		}
+
 
 	});
 
