@@ -21,7 +21,6 @@ define([
 					$("title").html("Users - " + this.title);
 					//load the users view
 					var view = new usersView;
-					this.$main.html(view.render().el);
 					break;
 				case 'classes':
 					//update the page title
