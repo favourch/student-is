@@ -48,7 +48,7 @@ class SettingsController extends BaseController {
 	 */
 	public function getUsers(){
 
-		$users = StudentModel::where('client_id = ?', $this->client_id)
+		$users = UserModel::where('client_id = ?', $this->client_id)
 					->all();
 		View::renderJSON($users->result_array());
 		
