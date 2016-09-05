@@ -156,7 +156,7 @@ class SettingsController extends BaseController {
 	/**
 	 * This methods creates/updates/deletes all classes in the database for this client
 	 * @before authClientUser
-	 * @param int $class_id The id of the class to delete
+	 * @param int $class_id The id of the class to update/delete
 	 * @return Object JSON
 	 */
 	public function postClasses($class_id){
@@ -166,7 +166,7 @@ class SettingsController extends BaseController {
 
 			$class = json_decode($_POST['model']);		
 			$newClass = array(
-				'name' => $class->name,
+				'class_name' => $class->class_name,
 				'description' => $class->description,
 				'client_id' => $this->client_id
 			);
@@ -184,8 +184,35 @@ class SettingsController extends BaseController {
 			View::renderJSON($class);
 		}
 		else{
-			ClassModel::where('id = ?', $class_id)
+			//this is an UPDATE request
+			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
+				$classData = json_decode($_POST['model']);
+				$updateClass = array(
+					'class_name' => $classData->class_name
+				);
+
+				ClassModel::where('id = ?', $class_id)
+							->save($updateClass);
+
+			}
+			//this is a DELETE request
+			else{
+				//delete the class
+				ClassModel::where('id = ?', $class_id)
 						->delete();
+				//delete related streams
+				StreamModel::where('class_id = ?', $class_id)
+						->delete();
+				//delete related subjects
+				SubjectModel::where('class_id = ?', $class_id)
+						->delete();
+				//delete the exams related to this class
+				ExamModel::where('class_id = ?', $class_id)
+						->delete();
+				//delete all students who belong to this class
+				StudentModel::where('class_id = ?', $class_id)
+						->delete();			}	
+
 		}	
 
 	}

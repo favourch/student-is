@@ -3,13 +3,11 @@ define([
 	'backbone'
 	], function(_, Backbone){
 	
-	Backbone.emulateHTTP = true;
-	Backbone.emulateJSON = true;
-
 	var Class = Backbone.Model.extend({
 
 		defaults: {
-			name: '',
+			id: 0,
+			class_name: '',
 			description: '',
 			subjects: 0,
 			streams: 0,

@@ -1,9 +1,17 @@
 
-	<td><%= class_name %></td>	
+	<td><span class="class-name"><%= class_name %></span><input type="text" class="form-control hidden class-name-input" value="<%= class_name %>"></td>	
 	<td>Subjects(<%= subjects %>)</td>
 	<td>Streams(<%= streams %>)</td>
 	<td>Exams(<%= exams %>)</td>
 	<td>Population(<%= population %>)</td>
-	<td><a class="btn btn-sm btn-primary view-class-details" href="#settings/viewclass/<%= id %>" data-toggle="tooltip" data-placement="bottom" title="Click to view more details and set options"><i class="glyphicon glyphicon-open"></i> Open</a></td>
-	<td><button class="btn btn-danger btn-sm destroy"><i class="fa fa-trash-o fa-lg"></i> Delete</button></td>		
+	<td>
+		<a class="btn btn-sm btn-primary view-class-details" href="#settings/viewclass/<%= id %>" data-toggle="tooltip" data-placement="bottom" title="Click to view more details and set options"><i class="glyphicon glyphicon-open"></i> Open</a>
+	</td>
+	<td>
+		<button class="btn btn-sm btn-success editClass" data-toggle="tooltip" data-placement="bottom" title="Click to edit class name."><i class="fa fa-lg fa-edit"></i> Edit</button>
+		<button class="btn btn-primary btn-sm editDone hidden" data-toggle="tooltip" data-placement="bottom" title="Click to update class name."><i class="fa fa-check fa-lg"></i> Done</button>
+	</td>
+	<td>
+		<button class="btn btn-danger btn-sm deleteClass" data-toggle="tooltip" data-placement="bottom" title="Click to delete class."><i class="fa fa-trash-o fa-lg"></i> Delete</button>
+	</td>		
 

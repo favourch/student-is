@@ -3,9 +3,6 @@ define([
 	'backbone'
 	], function(_, Backbone){
 
-	Backbone.emulateHTTP = true;
-	Backbone.emulateJSON = true;
-
 	var stream = Backbone.Model.extend({
 
 		defaults: {

@@ -40,7 +40,7 @@ define([
 
 			evt.preventDefault(); 
 			var newClass = {
-				name: $("#new-class-name").val(),
+				class_name: $("#new-class-name").val(),
 				description: $("#class-description").val()
 			};
 
@@ -49,9 +49,17 @@ define([
 			$(".success-message").hide(200);
 
 			ClassesCol.create(newClass, {
+				url: baseURL + 'settings/classes?token=' + tokenString,
 				success: function(){
 					$(".success-message").html("Class added successfully!").show(400);
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
+					
+					//empty the form
+					$("#new-class-name").val('');
+					$("#class-description").val('');				
+
+					//fade out the modal
+					$("#add_new_class").modal("hide");
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 				    
