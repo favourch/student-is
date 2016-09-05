@@ -12,7 +12,8 @@ define([
 		template: _.template(examTpl),
 
 		events: {
-			'click .destroy' : 'deleteExam'
+			'click .editExam' : 'editExam',
+			'click .deleteExam' : 'deleteExam'
 		},
 
 		initialize: function(){
@@ -24,6 +25,10 @@ define([
 
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
+
+		},
+
+		editExam: function(){
 
 		},
 

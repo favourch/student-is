@@ -79,7 +79,6 @@ define([
 					token: tokenString,
 					class_id: classID
 				})
-
 			});
 
 			StreamsCol.fetch({

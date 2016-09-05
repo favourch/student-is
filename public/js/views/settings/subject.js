@@ -12,7 +12,8 @@ define([
 		template: _.template(subjectTpl),
 
 		events: {
-			'click .destroy' : 'deleteSubject'
+			'click .editSubject' : 'editSubject',
+			'click .deleteSubject' : 'deleteSubject'
 		},
 
 		initialize: function(){
@@ -27,9 +28,17 @@ define([
 
 		},
 
+		editSubject: function(){
+
+		},
+
 		deleteSubject: function(evt){
 			evt.preventDefault();
-			this.model.destroy();
+			this.model.destroy({
+				data: $.param({ 
+					token: tokenString
+				})
+			});
 		}
 
 	});

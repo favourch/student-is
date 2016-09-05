@@ -12,7 +12,8 @@ define([
 		template: _.template(streamTpl),
 
 		events: {
-			'click .destroy' : 'deleteStream'
+			'click .editStream' : 'editStream',
+			'click .deleteStream' : 'deleteStream'
 		},
 
 		initialize: function(){
@@ -24,6 +25,10 @@ define([
 
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
+
+		},
+
+		editStream: function(){
 
 		},
 
