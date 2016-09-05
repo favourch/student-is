@@ -6,7 +6,8 @@ define([
 	var Exam = Backbone.Model.extend({
 
 		defaults: {
-			name: '',
+			exam_name: '',
+			exam_abbr: '',
 			class_id: 0,
 			description: ''
 		}

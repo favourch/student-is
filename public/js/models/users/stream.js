@@ -6,7 +6,8 @@ define([
 	var stream = Backbone.Model.extend({
 
 		defaults: {
-			name: '',
+			stream_name: '',
+			stream_abbr: '',
 			class_id: 0,
 			description: ''
 		}

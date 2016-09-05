@@ -167,7 +167,7 @@ class SettingsController extends BaseController {
 	public function getStreams(){
 		$streams = StreamModel::where('client_id = ?', $this->client_id)
 							->all();
-		View::renderJSON($classes->result_array());
+		View::renderJSON($streams->result_array());
 	}	
 
 	/**

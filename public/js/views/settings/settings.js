@@ -3,8 +3,9 @@ define([
 	'underscore',
 	'backbone',
 	'views/settings/users',
-	'views/settings/classes'
-	], function($, _, Backbone, usersView, classesView){
+	'views/settings/classes',
+	'views/settings/classview'
+	], function($, _, Backbone, usersView, classesView, classView){
 
 	var Settings = Backbone.View.extend({
 
@@ -29,7 +30,10 @@ define([
 					var view = new classesView();
 					break;
 				case 'viewclass':
-
+					//update the page title
+					$("title").html("Class View - " + this.title);
+					//load the classes view
+					var view = new classView(token);
 					break;
 			}
 	       

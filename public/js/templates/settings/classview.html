@@ -1,31 +1,94 @@
 				<!-- Page Row -->
 				<div class="row">
-						<!-- column -->
-						<div class="col-lg-12">
-							<div class="col-lg-3">
-								<p class="lead">Classes </p>
-							</div>
-							<div class="col-lg-3">
-								<!-- Button trigger modal -->
-								<button class="btn btn-small btn-primary" data-toggle="modal" data-target="#add_new_class"><i class="fa fa-plus"></i> Add New Class</button>
-							</div>
+					<!-- column -->
+					<div class="col-lg-12">
+						<div class="col-lg-6">
+							<p class="lead"><%= class_name %></p>
 						</div>
-						<!-- /.column -->
-						
-						<!-- column 2 -->
-						<div class="col-lg-12">
-							<table class="table table-hover table-striped table-bordered">
+						<div class="col-lg-6">
+							<p class="lead">No. of Students (<%= population %>)</p>
+						</div>
+					</div>
+
+					<hr>
+					<!-- streams display -->
+					<div class="col-lg-12">
+						<div class="col-lg-6">
+							<p class="lead">Streams</p>
+						</div>
+						<div class="col-lg-3">
+							<!-- Button trigger add new stream modal -->
+							<button class="btn btn-small btn-primary" data-toggle="modal" data-target="#add_new_stream"><i class="fa fa-plus"></i> Add New Stream</button>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<table class="table table-hover table-bordered table-striped">
 							<thead>
-								<tr><th>Class</th><th>Streams</th><th>Subjects</th><th>Exams</th><th>Population</th><th>View Details</th><th>Delete</th></tr>
+								<th>Name</th>
+								<th>Abbr</th>
+								<th>No. of Students</th>
+								<th>Date Created</th>
+								<th>Delete</th>
 							</thead>
-							<tbody id="classes-table" class="hhgh">
-							
+							<tbody id="streams-list">
+								
 							</tbody>
-							</table>
-							<p class="alert alert-danger no-classes-yet" style="display:none;"> There are no registered classes yet.</p>
-																				
+						</table>
+						<p class="alert alert-danger no-streams-yet" style="display:none;"> There are no registered streams yet.</p>
+					</div>
+
+					<hr>
+					<div class="col-lg-12">
+						<div class="col-lg-6">
+							<p class="lead">Subjects</p>
 						</div>
-						<!-- /.column 2 -->
+						<div class="col-lg-3">
+							<!-- Button trigger add new subject modal -->
+							<button class="btn btn-small btn-primary" data-toggle="modal" data-target="#add_new_subject"><i class="fa fa-plus"></i> Add New Subject</button>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<table class="table table-hover table-striped table-bordered">
+							<thead>
+								<th>Name</th>
+								<th>Abbr</th>
+								<th>Description</th>
+								<th>Date Created</th>
+								<td>Delete</td>
+							</thead>
+							<tbody id="subjects-list">
+								
+							</tbody>
+						</table>
+						<p class="alert alert-danger no-subjects-yet" style="display:none;"> There are no registered subjects yet.</p>
+
+					</div>
+
+					<hr>
+					<div class="col-lg-12">
+						<div class="col-lg-6">
+							<p class="lead">Exams</p>
+						</div>
+						<div class="col-lg-3">
+							<!-- Button trigger add new exam modal -->
+							<button class="btn btn-small btn-primary" data-toggle="modal" data-target="#add_new_exam"><i class="fa fa-plus"></i> Add New Exam</button>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<table class="table table-hover table-striped table-borderd">
+							<thead>
+								<th>Name</th>
+								<th>Abbr</th>
+								<th>Description</th>
+								<th>Date Created</th>
+								<th>Delete</th>
+							</thead>
+							<tbody id="exams-list">
+								
+							</tbody>
+						</table>
+						<p class="alert alert-danger no-exams-yet" style="display:none;"> There are no registered exams yet.</p>
+					</div>
 				</div>
 				<!-- row 1 -->
 				
@@ -35,25 +98,99 @@
 				<div class="row">
 				<!-- row 2 --> 	
 							
-					<!-- Add New Class modal -->
-					<div class="modal" id="add_new_class" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<!-- Add New Stream modal -->
+					<div class="modal" id="add_new_stream" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					   <div class="modal-dialog">
 						  <div class="modal-content">
 							 <div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
 								<h4 class="modal-title" id="myModalLabel">
-								   Enter New Class
+								   Enter New Stream
 								</h4>
 							 </div>
-							 <form action="#" method="post" id="add-new-class">
+							 <form action="#" method="post" id="add-new-stream">
 							 <div class="modal-body">	
 								
 								<p class="alert alert-danger error-message" style="display: none;"></p>
 								<p class="alert alert-success success-message" style="display: none;"></p>
 
-								<input type="text" name="class" class="form-control" id="new-class-name" placeholder="Enter Class Name" required="">
+								<input type="hidden" id="class_id" value="<%= class_id %>">
+
+								<input type="text" class="form-control" id="new-stream-name" placeholder="Stream Name e.g WEST" required="">
+								<br>								
+								<input type="text" class="form-control" id="new-stream-abbr" placeholder="Stream Abbr e.g W" required="">
 								<br>
-								<textarea class="form-control" id="class-description" placeholder="Provide a short description of this class here..."></textarea>
+								<textarea class="form-control" id="new-stream-description" placeholder="Short stream description..."></textarea>
+							 </div>
+							 <div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Cancel</button>
+								<button type="submit" class="btn btn-primary submit-button"><i class="fa fa-fw fa-check"></i> Save </button>
+							 </div>
+							 </form>
+						  </div>
+						  <!-- /.modal-content -->
+						</div>
+					</div>
+					<!-- /.add new stream modal -->	
+
+					<!-- Add New Subject modal -->
+					<div class="modal" id="add_new_subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					   <div class="modal-dialog">
+						  <div class="modal-content">
+							 <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+								<h4 class="modal-title" id="myModalLabel">
+								   Enter New Subject
+								</h4>
+							 </div>
+							 <form action="#" method="post" id="add-new-subject">
+							 <div class="modal-body">	
+								
+								<p class="alert alert-danger error-message" style="display: none;"></p>
+								<p class="alert alert-success success-message" style="display: none;"></p>
+
+								<input type="hidden" id="class_id" value="<%= class_id %>">
+
+								<input type="text" class="form-control" id="new-subject-name" placeholder="Subject Name e.g ENGLISH" required="">
+								<br>								
+								<input type="text" name="class" class="form-control" id="new-subject-abbr" placeholder="Subject Abbr e.g ENG" required="">
+								<br>
+								<textarea class="form-control" id="new-subject-description" placeholder="Short subject description..."></textarea>
+							 </div>
+							 <div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Cancel</button>
+								<button type="submit" class="btn btn-primary submit-button"><i class="fa fa-fw fa-check"></i> Save </button>
+							 </div>
+							 </form>
+						  </div>
+						  <!-- /.modal-content -->
+						</div>
+					</div>
+					<!-- /.add new subject modal -->						
+
+					<!-- Add New Exam modal -->
+					<div class="modal" id="add_new_exam" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					   <div class="modal-dialog">
+						  <div class="modal-content">
+							 <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+								<h4 class="modal-title" id="myModalLabel">
+								   Enter New Exam
+								</h4>
+							 </div>
+							 <form action="#" method="post" id="add-new-exam">
+							 <div class="modal-body">	
+								
+								<p class="alert alert-danger error-message" style="display: none;"></p>
+								<p class="alert alert-success success-message" style="display: none;"></p>
+
+								<input type="hidden" id="class_id" value="<%= class_id %>">
+
+								<input type="text" class="form-control" id="new-exam-name" placeholder="Exam Name e.g C.A.T II" required="">
+								<br>								
+								<input type="text" name="class" class="form-control" id="new-subject-abbr" placeholder="Exam Abbr e.g CAT II" required="">
+								<br>
+								<textarea class="form-control" id="new-subject-description" placeholder="Short exam description..."></textarea>
 							 </div>
 							 <div class="modal-footer">
 								<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Cancel</button>
@@ -63,6 +200,7 @@
 						  </div>
 						  <!-- /.modal-content -->
 					</div>
-					<!-- /.add new class modal -->	
+					<!-- /.add New Exam modal -->					
+					</div>
 				</div>
 				<!-- /.page row -->
