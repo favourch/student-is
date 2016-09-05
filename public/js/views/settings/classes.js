@@ -19,14 +19,10 @@ define([
 		},
 
 		initialize: function(){
-			
-			//include the classes display template html into the view
-			this.$el.html(this.template({
-				token: tokenString
-			}));
 
+			$(".container-fluid").html(this.$el.html(this.template()));
 			//define the table reference to use for adding individual classes
-			this.$classesList = $("#classes-list");
+			this.$classesList = this.$("#classes-table");
 			
 			this.listenTo(ClassesCol, 'add', this.addOneClass);
 			this.listenTo(ClassesCol, 'reset', this.addAllClasses);
@@ -37,22 +33,12 @@ define([
 
 		},
 
-		render: function(){
-
-			this.$el.html(this.template());
-			return this;
-
-		},
-
 		addClassPost: function(evt){
 
 			evt.preventDefault(); 
 			var newClass = {
 				name: $("#new-class-name").val(),
-				streams: {},
-				subjects: {},
-				exams: {},
-				population: 0
+				description: $("#class-description").val()
 			};
 
 			$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Saving...');
@@ -80,6 +66,8 @@ define([
 		},
 
 		addOneClass: function(Class){
+			//remove the message for no classes yet, since there is a class to add
+			$('.no-classes-yet').hide();
 			var view = new ClassView({
 				model: Class 
 			});
@@ -90,9 +78,12 @@ define([
 			this.$classesList.empty();
 
 			if(ClassesCol.length === 0) {
-				this.$classesList.html('<p class="alert alert-danger"> There are no registered classes yet.</p>');
+				//there are not classes yet, show the no classes alert
+				$('.no-classes-yet').show();
 			}
 			else {
+			//remove the message for no classes yet, since there are classes to add
+				$('.no-classes-yet').hide();
 				ClassesCol.each(this.addOneClass, this);
 			}
 			

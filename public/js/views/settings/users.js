@@ -20,11 +20,6 @@ define([
 
 		initialize: function(){
 
-			//include the users display template html into the view
-			this.$el.html(this.template({
-				token: tokenString
-			}));
-
 			//define the table reference to use for adding individual classes
 			this.$usersList = $("#users-list");
 			
