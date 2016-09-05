@@ -6,9 +6,12 @@ define([
 	var Class = Backbone.Model.extend({
 
 		defaults: {
-			client_id: '',
 			name: '',
-			description: ''
+			description: '',
+			subjects: 0,
+			streams: 0,
+			exams: 0,
+			population: 0
 		}
 
 	});
