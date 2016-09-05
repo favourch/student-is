@@ -90,6 +90,28 @@ class SettingsController extends BaseController {
 	}
 
 	/**
+	 * This method returns information about a specific class
+	 * @before authClientUser
+	 * @param null
+	 * @return Object JSON
+	 */
+	public function getClass(){
+		$class = ClassModel::where('client_id = ?', $this->client_id)
+							->where('id = ?', Input::get('class_id'))
+							->all();
+		//get the class population
+		$population = StudentModel::where('client_id = ?', $this->client_id)
+							->where('class_id = ?', Input::get('class_id'))
+							->count()
+							->num_rows();
+		$class = $class->result_array()[0];
+		$class['population'] = $population;
+
+		View::renderJSON($class);
+
+	}
+
+	/**
 	 * This methods gets all classes in the database for this client
 	 * @before authClientUser
 	 * @param null
@@ -161,62 +183,123 @@ class SettingsController extends BaseController {
 	
 	/**
 	 * This method returns a list of all class streams for a client
+	 * @before authClientUser
 	 * @param null
 	 * @return Object JSON
 	 */
 	public function getStreams(){
 		$streams = StreamModel::where('client_id = ?', $this->client_id)
+							->where('class_id = ?', Input::get('class_id'))
 							->all();
 		View::renderJSON($streams->result_array());
 	}	
-
+ 
 	/**
 	 * This method creates/updates/deletes class streams for a client
+	 * @before authClientUser 
 	 * @param int $class_id The is of the class to update/delete
 	 * @return Object JSON
 	 */
 	public function postStreams($class_id){
 		
+		$streamData = json_decode($_POST['model']);		
+		$newStream = array(
+			'stream_name' => $streamData->stream_name,
+			'stream_abbr' => $streamData->stream_abbr,
+			'description' => $streamData->description,
+			'class_id' => $streamData->class_id,
+			'client_id' => $this->client_id
+		);
+
+		$create = StreamModel::save($newStream);
+		$newStream = StreamModel::getById($create->lastInsertId());
+		$stream = $newStream->result_array()[0];
+
+		//get the class population
+		$population = StudentModel::where('client_id = ?', $this->client_id)
+							->where('class_id = ?', $streamData->class_id)
+							->where('stream_id = ?', $create->lastInsertId())
+							->count()
+							->num_rows();
+		$stream['population'] = $population;
+
+		View::renderJSON($stream);	
+
 	}
 
 	/**
 	 * This method returns a list of all class subjects for a client
+	 * @before authClientUser
 	 * @param null
 	 * @return Object JSON
 	 */
 	public function getSubjects(){
 		$subjects = SubjectModel::where('client_id = ?', $this->client_id)
+							->where('class_id = ?', Input::get('class_id'))
 							->all();
 		View::renderJSON($subjects->result_array());
 	}		
 
 	/**
 	 * This method creates/deletes/updates class subjects for a client
+	 * @before authClientUser
 	 * @param int $subject_id The unique id of the subject to delete/update
 	 * @return Object JSON
 	 */
 	public function postSubjects($subject_id){
 		
+		$subjectData = json_decode($_POST['model']);		
+		$newSubject = array(
+			'subject_name' => $subjectData->subject_name,
+			'subject_abbr' => $subjectData->subject_abbr,
+			'description' => $subjectData->description,
+			'class_id' => $subjectData->class_id,
+			'client_id' => $this->client_id
+		);
+
+		$create = SubjectModel::save($newSubject);
+		$newSubject = SubjectModel::getById($create->lastInsertId());
+		$subject = $newSubject->result_array()[0];
+
+		View::renderJSON($subject);		
+
 	}	
 
 	/**
 	 * This method returns a list of all class exams for a client
+	 * @before authClientUser
 	 * @param null
 	 * @return Object JSON
 	 */
 	public function getExams(){
 		$exams = ExamModel::where('client_id = ?', $this->client_id)
+							->where('class_id = ?', Input::get('class_id'))
 							->all();
 		View::renderJSON($exams->result_array());
 	}
 
 	/**
 	 * This method creates/updates/deletes class exams for a client
+	 * @before authClientUser
 	 * @param int $exam_id The unique id for this exam to update/delete
 	 * @return Object JSON
 	 */
 	public function postExams($exam_id){
-		
+		$examData = json_decode($_POST['model']);		
+		$newExam = array(
+			'exam_name' => $examData->exam_name,
+			'exam_abbr' => $examData->exam_abbr,
+			'description' => $examData->description,
+			'class_id' => $examData->class_id,
+			'client_id' => $this->client_id
+		);
+
+		$create = ExamModel::save($newExam);
+		$newExam = ExamModel::getById($create->lastInsertId());
+		$exam = $newExam->result_array()[0];
+
+		View::renderJSON($exam);			
+
 	}	
 
 }
