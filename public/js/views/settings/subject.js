@@ -17,8 +17,9 @@ define([
 		},
 
 		initialize: function(){
-
-			//some code here...			       
+			//re-render on change event, remove from DOM on destroy event
+			this.listenTo(this.model, 'change', this.render);
+			this.listenTo(this.model, 'destroy', this.remove);
 		},
 
 		render: function(){
@@ -32,8 +33,7 @@ define([
 
 		},
 
-		deleteSubject: function(evt){
-			evt.preventDefault();
+		deleteSubject: function(){
 			this.model.destroy({
 				data: $.param({ 
 					token: tokenString

@@ -156,29 +156,37 @@ class SettingsController extends BaseController {
 	/**
 	 * This methods creates/updates/deletes all classes in the database for this client
 	 * @before authClientUser
-	 * @param null
+	 * @param int $class_id The id of the class to delete
 	 * @return Object JSON
 	 */
-	public function postClasses(){
+	public function postClasses($class_id){
 		
-		$class = json_decode($_POST['model']);		
-		$newClass = array(
-			'name' => $class->name,
-			'description' => $class->description,
-			'client_id' => $this->client_id
-		);
+		//check for a CREATE request
+		if(!$class_id){
 
-		$create = ClassModel::save($newClass);
-		$new = ClassModel::getById($create->lastInsertId());
-		$class = $new->result_array()[0];
+			$class = json_decode($_POST['model']);		
+			$newClass = array(
+				'name' => $class->name,
+				'description' => $class->description,
+				'client_id' => $this->client_id
+			);
 
-		//populate class metadata like the streams, subjects e.t.c
-		$class['streams'] = 0;
-		$class['subjects'] = 0;
-		$class['exams'] = 0;
-		$class['population'] = 0;
+			$create = ClassModel::save($newClass);
+			$new = ClassModel::getById($create->lastInsertId());
+			$class = $new->result_array()[0];
 
-		View::renderJSON($class);	
+			//populate class metadata like the streams, subjects e.t.c
+			$class['streams'] = 0;
+			$class['subjects'] = 0;
+			$class['exams'] = 0;
+			$class['population'] = 0;
+
+			View::renderJSON($class);
+		}
+		else{
+			ClassModel::where('id = ?', $class_id)
+						->delete();
+		}	
 	}
 	
 	/**
@@ -197,33 +205,41 @@ class SettingsController extends BaseController {
 	/**
 	 * This method creates/updates/deletes class streams for a client
 	 * @before authClientUser 
-	 * @param int $class_id The is of the class to update/delete
+	 * @param int $stream_id The id of the stream to update/delete
 	 * @return Object JSON
 	 */
-	public function postStreams($class_id){
+	public function postStreams($stream_id){
 		
-		$streamData = json_decode($_POST['model']);		
-		$newStream = array(
-			'stream_name' => $streamData->stream_name,
-			'stream_abbr' => $streamData->stream_abbr,
-			'description' => $streamData->description,
-			'class_id' => $streamData->class_id,
-			'client_id' => $this->client_id
-		);
+		//check for a CREATE request
+		if(!$stream_id){
+			
+			$streamData = json_decode($_POST['model']);		
+			$newStream = array(
+				'stream_name' => $streamData->stream_name,
+				'stream_abbr' => $streamData->stream_abbr,
+				'description' => $streamData->description,
+				'class_id' => $streamData->class_id,
+				'client_id' => $this->client_id
+			);
 
-		$create = StreamModel::save($newStream);
-		$newStream = StreamModel::getById($create->lastInsertId());
-		$stream = $newStream->result_array()[0];
+			$create = StreamModel::save($newStream);
+			$newStream = StreamModel::getById($create->lastInsertId());
+			$stream = $newStream->result_array()[0];
 
-		//get the class population
-		$population = StudentModel::where('client_id = ?', $this->client_id)
-							->where('class_id = ?', $streamData->class_id)
-							->where('stream_id = ?', $create->lastInsertId())
-							->count()
-							->num_rows();
-		$stream['population'] = $population;
+			//get the class population
+			$population = StudentModel::where('client_id = ?', $this->client_id)
+								->where('class_id = ?', $streamData->class_id)
+								->where('stream_id = ?', $create->lastInsertId())
+								->count()
+								->num_rows();
+			$stream['population'] = $population;
 
-		View::renderJSON($stream);	
+			View::renderJSON($stream);	
+		}
+		else{
+			StreamModel::where('id = ?', $stream_id)
+						->delete();
+		}
 
 	}
 
@@ -248,20 +264,29 @@ class SettingsController extends BaseController {
 	 */
 	public function postSubjects($subject_id){
 		
-		$subjectData = json_decode($_POST['model']);		
-		$newSubject = array(
-			'subject_name' => $subjectData->subject_name,
-			'subject_abbr' => $subjectData->subject_abbr,
-			'description' => $subjectData->description,
-			'class_id' => $subjectData->class_id,
-			'client_id' => $this->client_id
-		);
+		//check for a CREATE request
+		if(!$subject_id){
+			
+			$subjectData = json_decode($_POST['model']);		
+			$newSubject = array(
+				'subject_name' => $subjectData->subject_name,
+				'subject_abbr' => $subjectData->subject_abbr,
+				'description' => $subjectData->description,
+				'class_id' => $subjectData->class_id,
+				'client_id' => $this->client_id
+			);
 
-		$create = SubjectModel::save($newSubject);
-		$newSubject = SubjectModel::getById($create->lastInsertId());
-		$subject = $newSubject->result_array()[0];
+			$create = SubjectModel::save($newSubject);
+			$newSubject = SubjectModel::getById($create->lastInsertId());
+			$subject = $newSubject->result_array()[0];
 
-		View::renderJSON($subject);		
+			View::renderJSON($subject);			
+		}
+		else{
+			SubjectModel::where('id = ?', $subject_id)
+						->delete();
+		}
+	
 
 	}	
 
@@ -285,20 +310,29 @@ class SettingsController extends BaseController {
 	 * @return Object JSON
 	 */
 	public function postExams($exam_id){
-		$examData = json_decode($_POST['model']);		
-		$newExam = array(
-			'exam_name' => $examData->exam_name,
-			'exam_abbr' => $examData->exam_abbr,
-			'description' => $examData->description,
-			'class_id' => $examData->class_id,
-			'client_id' => $this->client_id
-		);
 
-		$create = ExamModel::save($newExam);
-		$newExam = ExamModel::getById($create->lastInsertId());
-		$exam = $newExam->result_array()[0];
+		//check for a CREATE request
+		if(!$exam_id){
 
-		View::renderJSON($exam);			
+			$examData = json_decode($_POST['model']);		
+			$newExam = array(
+				'exam_name' => $examData->exam_name,
+				'exam_abbr' => $examData->exam_abbr,
+				'description' => $examData->description,
+				'class_id' => $examData->class_id,
+				'client_id' => $this->client_id
+			);
+
+			$create = ExamModel::save($newExam);
+			$newExam = ExamModel::getById($create->lastInsertId());
+			$exam = $newExam->result_array()[0];
+
+			View::renderJSON($exam);	
+		}
+		else{
+			ExamModel::where('id = ?', $exam_id)
+						->delete();
+		}		
 
 	}	
 
