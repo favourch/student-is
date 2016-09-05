@@ -9,14 +9,17 @@ define([
 	'views/settings/subject',
 	'views/settings/exam',
 	'text!templates/settings/classview.html',
+	'text!templates/settings/classview-head.html',
 	'bootstrap'
-	], function($, _, Backbone, ExamsCol, SubjectsCol, StreamsCol, StreamView, SubjectView, ExamView, classTpl){
+	], function($, _, Backbone, ExamsCol, SubjectsCol, StreamsCol, StreamView, SubjectView, ExamView, classTpl, classviewHead){
 
 	var ClassView = Backbone.View.extend({
 
 		tagName: 'div',
 
 		template: _.template(classTpl),
+
+		classviewHead: _.template(classviewHead),
 
 		events: {
 			'submit #add-new-stream' : 'addStreamPost',
@@ -25,12 +28,28 @@ define([
 		},
 
 		initialize: function(classID){
-
+			
 			$(".container-fluid").html(this.$el.html(this.template({
-				class_id: classID,
-				population: 100,
-				class_name: 'Alguma Aula'
+				class_id: classID
 			})));
+
+			//save reference to thi object
+			var self = this;
+			//get the metadata for this class
+			$.ajax({
+				url: baseURL + "settings/class",
+				data: { 
+					token: tokenString,
+					class_id: classID
+				},
+				type: 'get',
+				success: function(data){
+					$("#class-view-head").html(self.classviewHead(data));
+				},
+				error: function(error){
+					console.log(error);
+				}
+			});
 
 			//define the table reference to use for adding individual classes
 			this.$examsList = this.$("#exams-list");
@@ -57,13 +76,16 @@ define([
 			SubjectsCol.fetch({
 				reset: true,
 				data: $.param({ 
+					token: tokenString,
 					class_id: classID
 				})
+
 			});
 
 			StreamsCol.fetch({
 				reset: true,
 				data: $.param({ 
+					token: tokenString,
 					class_id: classID
 				})
 			});	
@@ -85,6 +107,7 @@ define([
 			$(".success-message").hide(200);
 
 			StreamsCol.create(newStream, {
+				url: baseURL + 'settings/streams?token=' + tokenString,
 				success: function(){
 					$(".success-message").html("Stream added successfully!").show(400);
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
@@ -143,6 +166,7 @@ define([
 			$(".success-message").hide(200);
 
 			SubjectsCol.create(newSubject, {
+				url: baseURL + 'settings/subjects?token=' + tokenString,
 				success: function(){
 					$(".success-message").html("Subject added successfully!").show(400);
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
@@ -201,6 +225,7 @@ define([
 			$(".success-message").hide(200);
 
 			ExamsCol.create(newExam, {
+				url: baseURL + 'settings/exams?token=' + tokenString,
 				success: function(){
 					$(".success-message").html("Exam added successfully!").show(400);
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');

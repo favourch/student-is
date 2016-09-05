@@ -28,7 +28,10 @@ define([
 			this.listenTo(ClassesCol, 'reset', this.addAllClasses);
 
 			ClassesCol.fetch({
-				reset: true
+				reset: true,
+				data: $.param({ 
+					token: tokenString
+				})
 			});	
 
 		},

@@ -30,7 +30,10 @@ define([
 			this.listenTo(UsersCol, 'reset', this.addAllUsers);
 
 			UsersCol.fetch({
-				reset: true
+				reset: true,
+				data: $.param({ 
+					token: tokenString
+				})
 			});	
 
 		},
