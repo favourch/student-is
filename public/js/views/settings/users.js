@@ -20,6 +20,9 @@ define([
 
 		initialize: function(){
 
+			//load the view into the DOM
+			$(".container-fluid").html(this.$el.html(this.template()));
+
 			//define the table reference to use for adding individual classes
 			this.$usersList = $("#users-list");
 			
@@ -29,12 +32,6 @@ define([
 			UsersCol.fetch({
 				reset: true
 			});	
-		},
-
-		render: function(){
-
-			this.$el.html(this.template());
-			return this;
 
 		},
 
@@ -44,16 +41,14 @@ define([
 			var newUser = {
 				first_name: $("#first-name").val(),
 				last_name: $("#last-name").val(),
-				email: $("#email").val(),
-				password: $("#password").val(),
-				user_type: 3
+				email: $("#email").val()
 			};
 
 			$(".submit-button").html("Please wait...");
 			$(".error-message").hide(200);
 			$(".success-message").hide(200);
 
-			Users.create(newUser, {
+			UsersCol.create(newUser, {
 				success: function(){
 					$(".success-message").html("User added successfully!").show(400);
 					$(".submit-button").html("Submit");
@@ -71,8 +66,31 @@ define([
 				
 			});
 
-		}
+		},
 
+		addOneUser: function(User){
+			//remove the message for no users yet, since there is a user to add
+			$('.no-users-yet').hide();
+			var view = new UserView({
+				model: User 
+			});
+			this.$usersList.append(view.render().el);
+		},
+
+		addAllUsers: function(){
+			this.$usersList.empty();
+
+			if(UsersCol.length === 0) {
+				//there are not classes yet, show the no classes alert
+				$('.no-users-yet').show();
+			}
+			else {
+			//remove the message for no classes yet, since there are classes to add
+				$('.no-users-yet').hide();
+				UsersCol.each(this.addOneUser, this);
+			}
+			
+		}
 
 	});
 
