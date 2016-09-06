@@ -31,12 +31,12 @@ class SettingsController extends BaseController {
 	public $enable_method_filters = true;
 
 	/**
-	 * @var int The client_id for this student
+	 * @var int The client_id for this request
 	 */
 	protected $client_id = null; 
 
 	/**
-	 * @var array The information about this client admin
+	 * @var array The information about this client(user)
 	 */
 	protected $client = array();
 

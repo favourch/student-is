@@ -34,6 +34,7 @@ define([
 		addStudent: function(evt){
 			evt.preventDefault();
 			var student = {
+				reg_number: $("#reg_number").val(),
 				first_name: $("#first_name").val(),
 				middle_name: $("#middle_name").val(),
 				last_name: $("#last_name").val(),
@@ -58,9 +59,32 @@ define([
 			$(".success-message").hide(200);
 
 			Students.create(student, {
+				url: baseURL + 'students/students?token=' + tokenString,
 				success: function(){
+					
 					$(".success-message").html("Student added successfully!").show(400);
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i>Save');
+
+					//empty the form
+					$("#reg_number").val(''),
+					$("#first_name").val(''),
+					$("#middle_name").val(''),
+					$("#last_name").val(''),
+					$("#dob").val(''),
+					$("#pob").val(''),
+					$("#bcn").val(''),
+					$("#sex").val(''),
+					$("#nationality").val(''),
+					$("#doa").val(''),
+					$("#class").val(''),
+					$("#address").val(''),
+					$("#code").val(''),
+					$("#town").val(''),
+					$("#pg_f_name").val(''),
+					$("#pg_l_name").val(''),
+					$("#pg_email").val(''),
+					$("#pg_phone").val('')	
+
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 				    

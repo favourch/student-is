@@ -65,6 +65,7 @@ define([
 						$(".alert-login-error").text('success').show(500);
 						tokenString = data['token'];
 						userData = data['user'];
+						clientInfo = data['client'];
 
 						if (data['user']['user_role'] == 1) {
 							window.location.replace(baseURL + '#admin/home/' + data['token']);

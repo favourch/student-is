@@ -15,6 +15,7 @@ use Drivers\Templates\View;
 use Libraries\CronLibrary\SampleCronController;
 use Models\UserModel;
 use Models\TokenModel;
+use Models\ClientModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 
@@ -38,32 +39,65 @@ class LoginController extends BaseController {
 							->where("password = ?", md5(sha1(Input::get('password'))))
 							->first();
 
+
+
 		if ($user->num_rows() > 0) {
 			
 			$user = $user->result_array()[0];
-			$token = sha1(md5($user['email'] + time()));
 
-			TokenModel::save(array(
-				'email' => $user['email'],
-				'first_name' => $user['first_name'],
-				'last_name' => $user['last_name'],
-				'client_id' => $user['client_id'],
-				'token' => $token,
-				'duration' => 3600,
-				'user_role' => $user['user_role']
-				)
-			);
+			//check for active user account
+			if ($user['activated'] == true) {
 
-			View::renderJSON(array(
-				"user" => array(
-					'email' => $user['email'],
-					'first_name' => $user['first_name'],
-					'last_name' => $user['last_name'],
-					'user_role' => $user['user_role']
-					),
-				"token" => $token
-				)
-			);
+				//get client info
+				$client = ClientModel::where('id = ?', $user['client_id'])
+									->first();
+				$client = $client->result_array()[0];
+
+				//check for active client account
+				if ($client['activated'] == true) {
+
+					$token = sha1(md5($user['email'] + time()));
+
+					TokenModel::save(array(
+						'email' => $user['email'],
+						'first_name' => $user['first_name'],
+						'last_name' => $user['last_name'],
+						'client_id' => $user['client_id'],
+						'token' => $token,
+						'duration' => 3600,
+						'user_role' => $user['user_role']
+						)
+					);
+
+					View::renderJSON(array(
+						"user" => array(
+							'email' => $user['email'],
+							'first_name' => $user['first_name'],
+							'last_name' => $user['last_name'],
+							'user_role' => $user['user_role']
+							),
+						"token" => $token,
+						"client" => array(
+							"name" => $client['institution'],
+							"email" => $client['email'],
+							"phone" => $client['phone'],
+							"activated" => $client['activated']
+							)
+						)
+					);				
+				} 
+				//deactivated client account
+				else {
+					
+				}
+							
+			} 
+			//account needs activation
+			else {
+				
+
+			}
+			
 		}
 		else {
 			View::renderJSON(array("error" => "Invalid username or password supplied!"));

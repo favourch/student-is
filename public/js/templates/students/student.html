@@ -1,1 +1,11 @@
-	<td><input type="checkbox" class="form-control"></td><td><%= first_name %> <%= last_name %></td><td><%= clas %></td><td><%= sex %></td><td><%= address %> <%= town %></td><td><a class="btn btn-success btn-sm" href="#"><i class="fa fa-user fa-lg"></i></a></td><td><a class="btn btn-danger btn-sm delete-user" href="#"><i class="fa fa-trash-o fa-lg"></i></a></td>
+	<td><input type="checkbox" class="form-control"></td>
+	<td><img src="#" class="img img-responsive" width="50px"><%= first_name %> 
+		<% if(middle_name) { %>
+			<%= middle_name.charAt(0).toUpperCase() %>
+		<% }%> 
+		<%= last_name %></td>
+	<td><%= clas %></td>
+	<td><%= sex %></td>
+	<td><%= address %> <%= town %></td>
+	<td><a class="btn btn-success btn-sm" href="#"><i class="fa fa-user fa-lg"></i></a></td>
+	<td><button class="btn btn-danger btn-sm delete-user"><i class="fa fa-trash-o fa-lg"></i></button></td>

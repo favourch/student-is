@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="">    
     <script type="text/javascript">
     	baseURL = "{{Url::base()}}";
-        tokenString = null;
-        userData = null;
+        tokenString = '';
+        userData = {};
+        clientInfo = {};
     </script>
     <script type="text/javascript" data-main="js/main" src="js/libs/require.js" ></script>
 </head>
