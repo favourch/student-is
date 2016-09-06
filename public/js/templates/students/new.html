@@ -13,13 +13,11 @@
 				});	
 			});			
 			$(function(){
-				$('#datepicker').datepicker({
+				$('#doa').datepicker({
 					changeMonth:true,
 					changeYear:true,
 					yearRange: "-100:+0",
-					dateFormat:"DD, MM d, yy",
-					altField: "#doa",
-					altFormat: "@",
+					dateFormat:"DD, MM d, yy"
 				});				
 			});
 			</script>
@@ -72,7 +70,7 @@
 								<option value="Burundi">Burundi</option>
 							</select>
 							<br>
-							<input type="date" name="doa" id="doa" class="form-control" placeholder="Date of Admission" required>
+							<input type="date" name="doa" id="doa" class="form-control " placeholder="Date of Admission" required>
 							<br>
 							<input type="text" class="form-control" name="class" id="class" placeholder="Class" required>
 						</div>

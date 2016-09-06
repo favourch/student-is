@@ -88,14 +88,14 @@ class LoginController extends BaseController {
 				} 
 				//deactivated client account
 				else {
-					
+					View::renderJSON(array("error" => "You are not able to access this service at this time!"));
 				}
 							
 			} 
 			//account needs activation
 			else {
-				
 
+				View::renderJSON(array("error" => "Your account needs verification!"));
 			}
 			
 		}

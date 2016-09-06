@@ -12,9 +12,7 @@ define([
 		template: _.template(studentTpl),
 
 		events: {
-			'click .edit' : 'editUser',
-			'click .destroy' : 'clear',
-			'click .delete-client' : 'deleteClient'
+			'click .deleteStudent' : 'deleteStudent'
 		},
 
 		initialize: function(){
@@ -27,14 +25,12 @@ define([
 			return this;
 		},
 
-		editUser: function(){
-			this.$el.addClass('editing');
-			this.$input.focus();
-		},
-
-		deleteClient: function(evt){
-			evt.preventDefault();
-			this.model.destroy();
+		deleteStudent: function(){
+			this.model.destroy({
+				data: $.param({ 
+					token: tokenString
+				})
+			});
 		}
 
 	});

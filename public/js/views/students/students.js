@@ -4,8 +4,8 @@ define([
 	'backbone',
 	'collections/users/students',
 	'views/students/student',
-	'views/students/new',
-	'text!templates/students/all.html'
+	'views/students/studentnew',
+	'text!templates/students/students.html'
 	], function($, _, Backbone, StudentsCol, studentView, newStudent, AllStudents){
 
 	var Students = Backbone.View.extend({
@@ -21,7 +21,7 @@ define([
 
 			switch(page){
 
-				case 'all':
+				case 'students':
 					
 					this.$main.html(this.allStudents({
 						token: tokenString
@@ -43,7 +43,7 @@ define([
 					});
 
 					break;
-				case 'new':
+				case 'studentnew':
 
 					//load the add new student form
 					var view = new newStudent;
@@ -59,12 +59,23 @@ define([
 			var view = new studentView({
 				model: student 
 			});
+			$('.no-students-yet').hide();
 			this.$studentsList.append(view.render().el);
 		},
 
 		addAllStudents: function(){
 			this.$studentsList.empty();
-			StudentsCol.each(this.addOneStudent, this);
+
+			if(StudentsCol.length === 0) {
+				//there are not classes yet, show the no classes alert
+				$('.no-students-yet').show();
+			}
+			else {
+			//remove the message for no classes yet, since there are classes to add
+				$('.no-students-yet').hide();
+				StudentsCol.each(this.addOneStudent, this);
+			}
+			
 		}
 		
 	});

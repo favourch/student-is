@@ -124,7 +124,7 @@ class StudentsController extends BaseController {
 			//this is a DELETE request
 			else{
 				//delete this user from  the DB
-				UserModel::where('client_id = ?', $this->client_id)
+				StudentModel::where('client_id = ?', $this->client_id)
 						->where('id = ?', $student_id)
 						->delete();
 
