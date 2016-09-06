@@ -12,7 +12,8 @@ define([
 			address: '',
 			code: '',
 			city: '',
-			user_role: 4
+			user_role: 4,
+			date_created: ''
 		}
 
 	});

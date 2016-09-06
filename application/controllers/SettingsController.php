@@ -56,36 +56,61 @@ class SettingsController extends BaseController {
 	/**
 	 * This method adds a new user for a client to the database
 	 * @before authClientAdmin
-	 * @param null
+	 * @param int $user_id The id of the user to update/delete
 	 * @return JSON
 	 */
-	public function postUsers(){
+	public function postUsers($user_id){
 
-		$user = json_decode($_POST['model']);
-		$password = substr(md5(uniqid(mt_rand(), true)), 0, 8);
-		
-		$newUser = array(
-			'first_name' => $user->first_name,
-			'last_name' => $user->last_name,
-			'password' => md5(sha1($password)),
-			'email' => $user->email,			
-			'user_role' => 4,
-			'client_id' => $this->client_id
-		);
+		if (!$user_id) {
+			$user = json_decode($_POST['model']);
+			$password = substr(md5(uniqid(mt_rand(), true)), 0, 8);
+			
+			$newUser = array(
+				'first_name' => $user->first_name,
+				'last_name' => $user->last_name,
+				'password' => md5(sha1($password)),
+				'email' => $user->email,			
+				'user_role' => 4,
+				'client_id' => $this->client_id
+			);
 
-		$create = UserModel::save($newUser);
+			$create = UserModel::save($newUser);
 
-		// The message
-		$message = "Hello {$user->first_name} {$user->last_name} your account for Student Infomation System software has been created by {$this->client['first_name']} {$this->client['last_name']} .\r\n";
-		$message += "Email: {$user->email} \r\n Password: $password\r\n  You can login using this link Url::base()";
-		$headers = "From: geoffreybans@gmail.com \r\n Reply-To: {$this->client['email']} \r\n X-Mailer: PHP/ phpversion()";
-		// In case any of our lines are larger than 70 characters, we should use wordwrap()
-		$message = wordwrap($message, 70, "\r\n");
-		// Send email
-		mail($user->email, 'Student IS - Account Created', $message, $headers);
-		
-		$new = UserModel::getById($create->lastInsertId());
-		View::renderJSON($new->result_array()[0]);	
+			// The message
+			$message = "Hello {$user->first_name} {$user->last_name} your account for Student Infomation System software has been created by {$this->client['first_name']} {$this->client['last_name']} .\r\n";
+			$message += "Email: {$user->email} \r\n Password: $password\r\n  You can login using this link Url::base()";
+			$headers = "From: geoffreybans@gmail.com \r\n Reply-To: {$this->client['email']} \r\n X-Mailer: PHP/ phpversion()";
+			// In case any of our lines are larger than 70 characters, we should use wordwrap()
+			$message = wordwrap($message, 70, "\r\n");
+			// Send email
+			mail($user->email, 'Student IS - Account Created', $message, $headers);
+			
+			$new = UserModel::getById($create->lastInsertId());
+			View::renderJSON($new->result_array()[0]);			
+		} 
+		else {
+			//this is an UPDATE request
+			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
+				$userData = json_decode($_POST['model']);
+				$updateUser = array(
+					'first_name' => $userData->first_name,
+					'last_name' => $userData->last_name,
+					'email' => $userData->email
+				);
+
+				UserModel::where('id = ?', $user_id)
+							->save($updateUser);
+
+			}
+			//this is a DELETE request
+			else{
+				//delete this user from  the DB
+				UserModel::where('id = ?', $user_id)
+						->delete();
+
+			}		
+
+		}
 		
 	}
 
@@ -211,7 +236,9 @@ class SettingsController extends BaseController {
 						->delete();
 				//delete all students who belong to this class
 				StudentModel::where('class_id = ?', $class_id)
-						->delete();			}	
+						->delete();			
+
+			}	
 
 		}	
 

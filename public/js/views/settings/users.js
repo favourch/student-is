@@ -38,9 +38,9 @@ define([
 
 		},
 
-		addUserPost: function(e){
+		addUserPost: function(evt){
 			
-			e.preventDefault(); 
+			evt.preventDefault(); 
 			var newUser = {
 				first_name: $("#first-name").val(),
 				last_name: $("#last-name").val(),
@@ -52,9 +52,18 @@ define([
 			$(".success-message").hide(200);
 
 			UsersCol.create(newUser, {
+				url: baseURL + 'settings/users?token=' + tokenString,
 				success: function(){
 					$(".success-message").html("User added successfully!").show(400);
 					$(".submit-button").html("Submit");
+
+					//empty the form
+					$("#first-name").val('');
+					$("#last-name").val('');				
+					$("#email").val('');				
+
+					//fade out the modal
+					$("#add_new_user").modal("hide");
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 				    

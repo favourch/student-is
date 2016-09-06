@@ -1,1 +1,11 @@
-	<td><input type="checkbox" class="form-control"></td><td><%= first_name %> <%= last_name %></td><td><%= email %></td><td><a class="btn btn-success btn-sm" href="#"><i class="fa fa-cog fa-lg"></i> Settings</a></td><td><a class="btn btn-danger btn-sm delete-user" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a></td>
+	<td><input type="checkbox" class="form-control"></td>
+	<td><span class="fname"><%= first_name %></span><input type="text" class="form-control hidden fname-input" value="<%= first_name %>"></td>
+	<td><span class="lname"><%= last_name %></span><input type="text" class="form-control hidden lname-input" value="<%= last_name %>"></td>
+	<td><span class="email"><%= email %></span><input type="text" class="form-control hidden email-input" value="<%= email %>"></td>
+	<td><%= date_created %></td>
+	<td><a class="btn btn-primary btn-sm" href="<%= baseURL %>#settings/user/<%= id %>"><i class="fa fa-user fa-lg"></i> Details</a></td>
+	<td>
+		<button class="btn btn-success btn-sm editUser"><i class="fa fa-edit fa-lg"></i> Edit</button>
+		<button class="btn btn-primary btn-sm editDone hidden"><i class="fa fa-check fa-lg"></i> Done</button>
+	</td>
+	<td><button class="btn btn-danger btn-sm deleteUser" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</button></td>
