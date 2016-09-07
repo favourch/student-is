@@ -3,25 +3,27 @@
 		<p class="lead">Choose the exam for which to enter marks</p>
 	</div>
 	<div class="col-lg-12">
-	<form method="post" action="#">
-		<div class="col-lg-2" id="classes-list"></div>
+	<form method="post" action="#" id="entermarks">
+		<div class="col-lg-2" id="classes-list">
+			
+		</div>
 		<div class="col-lg-2" id="streams-list">
-			<select id="stream_id" class="form-control">
+			<select id="stream_id" class="form-control" required="">
 				<option> --Stream--</option>
 			</select>
 		</div>
 		<div class="col-lg-2" id="subjects-list">
-			<select id="subject_id" class="form-control">
+			<select id="subject_id" class="form-control" required="">
 				<option> --Subject--</option>
 			</select>
 		</div>
 		<div class="col-lg-2" id="exams-list">
-			<select id="exam_id" class="form-control">
+			<select id="exam_id" class="form-control" required="">
 				<option> --Exam--</option>
 			</select>		
 		</div>
 		<div class="col-lg-2" id="terms-list">
-			<select id="term_id" class="form-control">
+			<select id="term_id" class="form-control" required="">
 				<option> --Term--</option>
 				<option value="1">Term 1</option>
 				<option value="2">Term 2</option>
@@ -29,7 +31,7 @@
 			</select>
 		</div>
 		<div class="col-lg-2" id="years-list">
-			<select id="year" class="form-control">
+			<select id="year" class="form-control" required="">
 				<option> --Year--</option>
 				<option value="1">2015</option>
 				<option value="2">2016</option>
