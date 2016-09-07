@@ -2,28 +2,44 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'text!templates/academics/home.html',
-	'tablesorter',
-	'jqueryui',
-	'bootstrap'
-	], function($, _, Backbone, HomeTpl){
+	'collections/tmplt/marks',
+	'views/exams/entermarks',
+	'views/exams/viewmarks',
+	], function($, _, Backbone, MarksCol, enterMarks, viewMarks){
 
 	var Exams = Backbone.View.extend({
 
-		el: $(".container-fluid"),
-
-		title: "Exams - Student Information System",
-
-		template: _.template(HomeTpl),
-
-		initialize: function(){
+		title: "Student Information System",
+		 
+		initialize: function(page, token){
 			
-			$("title").html(this.title);
-			this.$el.html(this.template({
-				user: userData,
-				token: tokenString
-			}));
-			       
+			this.$main = $(".container-fluid");
+
+			switch(page){
+
+				case 'entermarks':
+					
+					//update page title
+					$("title").html("Enter Marks - " + this.title);
+					
+					//load the enter marks view
+					var view = new enterMarks;
+					this.$main.html(view.render().el);
+
+					break;
+				case 'viewmarks':
+					
+					//update page title
+					$("title").html("Enter Marks - " + this.title);
+					
+					//load the view marks view
+					var view = new viewMarks;
+					this.$main.html(view.render().el);
+
+					break;
+
+			}
+	       
 		}
 		
 	});
