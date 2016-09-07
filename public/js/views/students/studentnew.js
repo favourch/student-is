@@ -3,10 +3,14 @@ define([
 	'underscore',
 	'backbone',
 	'collections/users/students',
-	'text!templates/students/new.html',
+	'collections/tmplt/classes',
+	'collections/tmplt/streams',
+	'text!templates/students/studentnew.html',
+	'text!templates/students/classes.html',
+	'text!templates/students/streams.html',
 	'jqueryui',
 	'bootstrap'
-	], function($, _, Backbone, Students, StudentTpl){
+	], function($, _, Backbone, Students, Classes, Streams, StudentTpl, classesTpl, streamsTpl){
 
 	var NewStudent = Backbone.View.extend({
 
@@ -15,19 +19,44 @@ define([
 		title: "New Student - Student Information System",
 
 		events: {
-			'submit form#new-student' : 'addStudent'
+			'submit form#new-student' : 'addStudent',
+			'change #class_id' : 'getStreams'
 		},
 
 		template: _.template(StudentTpl),
 
+		classesTpl: _.template(classesTpl),
+
+		streamsTpl: _.template(streamsTpl),
+
 		initialize: function(){
 			
 			$("title").html(this.title);
-			       
+			
+			//fetch list of all classes for this class from the database
+			var self = this;
+			Classes.fetch({
+				data: $.param({ 
+					token: tokenString
+				}),
+				success: function(data){
+					self.setClasses();
+				}
+			});					
+
+			//fetch list of all streams for this client from the database
+			Streams.fetch({
+				data: $.param({ 
+					token: tokenString
+				})
+			});		
+
 		},
 
 		render: function(){
-			this.$el.html(this.template());			
+			this.$el.html(this.template());
+			this.$classes = this.$("#classes-list");	
+			this.$streams = this.$("#streams-list");	
 			return this;
 		},
 
@@ -44,7 +73,8 @@ define([
 				sex: $("#sex").val(),
 				nationality: $("#nationality").val(),
 				doa: $("#doa").val(),
-				clas: $("#class").val(),
+				class_id: $("#class_id").val(),
+				stream_id: ($("#stream_id").val()) ?  $("#stream_id").val() : '',
 				address: $("#address").val(),
 				code: $("#code").val(),
 				town: $("#town").val(),
@@ -76,7 +106,8 @@ define([
 					$("#sex").val(''),
 					$("#nationality").val(''),
 					$("#doa").val(''),
-					$("#class").val(''),
+					$("#class_id").val(''),
+					$("#stream_id").val(''),
 					$("#address").val(''),
 					$("#code").val(''),
 					$("#town").val(''),
@@ -91,13 +122,45 @@ define([
 				    if(textStatus.status != 401 && textStatus.status != 403) {
 				      					    	
 						$(".error-message").html("Please check the errors below!").show(400);
-						$(".submit-button").html("Submit");
+						$(".submit-button").html('<i class="fa fa-fw fa-check"></i>Save');
 
 				    }
 
 				}
 				
 			});
+
+		},
+
+		setClasses: function(){
+			this.$classes.empty();
+			var regClasses = [];
+
+			Classes.each(function(oneClass){
+				regClasses.push(oneClass.toJSON());
+			}, this);
+
+			this.$classes.html(this.classesTpl({
+				regClasses: regClasses
+			}));
+	
+		},
+
+		getStreams: function(){
+
+			var classID = $("#class_id").val();
+			var regStreams = [];
+			var streams = Streams.where({
+				class_id: classID
+			});
+
+			$.each(streams, function(key, oneStream){
+				regStreams.push(oneStream.toJSON());
+			});			
+
+			this.$streams.html(this.streamsTpl({
+				regStreams: regStreams
+			}));
 
 		}
 		

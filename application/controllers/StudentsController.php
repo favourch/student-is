@@ -16,6 +16,8 @@ use Models\UserModel;
 use Models\TokenModel;
 use Models\ClientModel;
 use Models\StudentModel;
+use Models\StreamModel;
+use Models\ClassModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 
@@ -72,7 +74,8 @@ class StudentsController extends BaseController {
 				'sex' => $student->sex,
 				'nationality' => $student->nationality,
 				'doa' => $student->doa,
-				'class' => $student->class,
+				'class_id' => $student->class_id,
+				'stream_id' => $student->stream_id,
 				'address' => $student->address,
 				'code' => $student->code,
 				'town' => $student->town,
@@ -106,7 +109,6 @@ class StudentsController extends BaseController {
 					'sex' => $studentData->sex,
 					'nationality' => $studentData->nationality,
 					'doa' => $studentData->doa,
-					'class' => $studentData->class,
 					'address' => $studentData->address,
 					'code' => $studentData->code,
 					'town' => $studentData->town,
@@ -132,6 +134,30 @@ class StudentsController extends BaseController {
 
 		}
 
+	}
+
+	/** 
+	 * This method returns a list of all streams for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return void
+	 */
+	public function getStreams(){
+		$streams = StreamModel::where('client_id = ?', $this->client_id)
+								->all();
+		View::renderJSON($streams->result_array());
+	}	
+
+	/** 
+	 * This method returns a list of all classes for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return void
+	 */
+	public function getClasses(){
+		$classes = ClassModel::where('client_id = ?', $this->client_id)
+								->all();
+		View::renderJSON($classes->result_array());
 	}
 	
 }

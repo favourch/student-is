@@ -13,7 +13,7 @@
 				});	
 			});			
 			$(function(){
-				$('#doa').datepicker({
+				$('.doa').datepicker({
 					changeMonth:true,
 					changeYear:true,
 					yearRange: "-100:+0",
@@ -27,7 +27,7 @@
 					<!-- first-column col-lg-6 -->
 					<div class="col-lg-12">
 						<p class="lead">Add a New Student</p>
-						<p class="alert alert-error error-message" style="display:none;"></p>
+						<p class="alert alert-danger error-message" style="display:none;"></p>
 						<p class="alert alert-success success-message" style="display:none;"></p>
 					</div>
 					<div class="col-lg-12">				
@@ -37,6 +37,8 @@
 							
 							<hr>
 							<p class="lead">Personal Information</p>
+							<input type="text" id="reg_number" class="form-control" required placeholder="Registration Number">
+							<br>
 							<input type="text" name="first_name" id="first_name" class="form-control" required placeholder="First Name">
 							<br>
 							<input type="text" name="middle_name" id="middle_name" class="form-control" required placeholder="Middle Name">
@@ -44,7 +46,7 @@
 							<input type="text" name="last_name" id="last_name" class="form-control" required placeholder="Last Name">
 							<br>
 							<input class="hidden" type="text" id="dob" name="dob" />
-							<input type="date" name="datepicker" id="datepicker" class="form-control" placeholder="Date of Birth">
+							<input type="date" id="datepicker" class="form-control" placeholder="Date of Birth">
 							<br>
 							<input type="text" name="pob" id="pob" class="form-control" placeholder="Place of Birth">
 							<br>
@@ -70,9 +72,17 @@
 								<option value="Burundi">Burundi</option>
 							</select>
 							<br>
-							<input type="date" name="doa" id="doa" class="form-control " placeholder="Date of Admission" required>
+							<input type="date" id="doa" class="form-control doa" placeholder="Date of Admission" required>
 							<br>
-							<input type="text" class="form-control" name="class" id="class" placeholder="Class" required>
+							<div id="classes-list">
+								
+							</div>
+							<br>
+							<div id="streams-list">
+								
+							</div>
+							<br>
+							<br>
 						</div>
 						<div class="col-lg-6">
 							<hr>

@@ -1,0 +1,9 @@
+	<% if(regStreams.length > 0) { %>
+		<select class="form-control" id="stream_id" required="">
+			<option>--Select a Stream--</option>
+			<% $.each(regStreams, function(key, oneStream){ %>
+				<option value="<%= oneStream.id %>"><%= oneStream.stream_name %></option>
+			<% }); %>
+		</select>
+	<% } %>
+

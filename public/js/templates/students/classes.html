@@ -1,0 +1,11 @@
+	<% if(regClasses.length == 0) { %>
+		<p class="alert alert-danger">There are no registered classes yet.</p>
+	<% } else { %>
+		<select class="form-control" id="class_id" required="">
+			<option>--Select a Class--</option>
+			<% $.each(regClasses, function(key, oneClass){ %>
+				<option value="<%= oneClass.id %>"><%= oneClass.class_name %></option>
+			<% }); %>
+		</select>
+	<% } %>
+

@@ -1,7 +1,7 @@
 define([
 	'underscore',
 	'backbone',
-	'models/users/class'
+	'models/tmplt/class'
 	], function(_, Backbone, Class){
 	
 	Backbone.emulateHTTP = true;
@@ -12,7 +12,7 @@ define([
 		model: Class,
 		
 		url: function () {
-			return baseURL + "settings/classes";
+			return baseURL + "students/classes";
 		},
 
 		//todos sorted by their original insertion order

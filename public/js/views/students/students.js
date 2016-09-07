@@ -40,7 +40,7 @@ define([
 						data: $.param({ 
 							token: tokenString
 						})
-					});
+					});					
 
 					break;
 				case 'studentnew':

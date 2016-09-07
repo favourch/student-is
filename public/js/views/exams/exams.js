@@ -8,11 +8,11 @@ define([
 	'bootstrap'
 	], function($, _, Backbone, HomeTpl){
 
-	var Academics = Backbone.View.extend({
+	var Exams = Backbone.View.extend({
 
 		el: $(".container-fluid"),
 
-		title: "Academics - Student Information System",
+		title: "Exams - Student Information System",
 
 		template: _.template(HomeTpl),
 
@@ -28,6 +28,6 @@ define([
 		
 	});
 
-	return Academics;
+	return Exams;
 
 });

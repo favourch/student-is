@@ -55,9 +55,9 @@ require([
 	'views/dashboard',
 	'views/students/students',
 	'views/settings/settings',
-	'views/academics'	], function (
+	'views/exams/exams'	], function (
 		Backbone, Router, Login, Home, Signup, About, Contact, 
-		Logout, Admin, Dashboard, Students, Settings, Academics) {
+		Logout, Admin, Dashboard, Students, Settings, Exams) {
 	
 	// Initialize routing and start Backbone.history()
 	var App = new Router();
@@ -98,8 +98,8 @@ require([
 		new Students(page, token);
 	});	
 
-	App.on('route:academics', function(page, token){
-		new Academics(page, token);
+	App.on('route:exams', function(page, token){
+		new Exams(page, token);
 	});
 
 	App.on('route:settings', function(page, token){
