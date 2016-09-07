@@ -17,6 +17,7 @@ use Models\TokenModel;
 use Models\ClientModel;
 use Models\StudentModel;
 use Models\StreamModel;
+use Models\SubjectModel;
 use Models\ClassModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
@@ -159,6 +160,30 @@ class StudentsController extends BaseController {
 								->all();
 		View::renderJSON($classes->result_array());
 	}
-	
+		
+	/** 
+	 * This method returns a list of all subjects for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return void
+	 */
+	public function getSubjects(){
+		$subjects = SubjectModel::where('client_id = ?', $this->client_id)
+								->all();
+		View::renderJSON($subjects->result_array());
+	}
+
+	/** 
+	 * This method returns a list of all exams for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return void
+	 */
+	public function getExams(){
+		$exams = ExamModel::where('client_id = ?', $this->client_id)
+								->all();
+		View::renderJSON($exams->result_array());
+	}
+		
 }
 

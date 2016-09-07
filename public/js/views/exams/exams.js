@@ -13,8 +13,6 @@ define([
 		 
 		initialize: function(page, token){
 			
-			this.$main = $(".container-fluid");
-
 			switch(page){
 
 				case 'entermarks':
