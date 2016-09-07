@@ -1,13 +1,13 @@
 	<% if(regSubjects.length > 0) { %>
 		<select class="form-control" id="subject_id" required="">
-			<option>--Select a Subject--</option>
+			<option>--Subjects--</option>
 			<% $.each(regSubjects, function(key, oneSubject){ %>
 				<option value="<%= oneSubject.id %>"><%= oneSubject.subject_name %></option>
 			<% }); %>
 		</select>
 	<% } else { %>
 		<select class="form-control" id="subject_id" required="">
-			<option>--No streams yet--</option>
+			<option>--No streams--</option>
 		</select>	
 	<% } %>
 

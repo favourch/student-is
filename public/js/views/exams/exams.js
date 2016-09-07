@@ -3,9 +3,8 @@ define([
 	'underscore',
 	'backbone',
 	'collections/tmplt/marks',
-	'views/exams/entermarks',
-	'views/exams/viewmarks',
-	], function($, _, Backbone, MarksCol, enterMarks, viewMarks){
+	'views/exams/entermarks'
+	], function($, _, Backbone, MarksCol, enterMarks){
 
 	var Exams = Backbone.View.extend({
 
@@ -13,6 +12,8 @@ define([
 		 
 		initialize: function(page, token){
 			
+			this.$main = $(".container-fluid");
+
 			switch(page){
 
 				case 'entermarks':

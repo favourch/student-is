@@ -16,7 +16,7 @@ define([
 			'admin/:page/:token' : 'admin',
 			'dashboard/:page/:token' : 'dashboard',
 			'students/:page/:token' : 'students',
-			'exams/:page/:token' : 'academics',
+			'exams/:page/:token' : 'exams',
 			'settings/:page/:token' : 'settings'
 		}
 

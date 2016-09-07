@@ -19,6 +19,7 @@ use Models\StudentModel;
 use Models\StreamModel;
 use Models\SubjectModel;
 use Models\ClassModel;
+use Models\ExamModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 

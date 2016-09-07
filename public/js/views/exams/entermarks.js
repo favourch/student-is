@@ -21,15 +21,13 @@ define([
 		subjectsTpl: _.template(subjectsTpl),
 		examsTpl: _.template(examsTpl),
 
+		tagName: 'div',
+
 		events: {
-			'change #class_id' : 'getStreams',
-			'change #class_id' : 'getSubjects',
-			'change #class_id' : 'getExams'
+			'change #class_id' : 'getStreams'
 		},
 
 		initialize: function(){
-
-			this.$main = this.$(".container-fluid");
 			
 			//fetch list of all classes for this class from the database
 			var self = this;
@@ -65,7 +63,7 @@ define([
 		},
 
 		render: function(){
-			this.$main.html(this.chooseExamTpl());
+			this.$el.html(this.chooseExamTpl());
 			this.$classes = this.$("#classes-list");
 			this.$streams = this.$("#streams-list");
 			this.$subjects = this.$("#subjects-list");
@@ -103,6 +101,9 @@ define([
 				regStreams: regStreams
 			}));
 
+			//update the subjects and exams
+			this.getSubjects().getExams();
+
 		},		
 
 		getSubjects: function(){
@@ -117,9 +118,11 @@ define([
 				regSubjects.push(oneSubject.toJSON());
 			});			
 
-			this.$streams.html(this.subjectsTpl({
+			this.$subjects.html(this.subjectsTpl({
 				regSubjects: regSubjects
 			}));
+
+			return this;
 
 		},
 

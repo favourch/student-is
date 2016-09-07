@@ -54,9 +54,11 @@ require([
 	'views/admin/admin',
 	'views/dashboard',
 	'views/students/students',
-	'views/settings/settings'], function (
+	'views/settings/settings',
+	'views/exams/exams' 
+	], function (
 		Backbone, Router, Login, Home, Signup, About, Contact, 
-		Logout, Admin, Dashboard, Students, Settings) {
+		Logout, Admin, Dashboard, Students, Settings, Exams) {
 	
 	// Initialize routing and start Backbone.history()
 	var App = new Router();

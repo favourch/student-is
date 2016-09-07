@@ -9,10 +9,10 @@ define([
 
 	var SubjectsCollection = Backbone.Collection.extend({
 
-		model: Subejct,
+		model: Subject,
 
 		url: function () {
-			return baseURL + "exams/subjects";
+			return baseURL + "students/subjects";
 		},
 
 		//todos sorted by their original insertion order
