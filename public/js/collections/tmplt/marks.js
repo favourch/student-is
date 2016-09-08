@@ -12,7 +12,7 @@ define([
 		model: Mark,
 		
 		url: function () {
-			return baseURL + "exams/marks";
+			return baseURL + "marks/marks";
 		},
 
 		//todos sorted by their original insertion order

@@ -2,6 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'views/exams/markEntry',
 	'collections/tmplt/classes',
 	'collections/tmplt/streams',
 	'collections/tmplt/subjects',
@@ -12,9 +13,8 @@ define([
 	'text!templates/exams/streams.html',
 	'text!templates/exams/subjects.html',
 	'text!templates/exams/exams.html',
-	'text!templates/exams/marks-entries.html',
-	'text!templates/exams/marks-entry.html'
-	], function($, _, Backbone, Classes, Streams, Subjects, Exams, Marks, chooseExamTpl, classesTpl, streamsTpl, subjectsTpl, examsTpl, entriesTpl, entryTpl){
+	'text!templates/exams/marks-entries.html'
+	], function($, _, Backbone, markEntry, Classes, Streams, Subjects, Exams, Marks, chooseExamTpl, classesTpl, streamsTpl, subjectsTpl, examsTpl, entriesTpl){
 
 	var Student = Backbone.View.extend({
 
@@ -24,7 +24,6 @@ define([
 		subjectsTpl: _.template(subjectsTpl),
 		examsTpl: _.template(examsTpl),
 		entriesTpl: _.template(entriesTpl),
-		entryTpl: _.template(entryTpl),
 
 		tagName: 'div',
 
@@ -36,6 +35,8 @@ define([
 		initialize: function(){
 			
 			this.$main = $(".container-fluid");
+			this.listenTo(Marks, 'reset', this.addAllMarks);
+
 			//fetch list of all classes for this class from the database
 			var self = this;
 			Classes.fetch({
@@ -178,19 +179,16 @@ define([
 			var exs = Exams.where({
 				class_id: $("#class_id").val()
 			});
-			var exms = [];
-			$.each(exs, function(key, ex){
-				exms.push(ex.toJSON());
-			});
-			selected.exams = exms;
 
 			//load the template into view
 			this.$main.html(this.entriesTpl({
 				selected: selected
 			}));
 
+			this.$marksList = $("#marks-entries-list");
+
 			//fetch the list of students with marks, if they already have
-			var self = this;
+			var that = this;
 			Marks.fetch({
 				data: $.param({ 
 					token: tokenString,
@@ -201,13 +199,31 @@ define([
 					term: selectedOps.term,
 					year: selectedOps.year					
 				}),
-				success: self.loadMarks()
+				reset: true
 			});				
 
 		},
 
-		//display student marks after they are return, with option for entering new
-		loadMarks: function(){
+		addOneMark: function(mark){
+			$('.no-students-yet').hide();
+			var view = new markEntry({
+				model: mark 
+			});			
+			this.$marksList.append(view.render().el);
+		},
+
+		addAllMarks: function(){
+			this.$marksList.empty();
+
+			if(Marks.length == 0) {
+				//there are not classes yet, show the no classes alert
+				$('.no-students-yet').show();
+			}
+			else {
+			//remove the message for no classes yet, since there are classes to add
+				$('.no-students-yet').hide();
+				Marks.each(this.addOneMark, this);
+			}
 			
 		}
 

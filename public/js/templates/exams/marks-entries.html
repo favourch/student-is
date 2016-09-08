@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-lg-8">
 		<h3>Enter Marks</h3>
 		<p class="lead">
 			<%= selected.class.class_name %> <%= selected.stream.stream_name %> <%= selected.term %> <%= selected.year %> <%= selected.subject.subject_name %> <%= selected.exam.exam_name %>
@@ -8,16 +8,15 @@
 			<thead>
 				<th>Student ID</th>
 				<th>Name</th>
-				<% $.each(selected.exams, function(key, exam){ %>
-					<th><%= exam.exam_abbr %></th>
-				<% }); %>
-				<th>Average</th>
+				<th><%= selected.exam.exam_abbr %></th>
 				<th>Grade</th>
 				<th>Remarks</th>
+				<th>Edit</th>
 			</thead>
-			<tbody id="exams-entries-list">
+			<tbody id="marks-entries-list">
 				
 			</tbody>
 		</table>
+		<p class="alert alert-danger no-students-yet" style="display:none;"> There are no students yet.</p>
 	</div>
 </div>

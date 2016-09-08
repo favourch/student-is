@@ -3372,3 +3372,254 @@ Drivers\Routes\RouteException : The class Controllers\Login.logout.a4b18fdfe67a1
 Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
 #1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
 #2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.ba473f70702fb7aee61a3da067e4cff695651b70Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_ERROR Call to a member function num_rows() on a non-object in C:\xampp\htdocs\student-is\application\controllers\MarksController.php on line (78) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to a membe...', 'C:\\xampp\\htdocs...', 78)
+#1 [internal function]: shut()
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.3163067f1c7ec0658ee7b81a01a2153b79b522c7Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.c5db5aee00cbd7e9dc91c30c227c82ae556e94b8Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.93dadae66cf306c81737166d9dc697b889e258daController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.08cbb4c06e9467847d5b75cde3d2ce057f8a4239Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.6604b311a8e301ea8fa1a25a8e5c913b7cd8dec3Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.f0baacb0e7acca0b8f564c741d391dfeb4cb71daController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.60fb1d922f98b6d894c42036ce7d56a59eca68efController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.f8210e1c62ef27a7f24b0560329a2ad3a93d6cd0Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.7464f8e3a25d2bd47c6da3f5445d6a8bb6cf7d2dController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.69fa60a34d7591cdade45e9c95f240d46894f07bController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\CssController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.96262e12a18b27f2374b48f3eb83510356d1c592Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.aa44595d3e436c7695c556f57a0b12bdd653ffacController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.31b323fde911b11fa9c0b77e8bac9190a4706934Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : Access to undefined method Controllers\HomeController->Index C:\xampp\htdocs\student-is\system\start.php(95) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.aedf82b04aa7e0c60f74f955e773a13a06e2931aController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.7e299b2a2c33e0536f48eaf57eed8113280a177aController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.ed7583314bc5d729386b3072af2f506a2daa3e2bController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\Login.logout.52a20fb7e72b0884f5796909962292904f719d18Controller is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_NOTICE Undefined variable: from in C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php on line (190) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(190): handler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 190, Array)
+#1 C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(89): Drivers\Database\MySQL\MySQLQuery->setTable('students')
+#2 C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(273): Drivers\Models\BaseModelClass::setTable()
+#3 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(93): Drivers\Models\BaseModelClass::all()
+
+E_ERROR Call to undefined method mysqli_result::mysql_result() in C:\xampp\htdocs\student-is\application\controllers\HomeController.php on line (50) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 50)
+#1 [internal function]: shut()
+#2 {main}
+Drivers\Database\MySQL\MySQLException Unknown column 'token.client_id' in 'on clause'<span class="query-string"> (SELECT users.id, users.first_name, users.client_id, tokens.id, tokens.token FROM users LEFT JOIN tokens ON users.client_id = token.client_id LIMIT 3) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(1269) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(395): Drivers\Database\MySQL\MySQLQuery->rawQuery('SELECT users.id...')
+#1 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(49): Drivers\Models\BaseModelClass::rawQuery('SELECT users.id...')
+#2 [internal function]: Controllers\HomeController->getMarks()
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+Drivers\Database\MySQL\MySQLException You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LEFT JOIN tokens ON users.client_id = tokens.client_id LIMIT 100' at line 1<span class="query-string"> (SELECT users.id, users.first_name, users.client_id, tokens.client_id, tokens.id, tokens.token FROM users WHERE users.activated = true LEFT JOIN tokens ON users.client_id = tokens.client_id LIMIT 100) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(1269) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(395): Drivers\Database\MySQL\MySQLQuery->rawQuery('SELECT users.id...')
+#1 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(49): Drivers\Models\BaseModelClass::rawQuery('SELECT users.id...')
+#2 [internal function]: Controllers\HomeController->getMarks()
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+Drivers\Database\MySQL\MySQLException You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LEFT JOIN tokens ON users.client_id = tokens.client_id LIMIT 100' at line 1<span class="query-string"> (SELECT users.id, users.first_name, users.client_id, tokens.client_id, tokens.id, tokens.token FROM users WHERE users.activated = 'true' LEFT JOIN tokens ON users.client_id = tokens.client_id LIMIT 100) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(1269) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(395): Drivers\Database\MySQL\MySQLQuery->rawQuery('SELECT users.id...')
+#1 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(49): Drivers\Models\BaseModelClass::rawQuery('SELECT users.id...')
+#2 [internal function]: Controllers\HomeController->getMarks()
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+E_PARSE syntax error, unexpected 'true' (T_STRING) in C:\xampp\htdocs\student-is\application\controllers\HomeController.php on line (49) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(4, 'syntax error, u...', 'C:\\xampp\\htdocs...', 49)
+#1 [internal function]: shut()
+#2 {main}
+E_PARSE syntax error, unexpected 'users' (T_STRING) in C:\xampp\htdocs\student-is\application\controllers\HomeController.php on line (49) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(4, 'syntax error, u...', 'C:\\xampp\\htdocs...', 49)
+#1 [internal function]: shut()
+#2 {main}
+Drivers\Database\MySQL\MySQLException You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LEFT JOIN tokens ON users.client_id = tokens.client_id LIMIT 100' at line 1<span class="query-string"> (SELECT users.id, users.first_name, users.client_id, tokens.client_id, tokens.id, tokens.token FROM users WHERE users.activated = "true" LEFT JOIN tokens ON users.client_id = tokens.client_id LIMIT 100) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(1269) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(395): Drivers\Database\MySQL\MySQLQuery->rawQuery('SELECT users.id...')
+#1 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(49): Drivers\Models\BaseModelClass::rawQuery('SELECT users.id...')
+#2 [internal function]: Controllers\HomeController->getMarks()
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+Drivers\Database\MySQL\MySQLException You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LEFT JOIN tokens ON users.client_id = tokens.client_id LIMIT 100' at line 1<span class="query-string"> (SELECT users.id, users.first_name, users.client_id, tokens.client_id, tokens.id, tokens.token FROM users WHERE users.activated = 0 LEFT JOIN tokens ON users.client_id = tokens.client_id LIMIT 100) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(1269) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(395): Drivers\Database\MySQL\MySQLQuery->rawQuery('SELECT users.id...')
+#1 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(49): Drivers\Models\BaseModelClass::rawQuery('SELECT users.id...')
+#2 [internal function]: Controllers\HomeController->getMarks()
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+E_WARNING Missing argument 3 for Drivers\Models\BaseModelClass::leftJoin(), called in C:\xampp\htdocs\student-is\application\controllers\HomeController.php on line 50 and defined in C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php on line (132) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(132): handler(2, 'Missing argumen...', 'C:\\xampp\\htdocs...', 132, Array)
+#1 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(50): Drivers\Models\BaseModelClass::leftJoin('tokens', 'users.client_id...')
+#2 [internal function]: Controllers\HomeController->getMarks()
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+Drivers\Database\MySQL\MySQLException Unknown column 'users.middle_name' in 'field list'<span class="query-string"> (SELECT   users.id, users.middle_name, tokens.* FROM users  LEFT JOIN tokens ON users.client_id = tokens.client_id    LIMIT 10) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(1266) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(290): Drivers\Database\MySQL\MySQLQuery->all()
+#1 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(52): Drivers\Models\BaseModelClass::all()
+#2 [internal function]: Controllers\HomeController->getMarks()
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+Drivers\Database\MySQL\MySQLException You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ON 0 WHERE users.activated = 1 AND tokens.user_role = '0'  LIMIT 100' at line 1<span class="query-string"> (SELECT   users.id, users.first_name, users.email, tokens.token, tokens.logout, clients.* FROM users LEFT JOIN 0 ON 0 WHERE users.activated = 1 AND tokens.user_role = '0'  LIMIT 100) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(1217) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(272): Drivers\Database\MySQL\MySQLQuery->all()
+#1 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(55): Drivers\Models\BaseModelClass::all()
+#2 [internal function]: Controllers\HomeController->getMarks()
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+Drivers\Database\MySQL\MySQLException You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ON 0 WHERE users.activated = 1 AND tokens.user_role = '0'  LIMIT 100' at line 1<span class="query-string"> (SELECT   users.id, users.first_name, users.email, tokens.token, tokens.logout, clients.* FROM users  LEFT JOIN 0 ON 0 WHERE users.activated = 1 AND tokens.user_role = '0'  LIMIT 100) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(1219) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(272): Drivers\Database\MySQL\MySQLQuery->all()
+#1 C:\xampp\htdocs\student-is\application\controllers\HomeController.php(55): Drivers\Models\BaseModelClass::all()
+#2 [internal function]: Controllers\HomeController->getMarks()
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+
+E_PARSE syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php on line (523) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(4, 'syntax error, u...', 'C:\\xampp\\htdocs...', 523)
+#1 [internal function]: shut()
+#2 {main}
+E_PARSE syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php on line (523) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(4, 'syntax error, u...', 'C:\\xampp\\htdocs...', 523)
+#1 [internal function]: shut()
+#2 {main}
+E_PARSE syntax error, unexpected '$joinTables' (T_VARIABLE) in C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php on line (518) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(4, 'syntax error, u...', 'C:\\xampp\\htdocs...', 518)
+#1 [internal function]: shut()
+#2 {main}
+E_PARSE syntax error, unexpected '$joinTables' (T_VARIABLE) in C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php on line (518) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(4, 'syntax error, u...', 'C:\\xampp\\htdocs...', 518)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Call to undefined method stdClass::query_string() in C:\xampp\htdocs\student-is\application\controllers\HomeController.php on line (58) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 58)
+#1 [internal function]: shut()
+#2 {main}
+E_ERROR Call to undefined method stdClass::result() in C:\xampp\htdocs\student-is\application\controllers\HomeController.php on line (58) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to undefin...', 'C:\\xampp\\htdocs...', 58)
+#1 [internal function]: shut()
+#2 {main}

@@ -1,0 +1,11 @@
+
+	<td><%= reg_number %></td>
+	<td><%= first_name %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name %></td>
+	<td><span class="stream-name hidden"><%= score %></span><form class="save-marks" method="post"><input type="text" class="form-control mark-input" value="<%= score %>"><input type="submit" hidden=""></form>
+	</td>
+	<td>A</td>
+	<td>Good</td>
+	<td>
+		<button class="btn btn-success btn-sm editMark"><i class="fa fa-edit fa-lg"></i> Edit</button>
+		<button class="btn btn-primary btn-sm editDone hidden"><i class="fa fa-check fa-lg"></i> Done</button>
+	</td>
