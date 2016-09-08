@@ -13,7 +13,9 @@
 
 use Drivers\Templates\View;
 use Libraries\CronLibrary\SampleCronController;
-use Models\UsersModel;
+use Models\UserModel;
+use Models\StudentModel;
+use Models\MarkModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 
@@ -35,6 +37,5 @@ class HomeController extends BaseController {
 		View::render('home.index',$data);
 
 	}
-	
-}
 
+}
