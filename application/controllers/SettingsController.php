@@ -405,6 +405,7 @@ class SettingsController extends BaseController {
 			$newExam = array(
 				'exam_name' => $examData->exam_name,
 				'exam_abbr' => $examData->exam_abbr,
+				'exam_out_of' => $examData->exam_out_of,
 				'description' => $examData->description,
 				'class_id' => $examData->class_id,
 				'client_id' => $this->client_id
@@ -424,7 +425,8 @@ class SettingsController extends BaseController {
 				$updateExam = array(
 					'exam_name' => $examData->exam_name,
 					'exam_abbr' => $examData->exam_abbr,
-					'description' => $examData->description
+					'description' => $examData->description,
+					'exam_out_of' => $examData->exam_out_of
 				);
 
 				ExamModel::where('id = ?', $exam_id)
