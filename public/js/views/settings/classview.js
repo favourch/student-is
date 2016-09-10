@@ -233,6 +233,7 @@ define([
 				class_id: $("#class_id").val(),
 				exam_name: $("#new-exam-name").val(),
 				exam_abbr: $("#new-exam-abbr").val(),
+				exam_out_of: $("#new-exam-out-of").val(),
 				description: $("#new-exam-description").val()
 			};
 
@@ -247,9 +248,10 @@ define([
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
 					
 					//empty the form
-					exam_name: $("#new-exam-name").val('');
-					exam_abbr: $("#new-exam-abbr").val('');
-					description: $("#new-exam-description").val('');
+					$("#new-exam-name").val('');
+					$("#new-exam-abbr").val('');
+					$("#new-exam-out-of").val('');
+					$("#new-exam-description").val('');
 
 					//fade out the modal
 					$("#add_new_exam").modal("hide");
