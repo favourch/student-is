@@ -3,8 +3,9 @@ define([
 	'underscore',
 	'backbone',
 	'collections/tmplt/marks',
-	'views/exams/entermarks'
-	], function($, _, Backbone, MarksCol, enterMarks){
+	'views/exams/entermarks',
+	'views/exams/viewmarks'
+	], function($, _, Backbone, MarksCol, enterMarks, viewMarks){
 
 	var Exams = Backbone.View.extend({
 

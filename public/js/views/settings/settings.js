@@ -5,7 +5,9 @@ define([
 	'views/settings/users',
 	'views/settings/classes',
 	'views/settings/classview'
-	], function($, _, Backbone, usersView, classesView, classView){
+	'views/settings/classview',
+	'views/settings/teachers'
+	], function($, _, Backbone, usersView, classesView, classView, teachersView){
 
 	var Settings = Backbone.View.extend({
 
@@ -34,6 +36,12 @@ define([
 					$("title").html("Class View - " + this.title);
 					//load the classes view
 					var view = new classView(token);
+					break;
+				case 'teachers':
+					//update the page title
+					$("title").html("Teachers - " + this.title);
+					//load the classes view
+					var view = new teachersView(token);
 					break;
 			}
 	       

@@ -1,0 +1,15 @@
+	<td></td>
+	<td><%= reg_number %></td>
+	<td><%= first_name %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name %></td>
+	
+	<% $.each(reg_exams, function(key, reg_exam){ 
+		var score = null;
+		$.each(exams, function(k, exam){ 
+			if(exam.exam_id == reg_exam.id) score = exam.exam_percent;
+		});%>
+		<td><%= score %></td>
+	<% }); %>
+
+	<td><%= average %></td>
+	<td>A</td>
+	<td>Good</td>
