@@ -5,8 +5,10 @@ define([
 	'views/settings/users',
 	'views/settings/classes',
 	'views/settings/classview',
-	'views/settings/teachers'
-	], function($, _, Backbone, usersView, classesView, classView, teachersView){
+	'views/settings/teachers',
+	'views/settings/grades',
+	'views/settings/terms',
+	], function($, _, Backbone, usersView, classesView, classView, teachersView, gradesView, termsView){
 
 	var Settings = Backbone.View.extend({
 
@@ -42,7 +44,14 @@ define([
 					//load the classes view
 					var view = new teachersView(token);
 					break;
-				case 'grading'
+				case 'settings':
+					//update the page title
+					$("title").html("Settings - " + this.title);
+					$(".container-fluid").empty();
+					//load the classes view
+					var viewT = new termsView(token);
+					var viewG = new gradesView(token);
+					break;
 			}
 	       
 		}
