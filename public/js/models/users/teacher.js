@@ -9,7 +9,8 @@ define([
 			teacher_title: '',
 			first_name: '',
 			last_name: '',
-			client_id: 0
+			client_id: 0,
+			date_created: null
 		}
 
 	});

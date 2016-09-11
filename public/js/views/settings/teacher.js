@@ -13,6 +13,7 @@ define([
 
 		events: {
 			'click .editTeacher' : 'editTeacher',
+			'dblclick .editInfo' : 'editTeacher',
 			'click .editDone' : 'editDone',
 			'click .deleteTeacher' : 'deleteTeacher'
 		},
@@ -29,7 +30,7 @@ define([
 			//get the handles for the input fields 
 			this.$fnameLabel = this.$(".fname");
 			this.$lnameLabel = this.$(".lname");
-			this.$titleLabel = this.$(".teacher-title");
+			this.$titleLabel = this.$(".title");
 
 			this.$fnameInput = this.$(".fname-input");
 			this.$lnameInput = this.$(".lname-input");
@@ -38,7 +39,7 @@ define([
 			this.$editTeacher = this.$(".editTeacher");
 			this.$editDone = this.$(".editDone");
 
-			return this;		
+			return this;		 
 		},
 
 		editTeacher: function(){

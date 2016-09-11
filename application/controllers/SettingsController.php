@@ -20,6 +20,8 @@ use Models\StudentModel;
 use Models\ExamModel;
 use Models\SubjectModel;
 use Models\StreamModel;
+use Models\TeacherModel;
+use Models\GradeModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 
@@ -442,6 +444,142 @@ class SettingsController extends BaseController {
 		}		
 
 	}	
+
+	/**
+	 * This methods gets all teachers in the database for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return Object JSON
+	 */
+	public function getTeachers(){
+		$teachers = TeacherModel::where('client_id = ?', $this->client_id)
+							->all();
+
+		View::renderJSON($teachers->result_array());	
+		
+	}	
+
+	/**
+	 * This methods creates/updates/deletes all teachers in the database for this client
+	 * @before authClientUser
+	 * @param int $class_id The id of the class to update/delete
+	 * @return Object JSON
+	 */
+	public function postTeachers($teacher_id){
+		
+		//check for a CREATE request
+		if(!$teacher_id){
+
+			$teacher = json_decode($_POST['model']);		
+			$newTeacher = array(
+				'teacher_title' => $teacher->teacher_title,
+				'first_name' => $teacher->first_name,
+				'last_name' => $teacher->last_name,
+				'client_id' => $this->client_id
+			);
+
+			$create = TeacherModel::save($newTeacher);
+			$new = TeacherModel::getById($create->lastInsertId());
+			$teacher = $new->result_array()[0];
+
+			View::renderJSON($teacher);
+		}
+		else{
+			//this is an UPDATE request
+			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
+				$teacherData = json_decode($_POST['model']);
+				$updateTeacher = array(
+					'teacher_title' => $teacherData->teacher_title,
+					'first_name' => $teacherData->first_name,
+					'last_name' => $teacherData->last_name
+				);
+
+				TeacherModel::where('id = ?', $teacher_id)
+							->save($updateTeacher);
+
+			}
+			//this is a DELETE request
+			else{
+				//delete the class
+				TeacherModel::where('id = ?', $teacher_id)
+						->delete();		
+
+			}	
+
+		}	
+
+	}
+
+	/**
+	 * This methods gets grading for all classes in the database for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return Object JSON
+	 */
+	public function getGrades(){
+
+		//get a list of all the available grading
+		$grades = GradeModel::where('client_id = ?', $this->client_id)
+								->all();
+		View::renderJSON($grades->result_array());	
+		
+	}	
+
+	/**
+	 * This methods creates/updates/deletes all grades in the database for this client
+	 * @before authClientUser
+	 * @param int $class_id The id of the class to update/delete
+	 * @return Object JSON
+	 */
+	public function postTeachers($grade_id){
+		
+		//check for a CREATE request
+		if(!$grade_id){
+
+			$grade = json_decode($_POST['model']);		
+			$newGrade = array(
+				'class_id' => $grade->class_id,
+				'client_id' => $this->client_id,
+				'from_score' => $grade->from_score,
+				'to_score' => $grade->to_score,
+				'letter_grade' => $grade->letter_grade,
+				'remarks' => $grade->remarks
+			);
+
+			$create = GradeModel::save($newGrade);
+			$new = GradeModel::getById($create->lastInsertId());
+			$grade = $new->result_array()[0];
+
+			View::renderJSON($grade);
+		}
+		else{
+			//this is an UPDATE request
+			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
+				$gradeData = json_decode($_POST['model']);
+				$updateGrade = array(
+					'class_id' => $grade->class_id,
+					'client_id' => $this->client_id,
+					'from_score' => $grade->from_score,
+					'to_score' => $grade->to_score,
+					'letter_grade' => $grade->letter_grade,
+					'remarks' => $grade->remarks
+				);
+
+				GradeModel::where('id = ?', $grade_id)
+							->save($updateGrade);
+
+			}
+			//this is a DELETE request
+			else{
+				//delete the class
+				GradeModel::where('id = ?', $grade_id)
+						->delete();		
+
+			}	
+
+		}	
+
+	}
 
 }
 

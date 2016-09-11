@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'collections/users/teacher',
+	'collections/users/teachers',
 	'views/settings/teacher',
 	'text!templates/settings/teachers.html',
 	'bootstrap'
@@ -83,7 +83,7 @@ define([
 		addOneTeacher: function(teacher){
 			//remove the message for no teachers yet, since there is a teacher to add
 			$('.no-teachers-yet').hide();
-			var view = new teacherView({
+			var view = new TeacherView({
 				model: teacher 
 			});
 			this.$teachersList.append(view.render().el);

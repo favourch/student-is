@@ -1,10 +1,10 @@
 	<td><input type="checkbox" class="form-control"></td>
-	<td><span class="teacher-title"><%= teacher_title %></span><input type="text" class="form-control hidden title-input" value="<%= teacher_title %>"></td>
-	<td><span class="fname"><%= first_name %></span><input type="text" class="form-control hidden fname-input" value="<%= first_name %>"></td>
-	<td><span class="lname"><%= last_name %></span><input type="text" class="form-control hidden lname-input" value="<%= last_name %>"></td>
+	<td><span class="title editInfo" ><%= teacher_title %></span><input type="text" class="form-control hidden title-input" value="<%= teacher_title %>"></td>
+	<td><span class="fname editInfo"><%= first_name %></span><input type="text" class="form-control hidden fname-input" value="<%= first_name %>"></td>
+	<td><span class="lname editInfo"><%= last_name %></span><input type="text" class="form-control hidden lname-input" value="<%= last_name %>"></td>
 	<td><%= date_created %></td>
 	<td>
-		<button class="btn btn-success btn-sm editUser"><i class="fa fa-edit fa-lg"></i> Edit</button>
+		<button class="btn btn-success btn-sm editTeacher"><i class="fa fa-edit fa-lg"></i> Edit</button>
 		<button class="btn btn-primary btn-sm editDone hidden"><i class="fa fa-check fa-lg"></i> Done</button>
 	</td>
-	<td><button class="btn btn-danger btn-sm deleteUser" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</button></td>
+	<td><button class="btn btn-danger btn-sm deleteTeacher" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</button></td>

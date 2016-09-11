@@ -4,7 +4,6 @@ define([
 	'backbone',
 	'views/settings/users',
 	'views/settings/classes',
-	'views/settings/classview'
 	'views/settings/classview',
 	'views/settings/teachers'
 	], function($, _, Backbone, usersView, classesView, classView, teachersView){
