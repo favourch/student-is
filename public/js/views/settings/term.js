@@ -2,19 +2,19 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'text!templates/settings/class.html'
-	], function($, _, Backbone, classTpl){
+	'text!templates/settings/term.html'
+	], function($, _, Backbone, termTpl){
 
-	var Class = Backbone.View.extend({
+	var Term = Backbone.View.extend({
 
 		tagName: 'tr',
 
-		template: _.template(classTpl),
+		template: _.template(termTpl),
 
 		events: {
-			'click .editClass' : 'editClass',
+			'click .editTerm' : 'editTerm',
 			'click .editDone' : 'editDone',
-			'click .deleteClass' : 'deleteClass'
+			'click .deleteTerm' : 'deleteTerm'
 		},
 
 		initialize: function(){
@@ -28,52 +28,70 @@ define([
 			this.$el.html(this.template(this.model.toJSON()));
 			
 			//get the handles for the input fields 
-			this.$nameLabel = this.$(".class-name");
-			this.$nameInput = this.$(".class-name-input");
+			this.$nameLabel = this.$(".term-name");
+			this.$abbrLabel = this.$(".term-abbr");
+			this.$startLabel = this.$(".term-start");
+			this.$endLabel = this.$(".term-end");
 
-			this.$editClass = this.$(".editClass");
+			this.$nameInput = this.$(".term-name-input");
+			this.$abbrInput = this.$(".term-abbr-input");
+			this.$startInput = this.$(".term-start-input");
+			this.$endInput = this.$(".term-end-input");
+
+			this.$editTerm = this.$(".editTerm");
 			this.$editDone = this.$(".editDone");
 
 			return this;
 
 		},
 		
-		editClass: function(){
+		editTerm: function(){
 
 			//toggle visibility 
 			this.$nameLabel.addClass("hidden");
+			this.$abbrLabel.addClass("hidden");
+			this.$startLabel.addClass("hidden");
+			this.$endLabel.addClass("hidden");
+
 			this.$nameInput.removeClass("hidden");
+			this.$abbrInput.removeClass("hidden");
+			this.$startInput.removeClass("hidden");
+			this.$endInput.removeClass("hidden");
 
 			this.$nameInput.focus();
-			this.$editClass.addClass("hidden");
+			this.$editTerm.addClass("hidden");
 			this.$editDone.removeClass("hidden");
 		},		
 
 		editDone: function(){
 			//toggle visibility 
 			this.$nameLabel.removeClass("hidden");
-			this.$nameInput.addClass("hidden");
+			this.$abbrLabel.removeClass("hidden");
+			this.$startLabel.removeClass("hidden");
+			this.$endLabel.removeClass("hidden");
 
-			this.$editClass.removeClass("hidden");
+			this.$nameInput.addClass("hidden");
+			this.$abbrInput.addClass("hidden");
+			this.$startInput.addClass("hidden");
+			this.$endInput.addClass("hidden");
+
+			this.$editTerm.removeClass("hidden");
 			this.$editDone.addClass("hidden");
 
-			//check the new values
-			var name = this.$nameInput.val().trim();
+			this.model.save({
+				term_name: this.$nameInput.val().trim(),
+				term_abbr: this.$abbrInput.val().trim(),
+				start_date: this.$startInput.val().trim(),
+				end_date: this.$endInput.val().trim()
+			},{
+				url: baseURL + 'settings/terms/' + this.model.get('id') + '?token=' + tokenString,
+			});
 
-			//ensure a name and abbreviation are provided
-			if (name) {
-				this.model.save({
-					class_name: name
-				},{
-					url: baseURL + 'settings/classes/' + this.model.get('id') + '?token=' + tokenString,
-				});
-
-				this.model.trigger('change');
-			} 
+			this.model.trigger('change');
 
 		},
 
-		deleteClass: function(){
+		deleteTerm: function(){
 			this.model.destroy({
 				data: $.param({ 
 					token: tokenString
@@ -83,6 +101,6 @@ define([
 
 	});
 
-	return Class;
+	return Term;
 
 });

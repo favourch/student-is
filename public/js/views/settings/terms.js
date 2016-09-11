@@ -3,31 +3,31 @@ define([
 	'underscore',
 	'backbone',
 	'collections/users/terms',
-	'views/settings/class',
-	'text!templates/settings/classes.html',
+	'views/settings/term',
+	'text!templates/settings/terms.html',
 	'bootstrap'
-	], function($, _, Backbone, ClassesCol, ClassView, classesTpl){
+	], function($, _, Backbone, TermsCol, TermView, termsTpl){
 
-	var Classes = Backbone.View.extend({
+	var Terms = Backbone.View.extend({
 
 		tagName: 'div',
 
-		template: _.template(classesTpl),
+		template: _.template(termsTpl),
 
 		events: {
-			'submit #add-new-class' : 'addClassPost'
+			'submit #add-new-term' : 'addTermPost'
 		},
 
 		initialize: function(){
 
-			$(".container-fluid").html(this.$el.html(this.template()));
+			$(".container-fluid").append(this.$el.html(this.template()));
 			//define the table reference to use for adding individual classes
-			this.$classesList = this.$("#classes-table");
+			this.$termsList = this.$("#terms-table");
 			
-			this.listenTo(ClassesCol, 'add', this.addOneClass);
-			this.listenTo(ClassesCol, 'reset', this.addAllClasses);
+			this.listenTo(TermsCol, 'add', this.addOneTerm);
+			this.listenTo(TermsCol, 'reset', this.addAllTerms);
 
-			ClassesCol.fetch({
+			TermsCol.fetch({
 				reset: true,
 				data: $.param({ 
 					token: tokenString
@@ -36,30 +36,34 @@ define([
 
 		},
 
-		addClassPost: function(evt){
+		addTermPost: function(evt){
 
 			evt.preventDefault(); 
-			var newClass = {
-				class_name: $("#new-class-name").val(),
-				description: $("#class-description").val()
+			var newTerm = {
+				term_name: $("#new-term-name").val(),
+				term_abbr: $("#new-term-abbr").val(),
+				start_date: $("#new-term-start").val(),
+				end_date: $("#new-term-end").val()
 			};
 
 			$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Saving...');
 			$(".error-message").hide(200);
 			$(".success-message").hide(200);
 
-			ClassesCol.create(newClass, {
-				url: baseURL + 'settings/classes?token=' + tokenString,
+			TermsCol.create(newTerm, {
+				url: baseURL + 'settings/terms?token=' + tokenString,
 				success: function(){
-					$(".success-message").html("Class added successfully!").show(400);
+					$(".success-message").html("Term added successfully!").show(400);
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
 					
 					//empty the form
-					$("#new-class-name").val('');
-					$("#class-description").val('');				
+					$("#new-term-name").val('');
+					$("#new-term-abbr").val('');
+					$("#new-term-start").val('');
+					$("#new-term-end").val('');
 
 					//fade out the modal
-					$("#add_new_class").modal("hide");
+					$("#add_new_term").modal("hide");
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 				    
@@ -76,32 +80,32 @@ define([
 
 		},
 
-		addOneClass: function(Class){
-			//remove the message for no classes yet, since there is a class to add
-			$('.no-classes-yet').hide();
-			var view = new ClassView({
-				model: Class 
+		addOneTerm: function(Term){
+			//remove the message for no terms yet, since there is a term to add
+			$('.no-terms-yet').hide();
+			var view = new TermView({
+				model: Term 
 			});
-			this.$classesList.append(view.render().el);
+			this.$termsList.append(view.render().el);
 		},
 
-		addAllClasses: function(){
-			this.$classesList.empty();
+		addAllTerms: function(){
+			this.$termsList.empty();
 
-			if(ClassesCol.length === 0) {
+			if(TermsCol.length === 0) {
 				//there are not classes yet, show the no classes alert
 				$('.no-classes-yet').show();
 			}
 			else {
 			//remove the message for no classes yet, since there are classes to add
 				$('.no-classes-yet').hide();
-				ClassesCol.each(this.addOneClass, this);
+				TermsCol.each(this.addOneTerm, this);
 			}
 			
 		}
 
 	});
 
-	return Classes;
+	return Terms;
 
 });
