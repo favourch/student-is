@@ -22,6 +22,7 @@ use Models\SubjectModel;
 use Models\StreamModel;
 use Models\TeacherModel;
 use Models\GradeModel;
+use Models\TermModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 
@@ -462,7 +463,7 @@ class SettingsController extends BaseController {
 	/**
 	 * This methods creates/updates/deletes all teachers in the database for this client
 	 * @before authClientUser
-	 * @param int $class_id The id of the class to update/delete
+	 * @param int $teacher_id The id of the teacher to update/delete
 	 * @return Object JSON
 	 */
 	public function postTeachers($teacher_id){
@@ -528,10 +529,10 @@ class SettingsController extends BaseController {
 	/**
 	 * This methods creates/updates/deletes all grades in the database for this client
 	 * @before authClientUser
-	 * @param int $class_id The id of the class to update/delete
+	 * @param int $grade_id The id of the grade to update/delete
 	 * @return Object JSON
 	 */
-	public function postTeachers($grade_id){
+	public function postGrades($grade_id){
 		
 		//check for a CREATE request
 		if(!$grade_id){
@@ -557,12 +558,12 @@ class SettingsController extends BaseController {
 			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
 				$gradeData = json_decode($_POST['model']);
 				$updateGrade = array(
-					'class_id' => $grade->class_id,
+					'class_id' => $gradeData->class_id,
 					'client_id' => $this->client_id,
-					'from_score' => $grade->from_score,
-					'to_score' => $grade->to_score,
-					'letter_grade' => $grade->letter_grade,
-					'remarks' => $grade->remarks
+					'from_score' => $gradeData->from_score,
+					'to_score' => $gradeData->to_score,
+					'letter_grade' => $gradeData->letter_grade,
+					'remarks' => $gradeData->remarks
 				);
 
 				GradeModel::where('id = ?', $grade_id)
@@ -573,6 +574,75 @@ class SettingsController extends BaseController {
 			else{
 				//delete the class
 				GradeModel::where('id = ?', $grade_id)
+						->delete();		
+
+			}	
+
+		}	
+
+	}
+
+	/**
+	 * This methods gets grading for all classes in the database for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return Object JSON
+	 */
+	public function getTerms(){
+
+		//get a list of all the available grading
+		$terms = TermModel::where('client_id = ?', $this->client_id)
+								->all();
+		View::renderJSON($terms->result_array());	
+		
+	}	
+
+	/**
+	 * This methods creates/updates/deletes all terms in the database for this client
+	 * @before authClientUser
+	 * @param int $term_id The id of the term to update/delete
+	 * @return Object JSON
+	 */
+	public function postTerms($term_id){
+		
+		//check for a CREATE request
+		if(!$term_id){
+
+			$term = json_decode($_POST['model']);		
+			$newTerm = array(
+				'client_id' => $this->client_id,
+				'term_name' => $term->term_name,
+				'term_abbr' => $term->term_abbr,
+				'start_date' => $term->start_date,
+				'end_date' => $term->end_date
+			);
+
+			$create = TermModel::save($newTerm);
+			$new = TermModel::getById($create->lastInsertId());
+			$term = $new->result_array()[0];
+
+			View::renderJSON($term);
+		}
+		else{
+			//this is an UPDATE request
+			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
+				$term = json_decode($_POST['model']);
+				$updateTerm = array(
+					'client_id' => $this->client_id,
+					'term_name' => $term->term_name,
+					'term_abbr' => $term->term_abbr,
+					'start_date' => $term->start_date,
+					'end_date' => $term->end_date
+				);
+
+				TermModel::where('id = ?', $term_id)
+							->save($updateTerm);
+
+			}
+			//this is a DELETE request
+			else{
+				//delete the class
+				TermModel::where('id = ?', $term_id)
 						->delete();		
 
 			}	

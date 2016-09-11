@@ -286,6 +286,7 @@ class MarksController extends BaseController {
 
 		//loop through the marks adding each subject together
 		foreach ($studentsList as $key => $student) {
+			//
 			$studentsList[$key]['exams'] = array();
 			$totalScore = 0;
 			foreach ($subjects as $key => $subject) {

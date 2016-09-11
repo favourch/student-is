@@ -42,6 +42,7 @@ define([
 					//load the classes view
 					var view = new teachersView(token);
 					break;
+				case 'grading'
 			}
 	       
 		}
