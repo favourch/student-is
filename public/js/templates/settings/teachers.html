@@ -1,0 +1,96 @@
+				<!-- .row -->
+				<div class="row">
+					<!-- large column -->
+					<p>Registered Teachers</p>
+					<div class="col-lg-12">			
+						<div class="col-lg-4">
+							<div class="btn-group">
+							  <a class="btn btn-primary" href="#">Actions</a>
+							  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+							    <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+							  </a>
+							  <ul class="dropdown-menu">
+							    <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
+							    <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
+							    <li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>
+							    <li class="divider"></li>
+							    <li><a href="#"><i class="fa fa-unlock"></i> Make admin</a></li>
+							  </ul>
+							</div>	
+						</div>
+
+						<div class="col-lg-4">
+							<!-- Button trigger modal -->
+							<button class="btn btn-small btn-primary" data-toggle="modal" data-target="#add_new_user"><i class="fa fa-plus"></i> Add New Teacher</button>
+						</div>
+
+						<div class="col-lg-4 pull-right">						
+							<div class="input-group col-lg-12">
+							    <input type="text" class="form-control" placeholder="Filter Teachers"/>
+							    <span class="input-group-addon">
+							        <i class="fa fa-search"></i>
+							    </span>
+							</div>
+						</div>
+					</div>
+					<br>
+					<br>
+					<div class="col-lg-12">
+					
+						<table class="table table-bordered table-striped table-hover table-condensed">
+							<thead>
+								<th><input type="checkbox"  class="form-control"></th><th>Title</th><th>First Name</th><th>Last Name</th><th>Date Created</th><th>Edit</th><th>Delete</th>
+							</thead>
+							<tbody id="teachers-list">
+								
+							</tbody>
+						</table>
+						<p class="alert alert-danger no-teachers-yet" style="display:none;"> There are no registered teachers yet.</p>
+					</div>
+					<!-- /.column -->
+				</div>
+				<!-- /.row -->
+
+				<!-- Modals -->
+				
+				<div class="row">
+				<!-- row 2 --> 				
+					<!-- Add New Teachers modal -->
+					<div class="modal fade" id="add_new_teacher" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					   <div class="modal-dialog">
+						  <div class="modal-content">
+							 <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+								<h4 class="modal-title" id="myModalLabel">
+								   Create New Teachers
+								</h4>
+							 </div>
+							 <form action="#" method="post" id="add-new-user">
+							 <div class="modal-body">	
+								
+								<p class="lead">Please fill in the user details below</p>
+								
+								<p class="alert alert-danger error-message" style="display: none;"></p>
+								<p class="alert alert-success success-message" style="display: none;"></p>
+
+								<label for="teacher-title">Title</label>
+								<input type="text" class="form-control" id="teacher-title" required>
+								
+								<label for="first-name">First Name</label>
+								<input type="text" class="form-control" id="first-name" required>
+
+								<label for="last-name">Last Name</label>
+								<input type="text" class="form-control" id="last-name" required>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Cancel</button>
+								<button type="submit" class="btn btn-primary submit-button"><i class="fa fa-fw fa-check"></i> Create </button>
+							</div>
+							</form>
+						  </div>
+						  <!-- /.modal-content -->
+					</div>
+					<!-- /.add new class modal -->	
+				</div>
+				<!-- /.page row -->
