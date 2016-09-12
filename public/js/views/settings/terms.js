@@ -21,9 +21,9 @@ define([
 
 		initialize: function(){
 
-			$(".container-fluid").append(this.$el.html(this.template()));
+			$(".container-fluid").html(this.$el.html(this.template()));
 			//define the table reference to use for adding individual classes
-			this.$termsList = this.$("#terms-table");
+			this.$termsList = this.$("#terms-list");
 			
 			this.listenTo(TermsCol, 'add', this.addOneTerm);
 			this.listenTo(TermsCol, 'reset', this.addAllTerms);
@@ -94,12 +94,12 @@ define([
 			this.$termsList.empty();
 
 			if(TermsCol.length === 0) {
-				//there are not classes yet, show the no classes alert
-				$('.no-classes-yet').show();
+				//there are not terms yet, show the no terms alert
+				$('.no-terms-yet').show();
 			}
 			else {
-			//remove the message for no classes yet, since there are classes to add
-				$('.no-classes-yet').hide();
+			//remove the message for no terms yet, since there are terms to add
+				$('.no-terms-yet').hide();
 				TermsCol.each(this.addOneTerm, this);
 			}
 			
