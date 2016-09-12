@@ -1,0 +1,10 @@
+	<td><input type="checkbox" class="form-control"></td>
+	<td><span class="grade-score"><%= from_score %> - <%= to_score %></span><input type="number" class="form-control hidden grade-from-input" value="<%= from_score %>"><input type="number" class="form-control hidden grade-to-input" value="<%= to_score %>"></td>
+	<td><span class="grade-letter"><%= letter_grade %></span><input type="text" class="form-control hidden grade-letter-input" value="<%= letter_grade %>"></td>
+	<td><span class="grade-remarks"><%= remarks %></span><input type="text" class="form-control hidden grade-remarks-input datepicker" value="<%= remarks %>"></td>
+	<td><span class="grade-created"><%= date_created %></span></td>
+	<td>
+		<button class="btn btn-success btn-sm editGrade"><i class="fa fa-edit fa-lg"></i> Edit</button>
+		<button class="btn btn-primary btn-sm editDone hidden"><i class="fa fa-check fa-lg"></i> Done</button>
+	</td>
+	<td><button class="btn btn-danger btn-sm deleteGrade" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</button></td>
