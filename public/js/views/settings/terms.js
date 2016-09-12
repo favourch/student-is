@@ -5,7 +5,8 @@ define([
 	'collections/users/terms',
 	'views/settings/term',
 	'text!templates/settings/terms.html',
-	'bootstrap'
+	'bootstrap',
+	'jqueryui'
 	], function($, _, Backbone, TermsCol, TermView, termsTpl){
 
 	var Terms = Backbone.View.extend({

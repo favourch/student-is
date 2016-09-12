@@ -37,7 +37,9 @@ define([
 					this.$main.html(view.render().el);
 
 					break;
+				case 'grading':
 
+					break;
 			}
 	       
 		}
