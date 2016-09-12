@@ -10,7 +10,7 @@ define([
 	'jqueryui'
 	], function($, _, Backbone, GradesCol, ClassesCol, GradeView, gradesTpl){
 
-	var Terms = Backbone.View.extend({
+	var Grades = Backbone.View.extend({
 
 		tagName: 'div',
 
@@ -22,17 +22,8 @@ define([
 
 		initialize: function(){
 
-			this.listenTo(GradesCol, 'add', this.addAllGrades);
+			this.listenTo(GradesCol, 'add', this.addOneGrade);
 			this.listenTo(GradesCol, 'reset', this.addAllGrades);
-
-			var self = this;
-			ClassesCol.fetch({
-				reset: true,
-				data: $.param({ 
-					token: tokenString
-				}),
-				success: self.loadGradesView
-			});				
 
 			GradesCol.fetch({
 				reset: true,
@@ -43,16 +34,13 @@ define([
 
 		},
 
-		loadGradesView: function(){
-			var csls = [];
-
-			ClassesCol.each(function(cls){
-				csls.push(cls.toJSON());
-			}, this);
-
-			$(".container-fluid").html(this.$el.html(this.template(csls)));
+		render: function(){
+			
+			this.$el.html(this.template());
 			//define the table reference to use for adding individual grades
 			this.$gradesList = this.$("#grades-list");
+
+			return this;
 			
 		},
 
@@ -60,7 +48,6 @@ define([
 
 			evt.preventDefault(); 
 			var newGrade = {
-				class_id: $("#new-grade-class").val(),
 				from_score: $("#new-grade-from").val(),
 				to_score: $("#new-grade-to").val(),
 				letter_grade: $("#new-grade-letter").val(),
@@ -78,7 +65,6 @@ define([
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
 					
 					//empty the form
-					$("#new-grade-class").val('');
 					$("#new-grade-from").val('');
 					$("#new-grade-to").val('');
 					$("#new-grade-remarks").val('');
@@ -104,7 +90,7 @@ define([
 		addOneGrade: function(Grade){
 			//remove the message for no grades yet, since there is a grade to add
 			$('.no-grades-yet').hide();
-			var view = new gradeView({
+			var view = new GradeView({
 				model: Grade 
 			});
 			this.$gradesList.append(view.render().el);
@@ -120,17 +106,8 @@ define([
 			else {
 				//remove the message for no grades yet, since there are grades to add
 				$('.no-grades-yet').hide();
-				
-				ClassesCol.each(function(cls){
-					var cls = cls.toJSON();
-					//loop thrught the classes adding their grades one at a time
-					var gHead = '<span class="lead">' + cls.class_name + '</span>';
-					gHead += ' <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#add_new_grade"><i class="fa fa-plus"></i> Add New Grade</button>';
-					this.$gradesList.append(gHead);
-
-					var gds = GradesCol.where({class_id: cls.id});
-					gds.each(this.addOneGrade, this);
-				}, this);
+			
+				GradesCol.each(this.addOneGrade, this);
 
 			}
 			

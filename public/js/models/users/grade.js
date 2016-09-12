@@ -10,7 +10,8 @@ define([
 			from_score: 0,
 			to_score: 0,
 			letter_grade: '',
-			remarks: ''
+			remarks: '',
+			date_created: ''
 		}
 
 	});

@@ -46,7 +46,7 @@
 								
 							</tbody>
 						</table>
-						<p class="alert alert-danger no-terms-yet" style="display:none;"> There are no registered grades yet.</p>
+						<p class="alert alert-danger no-grades-yet" style="display:none;"> There are no registered grades yet.</p>
 					</div>
 					<!-- /.column -->
 				</div>
@@ -73,13 +73,6 @@
 								
 								<p class="alert alert-danger error-message" style="display: none;"></p>
 								<p class="alert alert-success success-message" style="display: none;"></p>
-
-								<select id="new-grade-class" class="form-control">
-									<option>--Select a Class</option>
-									<% $.each(classes, function(key, classD){ %>
-										<option value="<%= classD.id %>"><%= classD.class_name %></option>
-									<% }) %>
-								</select>
 								
 								<label for="new-grade-from">From Score</label>
 								<input type="number" class="form-control" id="new-grade-from" required>
