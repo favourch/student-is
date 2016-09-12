@@ -186,5 +186,17 @@ class StudentsController extends BaseController {
 		View::renderJSON($exams->result_array());
 	}
 		
+	/** 
+	 * This method returns a list of all terms for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return void
+	 */
+	public function getTerms(){
+		$terms = TermModel::where('client_id = ?', $this->client_id)
+								->all();
+		View::renderJSON($terms->result_array());
+	}
+		
 }
 
