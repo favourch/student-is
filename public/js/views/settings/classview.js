@@ -5,13 +5,15 @@ define([
 	'collections/users/exams',
 	'collections/users/subjects',
 	'collections/users/streams',
+	'collections/users/teachers',
+	'collections/users/classes',
 	'views/settings/stream',
 	'views/settings/subject',
 	'views/settings/exam',
 	'text!templates/settings/classview.html',
 	'text!templates/settings/classview-head.html',
 	'bootstrap'
-	], function($, _, Backbone, ExamsCol, SubjectsCol, StreamsCol, StreamView, SubjectView, ExamView, classTpl, classviewHead){
+	], function($, _, Backbone, ExamsCol, SubjectsCol, StreamsCol,  Teachers, Classes, StreamView, SubjectView, ExamView, classTpl, classviewHead){
 
 	var ClassView = Backbone.View.extend({
 
@@ -28,10 +30,8 @@ define([
 		},
 
 		initialize: function(classID){
-			
-			$(".container-fluid").html(this.$el.html(this.template({
-				class_id: classID
-			})));
+			//set the class id for this class view
+			this.classID = classID;
 
 			//save reference to thi object
 			var self = this;
@@ -44,18 +44,13 @@ define([
 				},
 				type: 'get',
 				success: function(data){
-					$("#class-view-head").html(self.classviewHead(data));
+					self.renderHead(data);
 				},
 				error: function(error){
 					console.log(error);
 				}
 			});
 
-			//define the table reference to use for adding individual classes
-			this.$examsList = this.$("#exams-list");
-			this.$subjectsList = this.$("#subjects-list");
-			this.$streamsList = this.$("#streams-list");
-			
 			this.listenTo(ExamsCol, 'add', this.addOneExam);
 			this.listenTo(ExamsCol, 'reset', this.addAllExams);
 
@@ -64,6 +59,8 @@ define([
 
 			this.listenTo(StreamsCol, 'add', this.addOneStream);
 			this.listenTo(StreamsCol, 'reset', this.addAllStreams);
+
+			this.listenTo(Teachers, 'reset', this.render);
 
 			ExamsCol.fetch({
 				reset: true,
@@ -89,6 +86,44 @@ define([
 				})
 			});	
 
+			Teachers.fetch({
+				reset: true,
+				data: $.param({ 
+					token: tokenString
+				})
+			});	
+
+		},
+
+		render: function(){
+
+			var teachers = [];
+			Teachers.each(function(teacher){
+				teachers.push(teacher.toJSON());
+			}, this);
+
+			$(".container-fluid").html(this.$el.html(this.template({
+				class_id: classID,
+				teachers: teachers
+			})));	
+
+			//define the table reference to use for adding individual classes
+			this.$examsList = this.$("#exams-list");
+			this.$subjectsList = this.$("#subjects-list");
+			this.$streamsList = this.$("#streams-list");
+			
+		},
+
+		renderHead: function(data){
+			//find the class teacher id
+			var classTeacher = Classes.where({id: this.classID });
+			classTeacher = classTeacher.get('class_teacher');
+
+			//get the class teacher info
+			classTeacher = Teachers.where({id: classTeacher})[0].toJSON();
+			data.classTeacher = classTeacher;
+
+			$("#class-view-head").html(self.classviewHead(data));
 		},
 
 		addStreamPost: function(evt){

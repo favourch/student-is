@@ -119,7 +119,17 @@
 								<input type="text" class="form-control" id="new-stream-abbr" placeholder="Stream Abbr e.g W" required="">
 								<br>
 								<textarea class="form-control" id="new-stream-description" placeholder="Short stream description..."></textarea>
-							 </div>
+								<br>
+								<select id="class_teacher" class="form-control" required="">
+									<% if(teachers.length > 0) { %>
+										<option>--Class Teacher--</option>
+										$.each(teachers, function(teacher){
+											<option  value="<%= teacher.id"> <%= teacher.title %>. <%= teacher.first_name %> <%= teacher.last_name %></option>
+										});
+									} else { %>
+										<option>--No Teachers Yet--</option>
+									<% } %>
+								</select>							 </div>
 							 <div class="modal-footer">
 								<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Cancel</button>
 								<button type="submit" class="btn btn-primary submit-button"><i class="fa fa-fw fa-check"></i> Save </button>
@@ -154,6 +164,17 @@
 								<input type="text" name="class" class="form-control" id="new-subject-abbr" placeholder="Subject Abbr e.g ENG" required="">
 								<br>
 								<textarea class="form-control" id="new-subject-description" placeholder="Short subject description..."></textarea>
+								<br>
+								<select id="class_teacher" class="form-control" required="">
+									<% if(teachers.length > 0) { %>
+										<option>--Subject Teacher--</option>
+										$.each(teachers, function(teacher){
+											<option  value="<%= teacher.id"> <%= teacher.title %>. <%= teacher.first_name %> <%= teacher.last_name %></option>
+										});
+									} else { %>
+										<option>--No Teachers Yet--</option>
+									<% } %>
+								</select>
 							 </div>
 							 <div class="modal-footer">
 								<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Cancel</button>
