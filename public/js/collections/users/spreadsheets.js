@@ -13,6 +13,10 @@ define([
 
 		url: function () {
 			return baseURL + "marks/spreadsheet";
+		},
+
+		comparator: function(model){
+			return -model.get('total');
 		}
 		
 	});

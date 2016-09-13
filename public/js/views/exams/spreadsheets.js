@@ -172,7 +172,7 @@ define([
 				selected: selected
 			}));
 
-			this.$rowsTable = $("#rows-entries-list");
+			this.$rowsTable = this.$("#rows-entries-list");
 
 			//fetch the list of students with SpreadsheetsCol, if they already have
 			SpreadsheetsCol.fetch({
@@ -219,9 +219,10 @@ define([
 			//add the list of subject
 			Row.set({subjects: this.getSubjects()});
 			Row.set({grades: this.getGrades()});
+
 			var view = new SpreadsheetView({
 				model: Row 
-			});			
+			});		
 			this.$rowsTable.append(view.render().el);
 		},
 
@@ -237,7 +238,81 @@ define([
 				$('.no-students-yet').hide();
 				SpreadsheetsCol.each(this.addOneRow, this);
 			}
+
+			//perform result analysis
+			this.doAnalysis();
 			
+		},
+
+		doAnalysis: function(){
+
+			var analysis = {};
+			analysis.totalScore = 0;
+			analysis.meanScore = 0;
+			analysis.meanGrade = 0;
+			analysis.top5overall = [];
+			analysis.top3perSubject = [];
+			analysis.subjectPerformance = [];
+
+			//collects the scores per subject together
+			SpreadsheetsCol.each(function(rowEntry){
+				
+				analysis.totalScore += rowEntry.get("total");
+				Subjects.each(function(subject){
+					analysis.top3perSubject["ID" + subject.get('id')] = [];
+					
+					var exs = rowEntry.get('exams');
+					$.each(exs, function(key, exam){
+
+						if (exam.subject_id == subject.get('id')) {
+							analysis.top3perSubject["ID" + subject.get('id')].push({
+								exam_percent: exam.exam_percent, 
+								student_id: exam.student_id
+							});
+						}
+					});
+				}, this);
+					
+			}, this);
+
+			//compute the total scores for each subject
+			Subjects.each(function(subject){
+				var marks = analysis.top3perSubject["ID" + subject.get('id')];
+				var subjectTotal = 0;
+				$.each(marks, function(key, mark){
+					subjectTotal += mark.exam_percent;
+				});
+
+				analysis.subjectPerformance.push({
+					subject_id: subject.get('id'),
+					subjectTotal: subjectTotal
+				});
+			}, this);
+
+
+			//get the top 5 overall in ranking
+			analysis.top5overall = SpreadsheetsCol.slice(0, 5);
+
+			//get the mean score
+			analysis.meanScore = Math.round(analysis.totalScore / SpreadsheetsCol.length);
+
+			//get the mean grade
+			Grades.each(function(grade){
+				if ((analysis.meanScore >= grade.get('from_score')) && (analysis.meanScore <= grade.get('to_score')) ) {
+					analysis.meanGrade = grade.get('letter_grade');
+				}
+			}, this);
+
+			//get the top 3 per subject
+			Subjects.each(function(subject){
+				var marks = analysis.top3perSubject["ID" + subject.get('id')];
+				marks = _.sortBy(marks, function(mark){ return -mark.exam_percent;});
+				analysis.top3perSubject["ID" + subject.get('id')] = marks.slice(0,2);
+			}, this);
+
+			//ranks the subjects by performance
+			analysis.subjectPerformance = _.sortBy(analysis.subjectPerformance, function(subject){return -subject.subjectTotal;});
+
 		}
 
 	});
