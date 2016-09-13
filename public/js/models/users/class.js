@@ -8,6 +8,7 @@ define([
 		defaults: {
 			id: 0,
 			class_name: '',
+			class_teacher: '',
 			description: '',
 			subjects: 0,
 			streams: 0,

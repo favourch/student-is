@@ -3,10 +3,11 @@ define([
 	'underscore',
 	'backbone',
 	'collections/users/classes',
+	'collections/users/teachers',
 	'views/settings/class',
 	'text!templates/settings/classes.html',
 	'bootstrap'
-	], function($, _, Backbone, ClassesCol, ClassView, classesTpl){
+	], function($, _, Backbone, ClassesCol, Teachers, ClassView, classesTpl){
 
 	var Classes = Backbone.View.extend({
 
@@ -19,14 +20,19 @@ define([
 		},
 
 		initialize: function(){
-
-			$(".container-fluid").html(this.$el.html(this.template()));
-			//define the table reference to use for adding individual classes
-			this.$classesList = this.$("#classes-table");
 			
 			this.listenTo(ClassesCol, 'add', this.addOneClass);
 			this.listenTo(ClassesCol, 'reset', this.addAllClasses);
 
+			this.listenTo(Teachers, 'reset', this.render);
+			
+			Teachers.fetch({
+				reset: true,
+				data: $.param({ 
+					token: tokenString
+				})
+			});
+				
 			ClassesCol.fetch({
 				reset: true,
 				data: $.param({ 
@@ -34,6 +40,24 @@ define([
 				})
 			});	
 
+
+
+		},
+
+		render: function(){
+			$(".container-fluid").html(this.$el.html(this.template({
+				teachers: this.getTeachers()
+			})));
+			//define the table reference to use for adding individual classes
+			this.$classesList = this.$("#classes-table");
+		},
+
+		getTeachers: function(){
+			var teachers = [];
+			Teachers.each(function(teacher){
+				teachers.push(teacher.toJSON());
+			}, this);
+			return teachers;
 		},
 
 		addClassPost: function(evt){
@@ -41,6 +65,7 @@ define([
 			evt.preventDefault(); 
 			var newClass = {
 				class_name: $("#new-class-name").val(),
+				class_teacher: $("#class-teacher").val(),
 				description: $("#class-description").val()
 			};
 
@@ -56,7 +81,8 @@ define([
 					
 					//empty the form
 					$("#new-class-name").val('');
-					$("#class-description").val('');				
+					$("#class-description").val('');
+					$("#class-teacher").val('');				
 
 					//fade out the modal
 					$("#add_new_class").modal("hide");
@@ -79,6 +105,7 @@ define([
 		addOneClass: function(Class){
 			//remove the message for no classes yet, since there is a class to add
 			$('.no-classes-yet').hide();
+			Class.set({teachers: this.getTeachers()});
 			var view = new ClassView({
 				model: Class 
 			});

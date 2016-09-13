@@ -5,6 +5,13 @@
 	<td>Exams(<%= exams %>)</td>
 	<td>Population(<%= population %>)</td>
 	<td>
+		<% $.each(teachers, function(key, teacher){
+			if(teacher.id == class_teacher){ %>
+				<%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %>
+			<% }
+		}); %>	
+	</td>
+	<td>
 		<a class="btn btn-sm btn-primary view-class-details" href="#settings/viewclass/<%= id %>" data-toggle="tooltip" data-placement="bottom" title="Click to view more details and set options"><i class="glyphicon glyphicon-open"></i> Open</a>
 	</td>
 	<td>

@@ -60,6 +60,8 @@ class StudentsController extends BaseController {
 								->where('class_id = ?', Input::get('class'))
 								->where('stream_id = ?', Input::get('class'))
 								->all();
+
+		}
 		else{
 
 			$students = StudentModel::where('client_id = ?', $this->client_id)
