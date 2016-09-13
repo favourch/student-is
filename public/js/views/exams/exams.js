@@ -5,8 +5,9 @@ define([
 	'collections/tmplt/marks',
 	'views/exams/entermarks',
 	'views/exams/viewmarks',	
-	'views/exams/grades'
-	], function($, _, Backbone, MarksCol, enterMarks, viewMarks, viewGrades){
+	'views/exams/grades',
+	'views/exams/spreadsheets',
+	], function($, _, Backbone, MarksCol, enterMarks, viewMarks, viewGrades, viewSpreadsheets){
 
 	var Exams = Backbone.View.extend({
 
@@ -45,7 +46,16 @@ define([
 					//load the view marks view
 					var view = new viewGrades;
 					this.$main.html(view.render().el);
+					break;				
+				case 'spreadsheets':
+					//update page title
+					$("title").html("Spreadsheets - " + this.title);
+					
+					//load the view marks view
+					var view = new viewSpreadsheets;
+					this.$main.html(view.render().el);
 					break;
+
 			}
 	       
 		}

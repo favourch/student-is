@@ -1,22 +1,20 @@
 define([
 	'underscore',
 	'backbone',
-	'models/users/spreadsheet-entry'
-	], function(_, Backbone, MarkEntry){
+	'models/users/spreadsheet'
+	], function(_, Backbone, rowEntry){
 
 	Backbone.emulateHTTP = true;
 	Backbone.emulateJSON = true;
 
 	var Spreadsheet = Backbone.Collection.extend({
 
-		model: MarkEntry,
+		model: rowEntry,
 
 		url: function () {
-			return baseURL + "settings/spreadsheet";
-		},
-
-		//todos sorted by their original insertion order
-		comparator: 'total'
+			return baseURL + "marks/spreadsheet";
+		}
+		
 	});
 
 	return new Spreadsheet();

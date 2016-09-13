@@ -191,7 +191,7 @@ class MarksController extends BaseController {
 					"reg_exams" => (array)$exams,
 					"exams" => array(),
 					"total" => 0,
-					"average" => null
+					"average" => 0
 				);
 		}	
 
@@ -201,25 +201,44 @@ class MarksController extends BaseController {
 		}
 
 		//loop through the marks adding each subject together
-		foreach ($studentsList as $key => $student) {
-			$studentsList[$key]['exams'] = array();
+		foreach ($studentsList as $studID => $student) {
+			$studentsList[$studID]['exams'] = array();
 			$totalScore = 0;
-			foreach ($subjects as $key => $subject) {
-				$subjectTotal = 0;
-				foreach ($student['exams'] as $key => $exam) {
+			foreach ($subjects as $subID => $subject) {
+				$subjectTotal = null;
+				$average = null;
+				foreach ($student['exams'] as $examID => $exam) {
 					if ($exam->subject_id == $subject->id) {
-						$subjectTotal += $exam->exam_percent
+
+						//check if a previous value has been added
+						if ($subjectTotal == null) {
+							$subjectTotal = 0;
+						}
+						$subjectTotal += $exam->exam_percent;
 					}
 				}
-				$average = round($total / $exams);
-				$studentsList[$key]['exams'][] = array(
+
+				//check if this subject is invalid for this student
+				if ($subjectTotal !== null) {
+					$average = 0;
+					$average = round($subjectTotal / $exams);
+				}
+				
+				$studentsList[$studID]['exams'][] = array(
 						"subject_id" => $subject->id,
 						"exam_percent" => $average
 					);
-				$total += $average;
+				$totalScore += $average;
 			}
-			$studentsList[$key]["total"] = $totalScore;
+			$studentsList[$studID]["total"] = $totalScore;
 		}
+
+		//get student list of arrays and then return
+		$studList = array();
+		foreach ($studentsList as $key => $student) {
+			$studList[] = $student;
+		}
+		View::renderJSON($studList);
 
 	}
 
@@ -293,7 +312,7 @@ class MarksController extends BaseController {
 				$subjectTotal = 0;
 				foreach ($student['exams'] as $key => $exam) {
 					if ($exam->subject_id == $subject->id) {
-						$subjectTotal += $exam->exam_percent
+						$subjectTotal += $exam->exam_percent;
 					}
 				}
 				$average = round($total / $exams);

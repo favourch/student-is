@@ -3,14 +3,8 @@ define([
 	'backbone'
 	], function(_, Backbone){
 
-	var SpreadEntry = Backbone.Model.extend({
+	var rowEntry = Backbone.Model;
 
-		defaults: {
-			class_id: 0
-		}
-
-	});
-
-	return SpreadEntry;
+	return rowEntry;
 
 });
