@@ -12,10 +12,6 @@
  */
 
 use Drivers\Templates\View;
-use Libraries\CronLibrary\SampleCronController;
-use Models\UserModel;
-use Models\StudentModel;
-use Models\MarkModel;
 use Helpers\Url\Url;
 use Helpers\Input\Input;
 

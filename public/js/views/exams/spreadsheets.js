@@ -10,12 +10,13 @@ define([
 	'collections/tmplt/exams',
 	'collections/users/terms',
 	'collections/users/grades',
+	'collections/users/students',
 	'text!templates/exams/choosesheet.html',
 	'text!templates/exams/classes.html',
 	'text!templates/exams/streams.html',
 	'text!templates/exams/terms.html',
 	'text!templates/exams/spreadsheets.html'
-	], function($, _, Backbone, SpreadsheetView, SpreadsheetsCol, Classes, Streams, Subjects, Exams, Terms, Grades, chooseSheetTpl, classesTpl, streamsTpl, termsTpl, spreadsheetsTpl){
+	], function($, _, Backbone, SpreadsheetView, SpreadsheetsCol, Classes, Streams, Subjects, Exams, Terms, Grades, Students, chooseSheetTpl, classesTpl, streamsTpl, termsTpl, spreadsheetsTpl){
 
 	var Spreadsheets = Backbone.View.extend({
 
@@ -184,6 +185,15 @@ define([
 					year: selectedOps.year					
 				}),
 				reset: true
+			});
+
+			//fetch the list of students for this class/stream
+			Students.fetch({
+				data: $.param({ 
+					token: tokenString,
+					class: selectedOps.class,
+					stream: selectedOps.stream				
+				})
 			});				
 
 		},
