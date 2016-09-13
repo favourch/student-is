@@ -9,12 +9,13 @@ define([
 	'collections/tmplt/subjects',
 	'collections/tmplt/exams',
 	'collections/users/terms',
+	'collections/users/grades',
 	'text!templates/exams/choosesheet.html',
 	'text!templates/exams/classes.html',
 	'text!templates/exams/streams.html',
 	'text!templates/exams/terms.html',
 	'text!templates/exams/spreadsheets.html'
-	], function($, _, Backbone, SpreadsheetView, SpreadsheetsCol, Classes, Streams, Subjects, Exams, Terms, chooseSheetTpl, classesTpl, streamsTpl, termsTpl, spreadsheetsTpl){
+	], function($, _, Backbone, SpreadsheetView, SpreadsheetsCol, Classes, Streams, Subjects, Exams, Terms, Grades, chooseSheetTpl, classesTpl, streamsTpl, termsTpl, spreadsheetsTpl){
 
 	var Spreadsheets = Backbone.View.extend({
 
@@ -71,6 +72,14 @@ define([
 
 			//fetch list of all terms for this client from the database
 			Terms.fetch({
+				data: $.param({ 
+					token: tokenString
+				}),
+				reset: true
+			});	
+			
+			//fetch list of all grades for this client from the database
+			Grades.fetch({
 				data: $.param({ 
 					token: tokenString
 				}),
@@ -155,7 +164,7 @@ define([
 			selected.class = Classes.where({id: selectedOps.class})[0].toJSON();
 			selected.stream = Streams.where({id: selectedOps.stream})[0].toJSON();
 			selected.subjects = this.getSubjects();
-			selected.term = selectedOps.term;
+			selected.term = Terms.where({id: selectedOps.term})[0].toJSON();
 			selected.year = selectedOps.year;
 
 			//load the template into view
@@ -193,10 +202,23 @@ define([
 			return regSubjects;
 
 		},
+
+		getGrades: function(){
+
+			var regGrades = [];
+			Grades.each(function(grade){
+				regGrades.push(grade.toJSON());
+			}, this);			
+
+			return regGrades;
+
+		},
+
 		addOneRow: function(Row){
 			$('.no-students-yet').hide();
 			//add the list of subject
-			Row.set({subjects: this.getSubjects()})
+			Row.set({subjects: this.getSubjects()});
+			Row.set({grades: this.getGrades()});
 			var view = new SpreadsheetView({
 				model: Row 
 			});			
