@@ -180,6 +180,7 @@ define([
 		addOneStream: function(stream){
 			//remove the message for no classes yet, since there is a class to add
 			$('.no-streams-yet').hide();
+			stream.set({teachers: this.getTeachers()});
 			var view = new StreamView({
 				model: stream 
 			});
@@ -250,6 +251,7 @@ define([
 		addOneSubject: function(subject){
 			//remove the message for no classes yet, since there is a class to add
 			$('.no-subjects-yet').hide();
+			subject.set({teachers: this.getTeachers()});
 			var view = new SubjectView({
 				model: subject 
 			});

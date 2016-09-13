@@ -2,6 +2,24 @@
 	<td><span class="subject-name"><%= subject_name %></span><input type="text" class="form-control hidden subject-name-input" value="<%= subject_name %>"></td>
 	<td><span class="subject-abbr"><%= subject_abbr %></span><input type="text" class="form-control hidden subject-abbr-input" value="<%= subject_abbr %>"></td>
 	<td><span class="subject-desc"><%= description %></span><input type="text" class="form-control hidden subject-desc-input" value="<%= description %>"></td>
+	<td><span class="subject-teacher">
+		<% $.each(teachers, function(key, teacher){
+			if(teacher.id == subject_teacher){ %>
+				<%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %>
+			<% }
+		}); %>
+		</span>
+		<select class="form-control hidden subject-teacher-input">
+			<option>--Subject Teacher--</option>
+			<% $.each(teachers, function(key, teacher){
+				if(subject_teacher == teacher.id){ %>
+					<option value="<%= teacher.id %>" checked=""><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
+				<% } else { %>
+					<option value="<%= teacher.id %>"><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
+				<% } 
+			}); %>
+		</select>
+	</td>	
 	<td><%= date_created %></td>
 	<td>
 		<button class="btn btn-success btn-sm editSubject"><i class="fa fa-edit fa-lg"></i> Edit</button>

@@ -1,8 +1,26 @@
 
 	<td><span class="stream-name"><%= stream_name %></span><input type="text" class="form-control hidden stream-name-input" value="<%= stream_name %>"></td>
 	<td><span class="stream-abbr"><%= stream_abbr %></span><input type="text" class="form-control hidden stream-abbr-input" value="<%= stream_abbr %>"></td>
+	<td>
+		<% $.each(teachers, function(key, teacher){
+			if(teacher.id == stream_teacher){ %>
+				<span class="stream-teacher"><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></span>
+			<% }
+		}); %>
+		
+		<select class="form-control hidden stream-teacher-input">
+			<option>--Class Teacher--</option>
+			<% $.each(teachers, function(key, teacher){
+				if(stream_teacher == teacher.id){ %>
+					<option value="<%= teacher.id %>" checked=""><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
+				<% } else { %>
+					<option value="<%= teacher.id %>"><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
+				<% }
+			}); %>
+		</select>
+	</td>
 	<td><%= population %></span></td>	
-	<td><%= date_created %></td>
+	<td><%= date_created %></td> 
 	<td>
 		<button class="btn btn-success btn-sm editStream"><i class="fa fa-edit fa-lg"></i> Edit</button>
 		<button class="btn btn-primary btn-sm editDone hidden"><i class="fa fa-check fa-lg"></i> Done</button>

@@ -20,6 +20,7 @@
 							<thead>
 								<th>Name</th>
 								<th>Abbr</th>
+								<th>Class Teacher</th>
 								<th>No. of Students</th>
 								<th>Date Created</th>
 								<th>Edit</th>
@@ -48,6 +49,7 @@
 								<th>Name</th>
 								<th>Abbr</th>
 								<th>Description</th>
+								<th>Teacher</th>
 								<th>Date Created</th>
 								<th>Edit</th>
 								<td>Delete</td>
@@ -123,9 +125,9 @@
 								<select id="new-stream-teacher" class="form-control" required="">
 									<% if(teachers.length > 0) { %>
 										<option>--Class Teacher--</option>
-										$.each(teachers, function(teacher){
-											<option  value="<%= teacher.id"> <%= teacher.title %>. <%= teacher.first_name %> <%= teacher.last_name %></option>
-										});
+										<% $.each(teachers, function(key, teacher){ %>
+											<option  value="<%= teacher.id %>"> <%= teacher.title %>. <%= teacher.first_name %> <%= teacher.last_name %></option>
+										<% });
 									} else { %>
 										<option>--No Teachers Yet--</option>
 									<% } %>
@@ -168,10 +170,10 @@
 								<br>
 								<select id="new-subject-teacher" class="form-control" required="">
 									<% if(teachers.length > 0) { %>
-										<option>--Subject Teacher--</option>
-										$.each(teachers, function(teacher){
-											<option  value="<%= teacher.id"> <%= teacher.title %>. <%= teacher.first_name %> <%= teacher.last_name %></option>
-										});
+										<option>--Subject Teacher--</option> 
+										<% $.each(teachers, function(key, teacher){ %>
+											<option  value="<%= teacher.id %>"> <%= teacher.title %>. <%= teacher.first_name %> <%= teacher.last_name %></option>
+										<% });
 									} else { %>
 										<option>--No Teachers Yet--</option>
 									<% } %>

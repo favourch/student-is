@@ -8,6 +8,7 @@ define([
 		defaults: {
 			stream_name: '',
 			stream_abbr: '',
+			stream_teacher: 0,
 			class_id: 0,
 			description: '',
 			population: 0,
