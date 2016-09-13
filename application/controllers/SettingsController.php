@@ -195,6 +195,7 @@ class SettingsController extends BaseController {
 			$class = json_decode($_POST['model']);		
 			$newClass = array(
 				'class_name' => $class->class_name,
+				'class_teacher' => $class->class_teacher,
 				'description' => $class->description,
 				'client_id' => $this->client_id
 			);

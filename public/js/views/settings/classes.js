@@ -24,10 +24,8 @@ define([
 			this.listenTo(ClassesCol, 'add', this.addOneClass);
 			this.listenTo(ClassesCol, 'reset', this.addAllClasses);
 
-			this.listenTo(Teachers, 'reset', this.render);
-			
+			//this.listenTo(Teachers, 'reset', this.render);
 			Teachers.fetch({
-				reset: true,
 				data: $.param({ 
 					token: tokenString
 				})
@@ -65,8 +63,8 @@ define([
 			evt.preventDefault(); 
 			var newClass = {
 				class_name: $("#new-class-name").val(),
-				class_teacher: $("#class-teacher").val(),
-				description: $("#class-description").val()
+				class_teacher: $("#new-class-teacher").val(),
+				description: $("#new-class-description").val()
 			};
 
 			$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Saving...');
@@ -81,8 +79,8 @@ define([
 					
 					//empty the form
 					$("#new-class-name").val('');
-					$("#class-description").val('');
-					$("#class-teacher").val('');				
+					$("#new-class-description").val('');
+					$("#new-class-teacher").val('');				
 
 					//fade out the modal
 					$("#add_new_class").modal("hide");
@@ -113,6 +111,7 @@ define([
 		},
 
 		addAllClasses: function(){
+			this.render();
 			this.$classesList.empty();
 
 			if(ClassesCol.length === 0) {

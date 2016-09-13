@@ -52,17 +52,13 @@
 
 								<input type="text" class="form-control" id="new-class-name" placeholder="Enter Class Name" required="">
 								<br>
-								<textarea class="form-control" id="class-description" placeholder="Provide a short description of this class here..."></textarea>
+								<textarea class="form-control" id="new-class-description" placeholder="Provide a short description of this class here..."></textarea>
 								<br>
-								<select class="form-control class-teacher">
+								<select class="form-control" id="new-class-teacher">
 									<option>--Class Teacher--</option>
-									<% $.each(teachers, function(key, teacher){
-										if(stream_teacher == teacher.id){ %>
-											<option value="<%= teacher.id %>" checked=""><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
-										<% } else { %>
-											<option value="<%= teacher.id %>"><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
-										<% }
-									}); %>
+									<% $.each(teachers, function(key, teacher){ %>
+										<option value="<%= teacher.id %>"><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
+									<% }); %>
 								</select>
 							 </div>
 							 <div class="modal-footer">
