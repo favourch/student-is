@@ -21,10 +21,13 @@
 	<td><%= average %></td>
 
 	<% letter_grade = null;
+		remarks = null;
 		$.each(grades, function(key, grade){
 			if((average >= grade.from_score) && (average <= grade.to_score)) {
+			Row.set({subjects: this.getSubjects()});
 				letter_grade = grade.letter_grade;
+				remarks = grade.remarks;
 			}
 		}); %>
 	<td><%= letter_grade %></td>
-	<td>Remarks</td>
+	<td><%= remarks %></td>
