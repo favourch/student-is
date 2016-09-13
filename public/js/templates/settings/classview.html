@@ -120,7 +120,7 @@
 								<br>
 								<textarea class="form-control" id="new-stream-description" placeholder="Short stream description..."></textarea>
 								<br>
-								<select id="class_teacher" class="form-control" required="">
+								<select id="new-stream-teacher" class="form-control" required="">
 									<% if(teachers.length > 0) { %>
 										<option>--Class Teacher--</option>
 										$.each(teachers, function(teacher){
@@ -129,7 +129,8 @@
 									} else { %>
 										<option>--No Teachers Yet--</option>
 									<% } %>
-								</select>							 </div>
+								</select>							 
+								</div>
 							 <div class="modal-footer">
 								<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-fw fa-times"></i> Cancel</button>
 								<button type="submit" class="btn btn-primary submit-button"><i class="fa fa-fw fa-check"></i> Save </button>
@@ -165,7 +166,7 @@
 								<br>
 								<textarea class="form-control" id="new-subject-description" placeholder="Short subject description..."></textarea>
 								<br>
-								<select id="class_teacher" class="form-control" required="">
+								<select id="new-subject-teacher" class="form-control" required="">
 									<% if(teachers.length > 0) { %>
 										<option>--Subject Teacher--</option>
 										$.each(teachers, function(teacher){

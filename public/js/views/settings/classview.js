@@ -97,10 +97,7 @@ define([
 
 		render: function(){
 
-			var teachers = [];
-			Teachers.each(function(teacher){
-				teachers.push(teacher.toJSON());
-			}, this);
+			var teachers = this.getTeachers();
 
 			$(".container-fluid").html(this.$el.html(this.template({
 				class_id: classID,
@@ -126,6 +123,15 @@ define([
 			$("#class-view-head").html(self.classviewHead(data));
 		},
 
+		getTeachers: function(){
+			var teachers = [];
+			Teachers.each(function(teacher){
+				teachers.push(teacher.toJSON());
+			}, this);	
+
+			return teachers;	
+		},
+
 		addStreamPost: function(evt){
 
 			evt.preventDefault(); 
@@ -133,6 +139,7 @@ define([
 				class_id: $("#class_id").val(),
 				stream_name: $("#new-stream-name").val(),
 				stream_abbr: $("#new-stream-abbr").val(),
+				stream_teacher: $("#new-stream-teacher").val(),
 				description: $("#new-stream-description").val()
 			};
 
@@ -147,9 +154,10 @@ define([
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
 
 					//empty the form
-					stream_name: $("#new-stream-name").val('');
-					stream_abbr: $("#new-stream-abbr").val('');
-					description: $("#new-stream-description").val('');
+					$("#new-stream-name").val('');
+					$("#new-stream-abbr").val('');
+					$("#new-stream-teacher").val('');
+					$("#new-stream-description").val('');
 
 					//fade out the modal
 					$("#add_new_stream").modal("hide");
@@ -200,6 +208,7 @@ define([
 				class_id: $("#class_id").val(),
 				subject_name: $("#new-subject-name").val(),
 				subject_abbr: $("#new-subject-abbr").val(),
+				subject_teacher: $("#new-subject-teacher").val(),
 				description: $("#new-subject-description").val()
 			};
 
@@ -214,9 +223,10 @@ define([
 					$(".submit-button").html('<i class="fa fa-fw fa-check"></i> Save');
 					
 					//empty the form
-					subject_name: $("#new-subject-name").val('');
-					subject_abbr: $("#new-subject-abbr").val('');
-					description: $("#new-subject-description").val('');
+					$("#new-subject-name").val('');
+					$("#new-subject-abbr").val('');
+					$("#new-subject-description").val('');
+					$("#new-subject-teacher").val('');
 
 					//fade out the modal
 					$("#add_new_subject").modal("hide");

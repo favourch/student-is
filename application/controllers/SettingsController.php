@@ -275,6 +275,7 @@ class SettingsController extends BaseController {
 			$newStream = array(
 				'stream_name' => $streamData->stream_name,
 				'stream_abbr' => $streamData->stream_abbr,
+				'stream_teacher' => $streamData->stream_teacher,
 				'description' => $streamData->description,
 				'class_id' => $streamData->class_id,
 				'client_id' => $this->client_id
@@ -300,6 +301,7 @@ class SettingsController extends BaseController {
 				$streamData = json_decode($_POST['model']);
 				$updateStream = array(
 					'stream_name' => $streamData->stream_name,
+					'stream_teacher' => $streamData->stream_teacher,
 					'stream_abbr' => $streamData->stream_abbr
 				);
 
@@ -345,6 +347,7 @@ class SettingsController extends BaseController {
 			$newSubject = array(
 				'subject_name' => $subjectData->subject_name,
 				'subject_abbr' => $subjectData->subject_abbr,
+				'subject_teacher' => $subjectData->subject_teacher,
 				'description' => $subjectData->description,
 				'class_id' => $subjectData->class_id,
 				'client_id' => $this->client_id
@@ -363,6 +366,7 @@ class SettingsController extends BaseController {
 				$updateSubject = array(
 					'subject_name' => $subjectData->subject_name,
 					'subject_abbr' => $subjectData->subject_abbr,
+					'subject_teacher' => $subjectData->subject_teacher,
 					'description' => $subjectData->description
 				);
 
