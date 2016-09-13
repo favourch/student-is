@@ -11,12 +11,13 @@ define([
 	'collections/users/terms',
 	'collections/users/grades',
 	'collections/users/students',
+	'collections/users/teachers',
 	'text!templates/exams/choosesheet.html',
 	'text!templates/exams/classes.html',
 	'text!templates/exams/streams.html',
 	'text!templates/exams/terms.html',
 	'text!templates/exams/spreadsheets.html'
-	], function($, _, Backbone, SpreadsheetView, SpreadsheetsCol, Classes, Streams, Subjects, Exams, Terms, Grades, Students, chooseSheetTpl, classesTpl, streamsTpl, termsTpl, spreadsheetsTpl){
+	], function($, _, Backbone, SpreadsheetView, SpreadsheetsCol, Classes, Streams, Subjects, Exams, Terms, Grades, Students, Teachers, chooseSheetTpl, classesTpl, streamsTpl, termsTpl, spreadsheetsTpl){
 
 	var Spreadsheets = Backbone.View.extend({
 
@@ -193,6 +194,13 @@ define([
 					token: tokenString,
 					class: selectedOps.class,
 					stream: selectedOps.stream				
+				})
+			});				
+			
+			//fetch the list of teachers for this class/stream
+			Students.fetch({
+				data: $.param({ 
+					token: tokenString				
 				})
 			});				
 

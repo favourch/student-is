@@ -48,9 +48,25 @@ class StudentsController extends BaseController {
 	 */
 	public function getStudents(){
 
-		$students = StudentModel::where('client_id = ?', $this->client_id)
+		if (Input::get('class')) {
+			$students = StudentModel::where('client_id = ?', $this->client_id)
 								->where('archived != ?', true)
+								->where('class_id = ?', Input::get('class'))
 								->all();
+		}
+		elseif (Input::get('stream')) {
+			$students = StudentModel::where('client_id = ?', $this->client_id)
+								->where('archived != ?', true)
+								->where('class_id = ?', Input::get('class'))
+								->where('stream_id = ?', Input::get('class'))
+								->all();
+		else{
+
+			$students = StudentModel::where('client_id = ?', $this->client_id)
+									->where('archived != ?', true)
+									->all();
+		}
+		
 		View::renderJSON($students->result_array());
 		
 	}
