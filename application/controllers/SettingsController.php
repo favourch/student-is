@@ -256,10 +256,17 @@ class SettingsController extends BaseController {
 	 * @return Object JSON
 	 */
 	public function getStreams(){
-		$streams = StreamModel::where('client_id = ?', $this->client_id)
+		
+		if(Input::get('class_id')){
+			$streams = StreamModel::where('client_id = ?', $this->client_id)
 							->where('class_id = ?', Input::get('class_id'))
-							->all();
-
+							->all();		
+		}
+		else{
+			$streams = StreamModel::where('client_id = ?', $this->client_id)
+								->all();
+		}
+		
 		View::renderJSON($streams->result_array());
 	}	
  
@@ -329,9 +336,18 @@ class SettingsController extends BaseController {
 	 * @return Object JSON
 	 */
 	public function getSubjects(){
-		$subjects = SubjectModel::where('client_id = ?', $this->client_id)
-							->where('class_id = ?', Input::get('class_id'))
-							->all();
+
+		if(Input::get('class_id')){
+
+			$subjects = SubjectModel::where('client_id = ?', $this->client_id)
+								->where('class_id = ?', Input::get('class_id'))
+								->all();
+		}
+		else{
+			$subjects = SubjectModel::where('client_id = ?', $this->client_id)
+								->all();
+		}
+
 		View::renderJSON($subjects->result_array());
 	}		
 
@@ -394,9 +410,17 @@ class SettingsController extends BaseController {
 	 * @return Object JSON
 	 */
 	public function getExams(){
-		$exams = ExamModel::where('client_id = ?', $this->client_id)
-							->where('class_id = ?', Input::get('class_id'))
-							->all();
+
+		if(Input::get('client_id')){
+			$exams = ExamModel::where('client_id = ?', $this->client_id)
+						->where('class_id = ?', Input::get('class_id'))
+						->all();
+		}
+		else {
+			$exams = ExamModel::where('client_id = ?', $this->client_id)
+								->all();
+		}
+		
 		View::renderJSON($exams->result_array());
 	}
 
