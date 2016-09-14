@@ -69,7 +69,7 @@ class MarksController extends BaseController {
 									->result();		
 		}
 
-		$marks = MarkModel::select(array("student_id","exam_id","exam_score","exam_percent"))
+		$marks = MarkModel::select(array("id","student_id","exam_id","exam_score","exam_percent"))
 						->where('client_id = ?', $this->client_id)
 						->where('archived != ?', true)
 						->where('class_id = ?', Input::get('class'))
@@ -90,6 +90,11 @@ class MarksController extends BaseController {
 					"first_name" => $stud->first_name,
 					"middle_name" => $stud->middle_name,
 					"last_name" => $stud->last_name,
+					"class_id" => Input::get('class'),
+					"subject_id" => Input::get('subject'),
+					"exam_id" => Input::get('exam'),
+					"term_id" => Input::get('term'),
+					"exam_year" => Input::get('year'),
 					"exam_score" => null,
 					"exam_percent" => null
 				);
@@ -98,6 +103,7 @@ class MarksController extends BaseController {
 		//go through the list of available marks and add to each student
 		foreach ($marks as $key => $mark) {
 			if(isset($studentsList["ID".$mark->student_id])){
+				$studentsList["ID".$mark->student_id]["id"] = $mark->id;
 				$studentsList["ID".$mark->student_id]["exam_score"] = $mark->exam_score;
 				$studentsList["ID".$mark->student_id]["exam_percent"] = $mark->exam_percent;			
 			}	
@@ -110,6 +116,60 @@ class MarksController extends BaseController {
 		}
 
 		View::renderJSON($studentMarks);		
+	}
+
+	/**
+	 * This method saves a mark into the database
+	 * @before authClientUser
+	 * @param $mark_id The id of the mark to delete
+	 * @return JSON
+	 */
+	public function postMarks($mark_id){
+
+		//check for a CREATE request
+		if(!$mark_id){
+
+			$mark = json_decode($_POST['model']);		
+			$newMark = array(
+				"client_id" => $this->client_id,
+				"class_id" => $mark->class_id,
+				"subject_id" => $mark->subject_id,
+				"student_id" => $mark->student_id,
+				"term_id" => $mark->term_id,
+				"exam_id" => $mark->exam_id,
+				"exam_year" => $mark->exam_year,
+				"exam_score" => $mark->exam_score,
+				"exam_percent" => null
+			);
+
+			//get the exam marked out of value for percentage conversion
+			$exam = ExamModel::where('id = ?', $mark->exam_id)->all()->result_array()[0];
+			$newMark["exam_percent"] = round(($mark->exam_score / $exam['exam_out_of']) * 100);
+
+			$create = MarkModel::save($newMark);
+			$new = MarkModel::getById($create->lastInsertId());
+			$mark = $new->result_array()[0];
+
+			View::renderJSON($mark);
+		}
+		else{
+			//this is an UPDATE request
+			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
+				$markData = json_decode($_POST['model']);
+				$updateMark = array(
+					'exam_score' => $markData->exam_score
+				);
+
+	 			//get the exam marked out of value for percentage conversion
+				$exam = ExamModel::where('id = ?', $markData->exam_id)->all()->result_array()[0];
+				$updateMark["exam_percent"] = round(($markData->exam_score / $exam['exam_out_of']) * 100);
+
+				MarkModel::where('id = ?', $mark_id)
+							->save($updateMark);
+			}
+
+		}
+
 	}
 
 	/**

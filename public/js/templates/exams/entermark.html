@@ -1,12 +1,12 @@
 	<td></td>
 	<td><%= reg_number %></td>
 	<td><%= first_name %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name %></td>
-	<td><span class="exam-score hidden"><%= exam_score %></span><form class="save-mark" method="post" action="/"><input type="text" class="form-control mark-input" value="<%= exam_score %>"><input type="submit" hidden=""></form>
+	<td><span class="exam-score hidden"><%= exam_score %></span><form class="save-mark" method="post" action="/"><input type="text" class="form-control exam-score-input" value="<%= exam_score %>"><input type="submit" hidden=""></form>
 	</td>
 	<td>
 		<% 	var percent = null;
 			
-			if(exam_score !== null && exam_percent !== null){
+			if(exam_score !== null){
 				percent = Math.round((exam_score / exam.exam_out_of) * 100);
 			}
 			else {

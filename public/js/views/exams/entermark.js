@@ -12,7 +12,7 @@ define([
 		tagName: 'tr',
 
 		events: {
-			'submit .save-marks' : 'saveMark',
+			'submit .save-mark' : 'saveMark',
 			'click .editMark' : 'editMark',
 			'blur .mark-input' : 'saveMark'
 		},
@@ -23,17 +23,42 @@ define([
 
 		render: function(){
 			this.$el.html(this.markTpl(this.model.toJSON()));
-			this.$input = this.$(".mark-input");
+			this.$scoreLabel = this.$(".exam-score");
+			this.$scoreInput = this.$(".exam-score-input");
+
+			this.$editMark = this.$(".editMark");
+			this.$editDone = this.$(".editDone");
 			return this;
 		},
 
 		editMark: function(){
-			//input calling
+			this.$scoreLabel.addClass('hidden');
+			this.$scoreInput.removeClass('hidden');
+
+			this.$editMark.addClass('hidden');
+			this.$editDone.removeClass('hidden');
 		},		
 
 		saveMark: function(evt){
 			evt.preventDefault();
-			alert(this.$input.val());
+
+			//check for update or new record
+			if (this.model.get('id')) {
+				this.model.save({
+					exam_score: this.$scoreInput.val().trim()
+				},{
+					url: baseURL + 'marks/marks/' + this.model.get('id') + '?token=' + tokenString
+				});			
+			} 
+			else {
+				this.model.save({
+					exam_score: this.$scoreInput.val().trim()
+				},{
+					url: baseURL + 'marks/marks/' + '?token=' + tokenString
+				});			
+			}
+
+			this.model.trigger('change');		
 		}
 
 	});
