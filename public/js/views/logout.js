@@ -8,7 +8,7 @@ define([
 
 		initialize: function(token){
 
-			var url = baseURL + "login.logout." + tokenString;
+			var url = baseURL + "login/logout/" + tokenString;
 
 			$.ajax({
 				url: url,
