@@ -30,10 +30,12 @@ define([
 			//get the handles for the input fields 
 			this.$nameLabel = this.$(".subject-name");
 			this.$abbrLabel = this.$(".subject-abbr");
+			this.$teacherLabel = this.$(".subject-teacher");
 			this.$descLabel = this.$(".subject-desc");
 
 			this.$nameInput = this.$(".subject-name-input");
 			this.$abbrInput = this.$(".subject-abbr-input");
+			this.$teacherInput = this.$(".subject-teacher-input");
 			this.$descInput = this.$(".subject-desc-input");
 
 			this.$editSubject = this.$(".editSubject");
@@ -46,10 +48,12 @@ define([
 			//toggle visibility 
 			this.$nameLabel.addClass("hidden");
 			this.$abbrLabel.addClass("hidden");
+			this.$teacherLabel.addClass("hidden");
 			this.$descLabel.addClass("hidden");
 
 			this.$nameInput.removeClass("hidden");
 			this.$abbrInput.removeClass("hidden");
+			this.$teacherInput.removeClass("hidden");
 			this.$descInput.removeClass("hidden");
 
 			this.$nameInput.focus();
@@ -61,10 +65,12 @@ define([
 			//toggle visibility 
 			this.$nameLabel.removeClass("hidden");
 			this.$abbrLabel.removeClass("hidden");
+			this.$teacherLabel.removeClass("hidden");
 			this.$descLabel.removeClass("hidden");
 
 			this.$nameInput.addClass("hidden");
 			this.$abbrInput.addClass("hidden");
+			this.$teacherInput.addClass("hidden");
 			this.$descInput.addClass("hidden");
 
 			this.$editSubject.removeClass("hidden");
@@ -73,6 +79,7 @@ define([
 			//check the new values
 			var name = this.$nameInput.val().trim();
 			var abbr = this.$abbrInput.val().trim();
+			var teacher = this.$teacherInput.val().trim();
 			var desc = this.$descInput.val().trim();
 
 			//ensure a name and abbreviation are provided
@@ -80,6 +87,7 @@ define([
 				this.model.save({
 					subject_name: name,
 					subject_abbr: abbr,
+					subject_teacher: teacher,
 					description: desc
 				}, {
 					url: baseURL + 'settings/subjects/' + this.model.get('id') + '?token=' + tokenString,

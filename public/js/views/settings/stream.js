@@ -29,9 +29,11 @@ define([
 			
 			//get the handles for the input fields 
 			this.$nameLabel = this.$(".stream-name");
+			this.$teacherLabel = this.$(".stream-teacher");
 			this.$abbrLabel = this.$(".stream-abbr");
 
 			this.$nameInput = this.$(".stream-name-input");
+			this.$teacherInput = this.$(".stream-teacher-input");
 			this.$abbrInput = this.$(".stream-abbr-input");
 
 			this.$editStream = this.$(".editStream");
@@ -44,8 +46,10 @@ define([
 			//toggle visibility 
 			this.$nameLabel.addClass("hidden");
 			this.$abbrLabel.addClass("hidden");
+			this.$teacherLabel.addClass("hidden");
 
 			this.$nameInput.removeClass("hidden");
+			this.$teacherInput.removeClass("hidden");
 			this.$abbrInput.removeClass("hidden");
 
 			this.$nameInput.focus();
@@ -56,9 +60,11 @@ define([
 		editDone: function(){
 			//toggle visibility 
 			this.$nameLabel.removeClass("hidden");
+			this.$teacherLabel.removeClass("hidden");
 			this.$abbrLabel.removeClass("hidden");
 
 			this.$nameInput.addClass("hidden");
+			this.$teacherInput.addClass("hidden");
 			this.$abbrInput.addClass("hidden");
 
 			this.$editStream.removeClass("hidden");
@@ -67,11 +73,13 @@ define([
 			//check the new values
 			var name = this.$nameInput.val().trim();
 			var abbr = this.$abbrInput.val().trim();
+			var teacher = this.$teacherInput.val().trim();
 
 			//ensure a name and abbreviation are provided
-			if (name && abbr) {
+			if (name && abbr && teacher) {
 				this.model.save({
 					stream_name: name,
+					stream_teacher: teacher,
 					stream_abbr: abbr
 				}, {
 					url: baseURL + 'settings/streams/' + this.model.get('id') + '?token=' + tokenString,
