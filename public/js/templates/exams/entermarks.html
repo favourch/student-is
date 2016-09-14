@@ -1,14 +1,22 @@
 <div class="row">
 	<div class="col-lg-8">
-		<h3>Enter Marks</h3>
-		<p class="lead">
-			<%= selected.class.class_name %> <%= selected.stream.stream_name %> <%= selected.term %> <%= selected.year %> <%= selected.subject.subject_name %> <%= selected.exam.exam_name %>
+		<p>Enter Marks</p>
+		<p class="">
+			<%= selected.class.class_name %> 
+
+			<% if(selected.stream != null){ %>
+				<%= selected.stream.stream_name %>
+			<% } %>
+			
+			<%= selected.term.term_abbr %>
+			<%= selected.year %> <%= selected.subject.subject_name %> <%= selected.exam.exam_name %>
 		</p>
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
+				<th>POS</th>
 				<th>Student ID</th>
 				<th>Name</th>
-				<th>Out of 30</th>
+				<th>Out of <%= selected.exam.exam_out_of %></th>
 				<th>100%</th>
 				<th>Grade</th>
 				<th>Remarks</th>

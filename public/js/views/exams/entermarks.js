@@ -231,10 +231,10 @@ define([
 			var selected = {};
 			//populate with the actual models/objects
 			selected.class = Classes.where({id: selectedOps.class})[0].toJSON();
-			selected.stream = Streams.where({id: selectedOps.stream})[0].toJSON();
+			selected.stream = (Streams.where({id: selectedOps.stream})[0]) ? Streams.where({id: selectedOps.stream})[0].toJSON() : null;
 			selected.subject = Subjects.where({id: selectedOps.subject})[0].toJSON();
 			selected.exam = Exams.where({id: selectedOps.exam})[0].toJSON();
-			selected.term = selectedOps.term;
+			selected.term = Terms.where({id: selectedOps.term})[0].toJSON();
 			selected.year = selectedOps.year;
 
 			//get the registered exams for this class
