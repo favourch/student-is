@@ -74,15 +74,27 @@ class MarksController extends BaseController {
 							->where('class_id = ?', Input::get('class'))
 							->all()
 							->result();
+		//get students by streams
+		if(Input::get('stream')){
+			//get the list of all the students
+			$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
+									->where('client_id = ?', $this->client_id)
+									->where('archived != ?', true)
+									->where('class_id = ?', Input::get('class'))
+									->where('stream_id = ?', Input::get('stream'))
+									->all()
+									->result();
+		}
+		else{
+			//get the list of all the students
+			$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
+									->where('client_id = ?', $this->client_id)
+									->where('archived != ?', true)
+									->where('class_id = ?', Input::get('class'))
+									->all()
+									->result();
+		}
 
-		//get the list of all the students
-		$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
-								->where('client_id = ?', $this->client_id)
-								->where('archived != ?', true)
-								->where('class_id = ?', Input::get('class'))
-								->where('stream_id = ?', Input::get('stream'))
-								->all()
-								->result();
 		$marks = MarkModel::select(array("student_id","exam_id","exam_percent"))
 						->where('client_id = ?', $this->client_id)
 						->where('archived != ?', true)

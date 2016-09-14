@@ -1,13 +1,13 @@
 	<% if(regTerms.length > 0) { %>
 		<select class="form-control" id="term_id" required="">
-			<option>--Terms--</option>
+			<option value="">--Terms--</option>
 			<% $.each(regTerms, function(key, oneTerm){ %>
 				<option value="<%= oneTerm.id %>"><%= oneTerm.term_name %></option>
 			<% }); %>
 		</select>
 	<% } else { %>
 		<select class="form-control" id="term_id" required="">
-			<option>--No Terms--</option>
+			<option value="">--No Terms--</option>
 		</select>	
 	<% } %>
 

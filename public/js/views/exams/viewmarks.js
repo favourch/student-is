@@ -149,7 +149,7 @@ define([
 			var selected = {};
 			//populate with the actual models/objects
 			selected.class = Classes.where({id: selectedOps.class})[0].toJSON();
-			selected.stream = Streams.where({id: selectedOps.stream})[0].toJSON();
+			selected.stream = (Streams.where({id: selectedOps.stream})[0]) ? Streams.where({id: selectedOps.stream})[0].toJSON() : null;
 			selected.subject = Subjects.where({id: selectedOps.subject})[0].toJSON();
 			selected.term = selectedOps.term;
 			selected.year = selectedOps.year;
