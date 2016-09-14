@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'views/exams/markEntry',
+	'views/exams/entermark',
 	'collections/users/classes',
 	'collections/users/streams',
 	'collections/users/subjects',
@@ -13,8 +13,8 @@ define([
 	'text!templates/exams/streams.html',
 	'text!templates/exams/subjects.html',
 	'text!templates/exams/exams.html',
-	'text!templates/exams/marks-entries.html'
-	], function($, _, Backbone, markEntry, Classes, Streams, Subjects, Exams, Marks, chooseExamTpl, classesTpl, streamsTpl, subjectsTpl, examsTpl, entriesTpl){
+	'text!templates/exams/entermarks.html'
+	], function($, _, Backbone, enterMark, Classes, Streams, Subjects, Exams, Marks, chooseExamTpl, classesTpl, streamsTpl, subjectsTpl, examsTpl, marksTpl){
 
 	var Student = Backbone.View.extend({
 
@@ -23,12 +23,12 @@ define([
 		streamsTpl: _.template(streamsTpl),
 		subjectsTpl: _.template(subjectsTpl),
 		examsTpl: _.template(examsTpl),
-		entriesTpl: _.template(entriesTpl),
+		marksTpl: _.template(marksTpl),
 
 		tagName: 'div',
 
 		events: {
-			'change #class_id' : 'getStreams',
+			'change #class_id' : 'setStreams',
 			'submit form#entermarks' : 'enterMarks'
 		},
 
@@ -36,6 +36,7 @@ define([
 			
 			this.$main = $(".container-fluid");
 			this.listenTo(Marks, 'reset', this.addAllMarks);
+			this.listenTo(Classes, 'reset', this.setClasses);
 
 			//fetch list of all classes for this class from the database
 			var self = this;
@@ -43,9 +44,7 @@ define([
 				data: $.param({ 
 					token: tokenString
 				}),
-				success: function(data){
-					self.setClasses();
-				}
+				reset: true
 			});					
 
 			//fetch list of all streams for this client from the database
@@ -81,16 +80,33 @@ define([
 
 		setClasses: function(){
 			this.$classes.empty();
+			
+			this.$classes.html(this.classesTpl({
+				regClasses: this.getClasses()
+			}));
+	
+		},
+
+		getClasses: function(){
 			var regClasses = [];
 
 			Classes.each(function(oneClass){
 				regClasses.push(oneClass.toJSON());
 			}, this);
 
-			this.$classes.html(this.classesTpl({
-				regClasses: regClasses
-			}));
+			return regClasses;
 	
+		},
+
+		setStreams: function(){	
+
+			this.$streams.html(this.streamsTpl({
+				regStreams: this.getStreams()
+			}));
+
+			//update the subjects and exams
+			this.setSubjects().setExams();
+
 		},
 
 		getStreams: function(){
@@ -105,14 +121,19 @@ define([
 				regStreams.push(oneStream.toJSON());
 			});			
 
-			this.$streams.html(this.streamsTpl({
-				regStreams: regStreams
-			}));
-
-			//update the subjects and exams
-			this.getSubjects().getExams();
+			return regStreams;
 
 		},		
+
+		setSubjects: function(){		
+
+			this.$subjects.html(this.subjectsTpl({
+				regSubjects: this.getSubjects()
+			}));
+
+			return this;
+
+		},
 
 		getSubjects: function(){
 
@@ -126,11 +147,15 @@ define([
 				regSubjects.push(oneSubject.toJSON());
 			});			
 
-			this.$subjects.html(this.subjectsTpl({
-				regSubjects: regSubjects
-			}));
+			return regSubjects;
 
-			return this;
+		},
+
+		setExams: function(){		
+
+			this.$exams.html(this.examsTpl({
+				regExams: this.getExams()
+			}));
 
 		},
 
@@ -146,9 +171,7 @@ define([
 				regExams.push(oneExam.toJSON());
 			});			
 
-			this.$exams.html(this.examsTpl({
-				regExams: regExams
-			}));
+			return regExams;
 
 		},
 
@@ -181,7 +204,7 @@ define([
 			});
 
 			//load the template into view
-			this.$main.html(this.entriesTpl({
+			this.$main.html(this.marksTpl({
 				selected: selected
 			}));
 
@@ -206,7 +229,7 @@ define([
 
 		addOneMark: function(mark){
 			$('.no-students-yet').hide();
-			var view = new markEntry({
+			var view = new enterMark({
 				model: mark 
 			});			
 			this.$marksList.append(view.render().el);
