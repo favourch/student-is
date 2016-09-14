@@ -8,13 +8,14 @@ define([
 	'collections/users/subjects',
 	'collections/users/exams',
 	'collections/users/marks',
+	'collections/users/grades',
 	'text!templates/exams/chooseexam.html',
 	'text!templates/exams/classes.html',
 	'text!templates/exams/streams.html',
 	'text!templates/exams/subjects.html',
 	'text!templates/exams/exams.html',
 	'text!templates/exams/entermarks.html'
-	], function($, _, Backbone, enterMark, Classes, Streams, Subjects, Exams, Marks, chooseExamTpl, classesTpl, streamsTpl, subjectsTpl, examsTpl, marksTpl){
+	], function($, _, Backbone, enterMark, Classes, Streams, Subjects, Exams, Marks, Grades, chooseExamTpl, classesTpl, streamsTpl, subjectsTpl, examsTpl, marksTpl){
 
 	var Student = Backbone.View.extend({
 
@@ -63,6 +64,13 @@ define([
 
 			//fetch list of all exams for this client from the database
 			Exams.fetch({
+				data: $.param({ 
+					token: tokenString
+				})
+			});	
+
+			//fetch list of all grades for this client from the database
+			Grades.fetch({
 				data: $.param({ 
 					token: tokenString
 				})
