@@ -1,18 +1,18 @@
 define([
 	'underscore',
 	'backbone',
-	'models/tmplt/class'
-	], function(_, Backbone, Class){
+	'models/users/marklist'
+	], function(_, Backbone, Marklist){
 	
 	Backbone.emulateHTTP = true;
 	Backbone.emulateJSON = true;
 		
-	var ClassesCollection = Backbone.Collection.extend({
+	var MarksCollection = Backbone.Collection.extend({
 
-		model: Class,
+		model: Marklist,
 		
 		url: function () {
-			return baseURL + "students/classes";
+			return baseURL + "marks/marklist";
 		},
 
 		//todos sorted by their original insertion order
@@ -20,6 +20,6 @@ define([
 
 	});
 
-	return new ClassesCollection();
+	return new MarksCollection();
 
 });

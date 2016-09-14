@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'collections/tmplt/marks',
+	'collections/users/marks',
 	'views/exams/entermarks',
 	'views/exams/viewmarks',	
 	'views/exams/grades',

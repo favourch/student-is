@@ -1,7 +1,7 @@
 define([
 	'underscore',
 	'backbone',
-	'models/tmplt/mark'
+	'models/users/mark'
 	], function(_, Backbone, Mark){
 	
 	Backbone.emulateHTTP = true;
