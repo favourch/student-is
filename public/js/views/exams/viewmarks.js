@@ -8,13 +8,15 @@ define([
 	'collections/tmplt/subjects',
 	'collections/tmplt/exams',
 	'collections/tmplt/marklists',
+	'collections/users/terms',
 	'text!templates/exams/choosesubject.html',
 	'text!templates/exams/classes.html',
 	'text!templates/exams/streams.html',
 	'text!templates/exams/subjects.html',
 	'text!templates/exams/exams.html',
+	'text!templates/exams/terms.html',
 	'text!templates/exams/viewmarks.html'
-	], function($, _, Backbone, viewMark, Classes, Streams, Subjects, Exams, Marklist, chooseSubject, classesTpl, streamsTpl, subjectsTpl, examsTpl, entriesTpl){
+	], function($, _, Backbone, viewMark, Classes, Streams, Subjects, Exams, Marklist, Terms, chooseSubject, classesTpl, streamsTpl, subjectsTpl, examsTpl, termsTpl, entriesTpl){
 
 	var marksView = Backbone.View.extend({
 
@@ -23,6 +25,7 @@ define([
 		streamsTpl: _.template(streamsTpl),
 		subjectsTpl: _.template(subjectsTpl),
 		examsTpl: _.template(examsTpl),
+		termsTpl: _.template(termsTpl),
 		entriesTpl: _.template(entriesTpl),
 
 		tagName: 'div',
@@ -36,6 +39,13 @@ define([
 			
 			this.$main = $(".container-fluid");
 			this.listenTo(Marklist, 'reset', this.addAllStudents);
+
+			//fetch list of all streams for this client from the database
+			Terms.fetch({
+				data: $.param({ 
+					token: tokenString
+				})
+			});	
 
 			//fetch list of all classes for this class from the database
 			var self = this;
@@ -75,6 +85,7 @@ define([
 			this.$classes = this.$("#classes-list");
 			this.$streams = this.$("#streams-list");
 			this.$subjects = this.$("#subjects-list");
+			this.$terms = this.$("#terms-list");
 			return this;
 		},
 
@@ -89,6 +100,8 @@ define([
 			this.$classes.html(this.classesTpl({
 				regClasses: regClasses
 			}));
+
+			this.getTerms();
 	
 		},
 
@@ -127,6 +140,22 @@ define([
 
 			this.$subjects.html(this.subjectsTpl({
 				regSubjects: regSubjects
+			}));
+
+			return this;
+
+		},
+		
+		getTerms: function(){
+
+			var regTerms = [];
+
+			Terms.each(function(oneExam){
+				regTerms.push(oneExam.toJSON());
+			}, this);			
+
+			this.$terms.html(this.termsTpl({
+				regTerms: regTerms
 			}));
 
 			return this;
