@@ -13,7 +13,7 @@
 			<option>--Subject Teacher--</option>
 			<% $.each(teachers, function(key, teacher){
 				if(subject_teacher == teacher.id){ %>
-					<option value="<%= teacher.id %>" checked=""><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
+					<option value="<%= teacher.id %>" selected><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
 				<% } else { %>
 					<option value="<%= teacher.id %>"><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
 				<% } 
