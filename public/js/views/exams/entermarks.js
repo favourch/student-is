@@ -31,14 +31,17 @@ define([
 
 		tagName: 'div',
 
+		className: 'this-fluid-container',
+
 		events: {
 			'change #class_id' : 'setStreams',
 			'submit form#entermarks' : 'enterMarks'
 		},
 
+		selected: {}, //the selected options for this enter marks
+
 		initialize: function(){
 			
-			this.$main = $(".container-fluid");
 			this.listenTo(Marks, 'reset', this.addAllMarks);
 			this.listenTo(Classes, 'reset', this.setClasses);
 			
@@ -89,6 +92,7 @@ define([
 
 		render: function(){
 			this.$el.html(this.chooseExamTpl());
+			this.$main = $(".container-fluid");
 			this.$classes = this.$("#classes-list");
 			this.$streams = this.$("#streams-list");
 			this.$subjects = this.$("#subjects-list");
@@ -214,6 +218,17 @@ define([
 
 		},
 
+		getGrades: function(){
+
+			var regGrades = [];
+			Grades.each(function(grade){
+				regGrades.push(grade.toJSON());
+			}, this);			
+
+			return regGrades;
+
+		},
+
 		enterMarks: function(evt){
 
 			//prevent default form submission
@@ -228,14 +243,14 @@ define([
 				term: $("#term_id").val(),
 				year: $("#year").val()
 			};
-			var selected = {};
+			
 			//populate with the actual models/objects
-			selected.class = Classes.where({id: selectedOps.class})[0].toJSON();
-			selected.stream = (Streams.where({id: selectedOps.stream})[0]) ? Streams.where({id: selectedOps.stream})[0].toJSON() : null;
-			selected.subject = Subjects.where({id: selectedOps.subject})[0].toJSON();
-			selected.exam = Exams.where({id: selectedOps.exam})[0].toJSON();
-			selected.term = Terms.where({id: selectedOps.term})[0].toJSON();
-			selected.year = selectedOps.year;
+			this.selected.class = Classes.where({id: selectedOps.class})[0].toJSON();
+			this.selected.stream = (Streams.where({id: selectedOps.stream})[0]) ? Streams.where({id: selectedOps.stream})[0].toJSON() : null;
+			this.selected.subject = Subjects.where({id: selectedOps.subject})[0].toJSON();
+			this.selected.exam = Exams.where({id: selectedOps.exam})[0].toJSON();
+			this.selected.term = Terms.where({id: selectedOps.term})[0].toJSON();
+			this.selected.year = selectedOps.year;
 
 			//get the registered exams for this class
 			var exs = Exams.where({
@@ -244,10 +259,10 @@ define([
 
 			//load the template into view
 			this.$main.html(this.marksTpl({
-				selected: selected
+				selected: this.selected
 			}));
 
-			this.$marksList = $("#marks-entries-list");
+			this.$marksList = $(".marks-entries-list");
 
 			//fetch the list of students with marks, if they already have
 			var that = this;
@@ -266,10 +281,13 @@ define([
 
 		},
 
-		addOneMark: function(mark){
+		addOneMark: function(Mark){
 			$('.no-students-yet').hide();
+			Mark.set({exam: this.selected.exam});
+			Mark.set({grades: this.getGrades()});
+			
 			var view = new enterMark({
-				model: mark 
+				model: Mark 
 			});			
 			this.$marksList.append(view.render().el);
 		},

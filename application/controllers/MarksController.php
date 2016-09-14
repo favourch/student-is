@@ -49,17 +49,67 @@ class MarksController extends BaseController {
 	 */
 	public function getMarks(){
 
-		//get the list of the students that we need
-		$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
-								->leftJoin("marks", "students.id = marks.student_id")
-								->where('students.client_id = ?', $this->client_id)
-								->where('students.archived != ?', true)
-								->where('students.class_id = ?', Input::get('class'))
-								->where('students.stream_id = ?', Input::get('stream'))
-								->all();
+		if(Input::get('stream')){
+			//get the list of the students that we need
+			$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
+									->where('client_id = ?', $this->client_id)
+									->where('archived != ?', true)
+									->where('class_id = ?', Input::get('class'))
+									->where('students.stream_id = ?', Input::get('stream'))
+									->all()
+									->result();	
+		}
+		else{
+			//get the list of the students that we need
+			$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
+									->where('client_id = ?', $this->client_id)
+									->where('archived != ?', true)
+									->where('class_id = ?', Input::get('class'))
+									->all()
+									->result();		
+		}
 
-		View::renderJSON($students->result_array());
-		
+		$marks = MarkModel::select(array("student_id","exam_id","exam_score","exam_percent"))
+						->where('client_id = ?', $this->client_id)
+						->where('archived != ?', true)
+						->where('class_id = ?', Input::get('class'))
+						->where('subject_id = ?', Input::get('subject'))
+						->where('exam_id = ?', Input::get('exam'))
+						->where('term_id = ?', Input::get('term'))
+						->where('exam_year = ?', Input::get('year'))
+						->all()
+						->result();
+
+		$studentsList = array();
+
+		//populate the class list of students with marks
+		foreach ($students as $key => $stud) {
+			$studentsList["ID".$stud->id] = array(
+					"student_id" => $stud->id,
+					"reg_number" => $stud->reg_number,
+					"first_name" => $stud->first_name,
+					"middle_name" => $stud->middle_name,
+					"last_name" => $stud->last_name,
+					"exam_score" => null,
+					"exam_percent" => null
+				);
+		}
+
+		//go through the list of available marks and add to each student
+		foreach ($marks as $key => $mark) {
+			if(isset($studentsList["ID".$mark->student_id])){
+				$studentsList["ID".$mark->student_id]["exam_score"] = $mark->exam_score;
+				$studentsList["ID".$mark->student_id]["exam_percent"] = $mark->exam_percent;			
+			}	
+		}
+
+		//populate array list to return
+		$studentMarks = array();
+		foreach ($studentsList as $key => $student) {
+			$studentMarks[] = $student;
+		}
+
+		View::renderJSON($studentMarks);		
 	}
 
 	/**
@@ -107,7 +157,7 @@ class MarksController extends BaseController {
 
 		$studentsList = array();
 
-		//populate the class list of students with ma
+		//populate the class list of students with marks
 		foreach ($students as $key => $stud) {
 			$studentsList["ID".$stud->id] = array(
 					"student_id" => $stud->id,

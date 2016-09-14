@@ -1,11 +1,32 @@
-
+	<td></td>
 	<td><%= reg_number %></td>
 	<td><%= first_name %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name %></td>
-	<td><span class="stream-name hidden"><%= score %></span><form class="save-marks" method="post"><input type="text" class="form-control mark-input" value="<%= score %>"><input type="submit" hidden=""></form>
+	<td><span class="exam-score hidden"><%= score %></span><form class="save-mark" method="post" action="/"><input type="text" class="form-control mark-input" value="<%= score %>"><input type="submit" hidden=""></form>
 	</td>
-	<td></td>
-	<td>A</td>
-	<td>Good</td>
+	<td>
+		<% 	var percent = null;
+			
+			if(score !== null){
+				percent = Math.round((score / exam.exam_out_of) * 100);
+			}
+		%>
+		<%= percent %>
+	</td>
+
+	<% 	var letter_grade = null;
+		var remarks = null;
+
+		if(percent !== null){
+			$.each(grades, function(key, grade){
+				if((percent >= grade.from_score) && (percent <= grade.to_score)) {
+					letter_grade = grade.letter_grade;
+					remarks = grade.remarks;
+				}
+			}); 
+		} %>
+
+	<td><%= letter_grade %></td>
+	<td><%= remarks %></td>
 	<td>
 		<button class="btn btn-success btn-sm editMark"><i class="fa fa-edit fa-lg"></i> Edit</button>
 		<button class="btn btn-primary btn-sm editDone hidden"><i class="fa fa-check fa-lg"></i> Done</button>
