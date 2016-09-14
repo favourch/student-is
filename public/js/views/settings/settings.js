@@ -36,6 +36,7 @@ define([
 					$("title").html("Class View - " + this.title);
 					//load the classes view
 					var view = new classView(token);
+					this.$main.html(view.render().el);
 					break;
 				case 'teachers':
 					//update the page title

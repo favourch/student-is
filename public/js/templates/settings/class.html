@@ -4,12 +4,23 @@
 	<td>Streams(<%= streams %>)</td>
 	<td>Exams(<%= exams %>)</td>
 	<td>Population(<%= population %>)</td>
-	<td>
+	<td><span class="class-teacher">
 		<% $.each(teachers, function(key, teacher){
 			if(teacher.id == class_teacher){ %>
 				<%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %>
 			<% }
 		}); %>	
+		</span>
+		<select class="class-teacher-input form-control hidden ">
+			<option>--Class Teacher--</option>
+			<% $.each(teachers, function(key, teacher){
+			if(teacher.id == class_teacher){ %>
+				<option value="<%= teacher.id %>" selected=""><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
+			<% } else { %>
+				<option value="<%= teacher.id %>"><%= teacher.teacher_title %> <%= teacher.first_name %> <%= teacher.last_name %></option>
+			<% }
+		}); %>
+		</select>
 	</td>
 	<td>
 		<a class="btn btn-sm btn-primary view-class-details" href="#settings/viewclass/<%= id %>" data-toggle="tooltip" data-placement="bottom" title="Click to view more details and set options"><i class="glyphicon glyphicon-open"></i> Open</a>

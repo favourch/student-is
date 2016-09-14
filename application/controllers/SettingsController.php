@@ -217,7 +217,8 @@ class SettingsController extends BaseController {
 			if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
 				$classData = json_decode($_POST['model']);
 				$updateClass = array(
-					'class_name' => $classData->class_name
+					'class_name' => $classData->class_name,
+					'class_teacher' => $classData->class_teacher
 				);
 
 				ClassModel::where('id = ?', $class_id)
