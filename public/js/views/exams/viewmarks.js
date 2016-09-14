@@ -9,6 +9,7 @@ define([
 	'collections/users/exams',
 	'collections/users/marklists',
 	'collections/users/terms',
+	'collections/users/grades',
 	'text!templates/exams/choosesubject.html',
 	'text!templates/exams/classes.html',
 	'text!templates/exams/streams.html',
@@ -16,7 +17,7 @@ define([
 	'text!templates/exams/exams.html',
 	'text!templates/exams/terms.html',
 	'text!templates/exams/viewmarks.html'
-	], function($, _, Backbone, viewMark, Classes, Streams, Subjects, Exams, Marklist, Terms, chooseSubject, classesTpl, streamsTpl, subjectsTpl, examsTpl, termsTpl, entriesTpl){
+	], function($, _, Backbone, viewMark, Classes, Streams, Subjects, Exams, Marklist, Terms, Grades, chooseSubject, classesTpl, streamsTpl, subjectsTpl, examsTpl, termsTpl, entriesTpl){
 
 	var marksView = Backbone.View.extend({
 
@@ -74,6 +75,13 @@ define([
 
 			//fetch list of all exams for this client from the database
 			Exams.fetch({
+				data: $.param({ 
+					token: tokenString
+				})
+			});			
+
+			//fetch list of all grades for this client from the database
+			Grades.fetch({
 				data: $.param({ 
 					token: tokenString
 				})
@@ -193,6 +201,18 @@ define([
 			})
 			return regExams;
 		},
+		
+		getGrades: function(){
+
+			var regGrades = [];
+			
+			//get the registered exams for this class
+			Grades.each(function(grade){
+				regGrades.push(grade.toJSON());
+			}, this);
+			
+			return regGrades;
+		},
 
 		viewMarks: function(evt){
 
@@ -244,6 +264,7 @@ define([
 
 		addOneStudent: function(mark){
 			$('.no-students-yet').hide();
+			mark.set({grades: this.getGrades()});
 			var view = new viewMark({
 				model: mark
 			});		

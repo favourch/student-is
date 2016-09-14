@@ -11,5 +11,18 @@
 	<% }); %>
 
 	<td><%= average %></td>
-	<td>A</td>
-	<td>Good</td>
+
+	<% letter_grade = null;
+		remarks = null;
+
+		if(average != null){
+			$.each(grades, function(key, grade){
+				if((average >= grade.from_score) && (average <= grade.to_score)) {
+					letter_grade = grade.letter_grade;
+					remarks = grade.remarks;
+				}
+			}); 
+		} %>
+		
+	<td><%= letter_grade %></td>
+	<td><%= remarks %></td>	
