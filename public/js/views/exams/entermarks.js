@@ -9,13 +9,15 @@ define([
 	'collections/users/exams',
 	'collections/users/marks',
 	'collections/users/grades',
+	'collections/users/terms',
 	'text!templates/exams/chooseexam.html',
 	'text!templates/exams/classes.html',
 	'text!templates/exams/streams.html',
 	'text!templates/exams/subjects.html',
 	'text!templates/exams/exams.html',
+	'text!templates/exams/terms.html',
 	'text!templates/exams/entermarks.html'
-	], function($, _, Backbone, enterMark, Classes, Streams, Subjects, Exams, Marks, Grades, chooseExamTpl, classesTpl, streamsTpl, subjectsTpl, examsTpl, marksTpl){
+	], function($, _, Backbone, enterMark, Classes, Streams, Subjects, Exams, Marks, Grades, Terms, chooseExamTpl, classesTpl, streamsTpl, subjectsTpl, examsTpl, termsTpl, marksTpl){
 
 	var Student = Backbone.View.extend({
 
@@ -24,6 +26,7 @@ define([
 		streamsTpl: _.template(streamsTpl),
 		subjectsTpl: _.template(subjectsTpl),
 		examsTpl: _.template(examsTpl),
+		termsTpl: _.template(termsTpl),
 		marksTpl: _.template(marksTpl),
 
 		tagName: 'div',
@@ -38,6 +41,13 @@ define([
 			this.$main = $(".container-fluid");
 			this.listenTo(Marks, 'reset', this.addAllMarks);
 			this.listenTo(Classes, 'reset', this.setClasses);
+			
+			//fetch list of all terms for this client from the database
+			Terms.fetch({
+				data: $.param({ 
+					token: tokenString
+				})
+			});	
 
 			//fetch list of all classes for this class from the database
 			var self = this;
@@ -83,6 +93,7 @@ define([
 			this.$streams = this.$("#streams-list");
 			this.$subjects = this.$("#subjects-list");
 			this.$exams = this.$("#exams-list");
+			this.$terms = this.$("#terms-list");
 			return this;
 		},
 
@@ -92,7 +103,8 @@ define([
 			this.$classes.html(this.classesTpl({
 				regClasses: this.getClasses()
 			}));
-	
+		
+			this.setTerms();
 		},
 
 		getClasses: function(){
@@ -180,6 +192,25 @@ define([
 			});			
 
 			return regExams;
+
+		},
+
+		setTerms: function(){		
+
+			this.$terms.html(this.termsTpl({
+				regTerms: this.getTerms()
+			}));
+
+		},
+
+		getTerms: function(){
+
+			var regTerms = [];
+			Terms.each(function(term){
+				regTerms.push(term.toJSON());
+			}, this);			
+
+			return regTerms;
 
 		},
 
