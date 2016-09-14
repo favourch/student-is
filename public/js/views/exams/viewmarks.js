@@ -31,7 +31,7 @@ define([
 		tagName: 'div',
 
 		events: {
-			'change #class_id' : 'getStreams',
+			'change #class_id' : 'setStreams',
 			'submit form#viewmarks' : 'viewMarks'
 		},
 
@@ -101,10 +101,21 @@ define([
 				regClasses: regClasses
 			}));
 
-			this.getTerms();
+			this.setTerms();
 	
 		},
 
+		setStreams: function(){		
+
+			this.$streams.html(this.streamsTpl({
+				regStreams: this.getStreams()
+			}));
+
+			//update the subjects and exams
+			this.setSubjects();
+
+		},		
+		
 		getStreams: function(){
 
 			var classID = $("#class_id").val();
@@ -117,14 +128,20 @@ define([
 				regStreams.push(oneStream.toJSON());
 			});			
 
-			this.$streams.html(this.streamsTpl({
-				regStreams: regStreams
-			}));
-
-			//update the subjects and exams
-			this.getSubjects();
+			//return the list of streams
+			return regStreams;
 
 		},		
+
+		setSubjects: function(){
+
+			this.$subjects.html(this.subjectsTpl({
+				regSubjects: this.getSubjects()
+			}));
+
+			return this;
+
+		},
 
 		getSubjects: function(){
 
@@ -138,28 +155,43 @@ define([
 				regSubjects.push(oneSubject.toJSON());
 			});			
 
-			this.$subjects.html(this.subjectsTpl({
-				regSubjects: regSubjects
+			return regSubjects;
+
+		},
+		
+		setTerms: function(){
+
+			this.$terms.html(this.termsTpl({
+				regTerms: this.getTerms()
 			}));
 
 			return this;
 
 		},
-		
+
 		getTerms: function(){
 
 			var regTerms = [];
 
-			Terms.each(function(oneExam){
-				regTerms.push(oneExam.toJSON());
+			Terms.each(function(oneTerm){
+				regTerms.push(oneTerm.toJSON());
 			}, this);			
 
-			this.$terms.html(this.termsTpl({
-				regTerms: regTerms
-			}));
+			return regTerms;
+		},
+		
+		getExams: function(){
 
-			return this;
-
+			var regExams = [];
+			
+			//get the registered exams for this class
+			var exs = Exams.where({
+				class_id: $("#class_id").val()
+			});
+			$.each(exs, function(key, ex){
+				regExams.push(ex.toJSON());
+			})
+			return regExams;
 		},
 
 		viewMarks: function(evt){
@@ -181,16 +213,9 @@ define([
 			selected.stream = (Streams.where({id: selectedOps.stream})[0]) ? Streams.where({id: selectedOps.stream})[0].toJSON() : null;
 			selected.subject = Subjects.where({id: selectedOps.subject})[0].toJSON();
 			selected.term = selectedOps.term;
+			selected.terms = this.getTerms();
 			selected.year = selectedOps.year;
-			selected.exams = [];
-
-			//get the registered exams for this class
-			var exs = Exams.where({
-				class_id: $("#class_id").val()
-			});
-			$.each(exs, function(key, ex){
-				selected.exams.push(ex.toJSON());
-			})
+			selected.exams = this.getExams();
 
 			//load the template into view
 			this.$main.html(this.entriesTpl({
