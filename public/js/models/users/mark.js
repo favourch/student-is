@@ -6,8 +6,7 @@ define([
 	var Mark = Backbone.Model.extend({
 
 		defaults: {
-			id: 0,
-			score: ''
+			
 		}
 
 	});
