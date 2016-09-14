@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'views/exams/scoreEntry',
+	'views/exams/viewmark',
 	'collections/tmplt/classes',
 	'collections/tmplt/streams',
 	'collections/tmplt/subjects',
@@ -13,8 +13,8 @@ define([
 	'text!templates/exams/streams.html',
 	'text!templates/exams/subjects.html',
 	'text!templates/exams/exams.html',
-	'text!templates/exams/entries-view.html'
-	], function($, _, Backbone, markEntry, Classes, Streams, Subjects, Exams, Marklist, chooseSubject, classesTpl, streamsTpl, subjectsTpl, examsTpl, entriesTpl){
+	'text!templates/exams/viewmarks.html'
+	], function($, _, Backbone, viewMark, Classes, Streams, Subjects, Exams, Marklist, chooseSubject, classesTpl, streamsTpl, subjectsTpl, examsTpl, entriesTpl){
 
 	var marksView = Backbone.View.extend({
 
@@ -168,6 +168,9 @@ define([
 				selected: selected
 			}));
 
+			/*
+			 this handler is NOT accessible - I dont know why
+			 */
 			this.$marksList = $("#marks-entries-list");
 
 			//fetch the list of students with marks, if they already have
@@ -186,15 +189,26 @@ define([
 		},
 
 		addOneStudent: function(mark){
-
-			var view = new markEntry({
+			$('.no-students-yet').hide();
+			var view = new viewMark({
 				model: mark
-			});			
+			});		
 			this.$marksList.append(view.render().el);
 		},
 
 		addAllStudents: function(){
-			Marklist.each(this.addOneStudent, this);			
+
+			this.$marksList.empty();
+			if(Marklist.length == 0) {
+				//there are not classes yet, show the no classes alert
+				$('.no-students-yet').show();
+			}
+			else {
+			//remove the message for no classes yet, since there are classes to add
+				$('.no-students-yet').hide();
+				Marklist.each(this.addOneStudent, this);
+			}
+		
 		}
 
 	});
