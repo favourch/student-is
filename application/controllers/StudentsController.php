@@ -66,7 +66,7 @@ class StudentsController extends BaseController {
 
 			$students = StudentModel::where('client_id = ?', $this->client_id)
 									->where('archived != ?', true)
-									->all();echo "oria não";exit();
+									->all();
 		}
 		
 		View::renderJSON($students->result_array());
