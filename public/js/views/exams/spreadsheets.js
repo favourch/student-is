@@ -194,19 +194,7 @@ define([
 			}));
 
 			//this.$rowsTable = this.$("#rows-entries-list");
-
-			//fetch the list of students with SpreadsheetsCol, if they already have
-			SpreadsheetsCol.fetch({
-				data: $.param({ 
-					token: tokenString,
-					class: selectedOps.class,
-					stream: selectedOps.stream,
-					term: selectedOps.term,
-					year: selectedOps.year					
-				}),
-				reset: true
-			});
-
+			
 			//fetch the list of students for this class/stream
 			Students.fetch({
 				data: $.param({ 
@@ -221,7 +209,19 @@ define([
 				data: $.param({ 
 					token: tokenString				
 				})
-			});				
+			});	
+
+			//fetch the list of students with SpreadsheetsCol, if they already have
+			SpreadsheetsCol.fetch({
+				data: $.param({ 
+					token: tokenString,
+					class: selectedOps.class,
+					stream: selectedOps.stream,
+					term: selectedOps.term,
+					year: selectedOps.year					
+				}),
+				reset: true
+			});			
 
 		},
 
