@@ -30,7 +30,7 @@
 			<tbody>
 				<% $.each(top5overall, function(pos, student){ %>
 					<tr>
-						<td><%= pos %></td>
+						<td><%= (pos + 1) %></td>
 						<td><%= student.reg_number.toUpperCase() %></td>
 						<td><%= student.first_name.toUpperCase() %> <%= student.middle_name.charAt(0).toUpperCase() %> <%= student.last_name.toUpperCase() %></td>
 						<td><%= student.total %></td>
@@ -66,7 +66,7 @@
 					<% 	var studs = (top3perSubject["ID" + subject.id]) ? top3perSubject["ID" + subject.id] : [];
 						
 						$.each(studs, function(k, exam){
-							var pos = k;
+							var pos = k + 1;
 							var reg = null;
 							var name = null;
 							var score = null;
@@ -115,7 +115,7 @@
 			</thead>
 			<tbody>
 				<% $.each(subjectPerformance, function(p, score){
-					var position = p;
+					var position = p + 1;
 					var subject_name = null;
 					var mean_score = null;
 					var mean_grade = null;
