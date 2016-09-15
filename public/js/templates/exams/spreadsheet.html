@@ -4,10 +4,10 @@
 	
 	<% $.each(subjects, function(key, subject){ 
 		var foundScore = false;
-		$.each(exams, function(key, exam){
-			if(subject.id == exam.subject_id){ 
+		$.each(marks, function(key, mark){
+			if(subject.id == mark.subject_id){ 
 				foundScore = true; %>
-				<td><%= exam.exam_percent %></td>
+				<td><%= mark.exam_percent %></td>
 			<% } 
 		});
 

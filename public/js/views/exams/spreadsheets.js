@@ -308,60 +308,65 @@ define([
 
 			var analysis = {};
 			analysis.totalScore = 0;
-			analysis.meanScore = 0;
-			analysis.meanGrade = 0;
+			analysis.meanScore = null;
+			analysis.meanGrade = null;
 			analysis.top5overall = [];
 			analysis.top3perSubject = [];
 			analysis.subjectPerformance = [];
 
 			//collects the scores per subject together
-			SpreadsheetsCol.each(function(rowEntry){
+			var subjects = this.getSubjects();
+			$.each(subjects, function(k, subject){
 				
-				analysis.totalScore += rowEntry.get("total");
-				Subjects.each(function(subject){
-					analysis.top3perSubject["ID" + subject.get('id')] = [];
+				analysis.top3perSubject["ID" + subject.id] = [];
+				
+				SpreadsheetsCol.each(function(student){
 					
-					var exs = rowEntry.get('exams');
-					$.each(exs, function(key, exam){
+					analysis.totalScore += student.get("total");					
+					var mks = student.get('marks');
+					$.each(mks, function(key, mark){
 
-						if (exam.subject_id == subject.get('id')) {
-							analysis.top3perSubject["ID" + subject.get('id')].push({
-								exam_percent: exam.exam_percent, 
-								student_id: exam.student_id
-							});
+						if (mark.subject_id == subject.id) {
+							if(mark.exam_percent !== null){
+								analysis.top3perSubject["ID" + subject.id].push({
+									exam_percent: mark.exam_percent, 
+									student_id: mark.student_id
+								});							
+							}
+							
 						}
-					});
+					});	
+						
 				}, this);
-					
-			}, this);
+			});
 
 			//compute the total scores for each subject
-			Subjects.each(function(subject){
-				var marks = analysis.top3perSubject["ID" + subject.get('id')];
+			$.each(subjects, function(key, subject){
+				var marks = analysis.top3perSubject["ID" + subject.id];
 				var subjectTotal = 0;
 				$.each(marks, function(key, mark){
 					subjectTotal += mark.exam_percent;
 				});
 
 				analysis.subjectPerformance.push({
-					subject_id: subject.get('id'),
+					subject_id: subject.id,
 					subjectTotal: subjectTotal
 				});
-			}, this);
+			});
 
 			//computer the number of students taking each subject
 			analysis.subjectChoices = [];
-			Subjects.each(function(subject){
+			$.each(subjects, function(k, subject){
 				var studentsNum = 0;
 				SpreadsheetsCol.each(function(student){
-					$.each(student.get('exams'), function(key, exam){
-					if(subject.get('id') == exam.subject_id){ 
-						studentsNum += 1;
-					} 
-				});
-				analysis.subjectChoices.push({subject_id: subject.get('id'), totalStudents: studentsNum});
+					$.each(student.get('marks'), function(key, exam){
+						if(subject.id == exam.subject_id){ 
+							studentsNum += 1;
+						} 
+					});
+					analysis.subjectChoices.push({subject_id: subject.id, totalStudents: studentsNum});
 				}, this);
-			},this);
+			});
 
 
 			//get the top 5 overall in ranking
@@ -373,9 +378,15 @@ define([
 			});
 
 			//get the mean score
-			analysis.meanScore = Math.round(analysis.totalScore / SpreadsheetsCol.length);
+			analysis.meanScore = null;
+			console.log(SpreadsheetsCol.length);
+			console.log(analysis.totalScore);
+			if(SpreadsheetsCol.length > 0) {
+				analysis.meanScore = Math.round(analysis.totalScore / SpreadsheetsCol.length);
+			}
 
 			//get the mean grade
+			analysis.meanGrade = null;
 			Grades.each(function(grade){
 				if ((analysis.meanScore >= grade.get('from_score')) && (analysis.meanScore <= grade.get('to_score')) ) {
 					analysis.meanGrade = grade.get('letter_grade');
@@ -383,11 +394,11 @@ define([
 			}, this);
 
 			//get the top 3 per subject
-			Subjects.each(function(subject){
-				var marks = analysis.top3perSubject["ID" + subject.get('id')];
+			$.each(subjects, function(k, subject){
+				var marks = analysis.top3perSubject["ID" + subject.id];
 				marks = _.sortBy(marks, function(mark){ return -mark.exam_percent;});
-				analysis.top3perSubject["ID" + subject.get('id')] = marks.slice(0,3);
-			}, this);
+				analysis.top3perSubject["ID" + subject.id] = marks.slice(0,3);
+			});
 
 			analysis.subjects = this.getSubjects();
 			analysis.students = this.getStudents();

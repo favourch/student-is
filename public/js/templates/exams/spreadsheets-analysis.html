@@ -3,13 +3,7 @@
 		<p>Mean Score: <%= meanScore %></p>
 	</div>
 	<div class="col-lg-4">
-		<% mean_grade = null;
-			$.each(grades, function(key, grade){
-				if((meanScore >= grade.from_score) && (meanScore <= grade.to_score)) {
-					mean_grade = grade.letter_grade;
-				}
-		}); %>
-		<p>Mean Grade: <%= mean_grade %></p>
+		<p>Mean Grade: <%= meanGrade %></p>
 	</div>
 	<div class="col-lg-4">
 		<p>Remarks: .........................</p>
@@ -50,6 +44,7 @@
 		</table>
 	
 		<p>Top 3 Per Subject</p>
+		<% console.log(top3perSubject); %>
 		<table class="table table-hover table-striped table-bordered">
 			<% $.each(subjects, function(key, subject){ %>
 				<p><%= subject.subject_name %></p>
@@ -108,8 +103,8 @@
 			<thead>
 				<th>POS</th>
 				<th>Subject</th>
-				<th>M. Score</th>
-				<th>M. Grd</th>
+				<th>M.S.</th>
+				<th>M.G.</th>
 				<th>Teacher</th>
 			</thead>
 			<tbody>

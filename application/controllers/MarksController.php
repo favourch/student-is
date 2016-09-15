@@ -324,7 +324,7 @@ class MarksController extends BaseController {
 					"middle_name" => $stud->middle_name,
 					"last_name" => $stud->last_name,
 					"reg_exams" => $exams,
-					"exams" => array(),
+					"marks" => array(),
 					"total" => 0,
 					"average" => 0
 				);
@@ -333,26 +333,26 @@ class MarksController extends BaseController {
 		//loop through the marks array populating the students list with marks
 		foreach ($marks as $key => $mark) {
 			if (isset($studentsList["ID".$mark->student_id])) {
-				$studentsList["ID".$mark->student_id]['exams'][] = $mark;
+				$studentsList["ID".$mark->student_id]['marks'][] = $mark;
 			}
 			
 		}
 
 		//loop through the marks adding each subject together
 		foreach ($studentsList as $studID => $student) {
-			$studentsList[$studID]['exams'] = array();
+			$studentsList[$studID]['marks'] = array();
 			$totalScore = 0;
 			foreach ($subjects->result() as $subID => $subject) {
 				$subjectTotal = null;
 				$average = null;
-				foreach ($student['exams'] as $examID => $exam) {
-					if ($exam->subject_id == $subject->id) {
+				foreach ($student['marks'] as $key => $mark) {
+					if ($mark->subject_id == $subject->id) {
 
 						//check if a previous value has been added
 						if ($subjectTotal == null) {
 							$subjectTotal = 0;
 						}
-						$subjectTotal += $exam->exam_percent;
+						$subjectTotal += $mark->exam_percent;
 					}
 				}
 
@@ -362,8 +362,9 @@ class MarksController extends BaseController {
 					$average = round($subjectTotal / $exams);
 				}
 				
-				$studentsList[$studID]['exams'][] = array(
+				$studentsList[$studID]['marks'][] = array(
 						"subject_id" => $subject->id,
+						"student_id" => $student["student_id"],
 						"exam_percent" => $average
 					);
 				$totalScore += $average;
@@ -431,7 +432,6 @@ class MarksController extends BaseController {
 					"first_name" => $stud->first_name,
 					"middle_name" => $stud->middle_name,
 					"last_name" => $stud->last_name,
-					"exams" => (array)$exams,
 					"marks" => array(),
 					"total" => 0,
 					"average" => null
@@ -440,23 +440,26 @@ class MarksController extends BaseController {
 
 		//loop through the marks array populating the students list with marks
 		foreach ($marks as $key => $mark) {
-			$studentsList["ID".$mark->student_id]['marks'][] = $mark;
+			if (isset($studentsList["ID".$mark->student_id])) {
+				$studentsList["ID".$mark->student_id]['marks'][] = $mark;
+			}
+			
 		}
 
 		//loop through the marks adding each subject together
 		foreach ($studentsList as $key => $student) {
 			//
-			$studentsList[$key]['exams'] = array();
+			$studentsList[$key]['marks'] = array();
 			$totalScore = 0;
 			foreach ($subjects as $key => $subject) {
 				$subjectTotal = 0;
-				foreach ($student['exams'] as $key => $exam) {
+				foreach ($student['marks'] as $key => $exam) {
 					if ($exam->subject_id == $subject->id) {
 						$subjectTotal += $exam->exam_percent;
 					}
 				}
-				$average = round($total / $exams);
-				$studentsList[$key]['exams'][] = array(
+				$average = round($subjectTotal / $exams);
+				$studentsList[$key]['marks'][] = array(
 						"subject_id" => $subject->id,
 						"exam_percent" => $average
 					);
