@@ -48,17 +48,17 @@ class StudentsController extends BaseController {
 	 */
 	public function getStudents(){
 
-		if (Input::get('class')) {
+		if (Input::get('stream')) {
 			$students = StudentModel::where('client_id = ?', $this->client_id)
 								->where('archived != ?', true)
 								->where('class_id = ?', Input::get('class'))
+								->where('stream_id = ?', Input::get('stream'))
 								->all();
 		}
-		elseif (Input::get('stream')) {
+		elseif (Input::get('class')) {
 			$students = StudentModel::where('client_id = ?', $this->client_id)
 								->where('archived != ?', true)
 								->where('class_id = ?', Input::get('class'))
-								->where('stream_id = ?', Input::get('class'))
 								->all();
 
 		}
@@ -66,7 +66,7 @@ class StudentsController extends BaseController {
 
 			$students = StudentModel::where('client_id = ?', $this->client_id)
 									->where('archived != ?', true)
-									->all();
+									->all();echo "oria não";exit();
 		}
 		
 		View::renderJSON($students->result_array());
