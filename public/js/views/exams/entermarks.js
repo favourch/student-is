@@ -262,7 +262,7 @@ define([
 				selected: this.selected
 			}));
 
-			this.$marksList = $(".enter-marks-list");
+			this.$marksList = $("#enter-marks-list");
 
 			//fetch the list of students with marks, if they already have
 			var that = this;

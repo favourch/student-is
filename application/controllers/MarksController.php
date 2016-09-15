@@ -183,7 +183,7 @@ class MarksController extends BaseController {
 		$exams = ExamModel::where('client_id = ?', $this->client_id)
 							->where('class_id = ?', Input::get('class'))
 							->all()
-							->result();
+							->result_array();
 		//get students by streams
 		if(Input::get('stream')){
 			//get the list of all the students
@@ -225,7 +225,7 @@ class MarksController extends BaseController {
 					"first_name" => $stud->first_name,
 					"middle_name" => $stud->middle_name,
 					"last_name" => $stud->last_name,
-					"reg_exams" => (array)$exams,
+					"reg_exams" => $exams,
 					"exams" => array(),
 					"average" => null
 				);
@@ -241,11 +241,13 @@ class MarksController extends BaseController {
 			
 			if(count($student['exams']) > 0){
 				$examsTotal = 0;
+				$average = 0;
 				foreach ($student['exams'] as $key => $exam) {
 					$examsTotal += $exam['exam_percent'];
 				}
-				$average = round($examsTotal / count($exams));
-				$studentsList["ID".$keyID]["average"][] = $average;
+				$numOfExams = count($exams);
+				$average = round($examsTotal / $numOfExams);
+				$studentsList[$keyID]["average"] = $average;
 
 			}
 
