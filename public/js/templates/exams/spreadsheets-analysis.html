@@ -6,7 +6,7 @@
 		<p>Average Mean Score: <%= avgMeanScore %></p>
 	</div>
 	<div class="col-lg-3">
-		<p>Mean Grade: <%= meanGrade %></p>
+		<p>Mean Grade: <%= meanGrade.toUppserCase() %></p>
 	</div>
 	<div class="col-lg-3">
 		<p>Remarks: .........................</p>
@@ -40,7 +40,7 @@
 								}
 							}); %>
 
-						<td><%= letter_grade %></td>
+						<td><%= letter_grade.toUppserCase() %></td>
 					</tr>
 				<% }); %>
 			</tbody>
@@ -49,7 +49,7 @@
 		<p>Top 3 Per Subject</p>
 		<table class="table table-hover table-striped table-bordered">
 			<% $.each(subjects, function(key, subject){ %>
-				<p><%= subject.subject_name %></p>
+				<p><%= subject.subject_name.toUppserCase() %></p>
 				<table class="table table-hover table-bordered table-striped">
 					<thead>
 						<th>Pos</th>
@@ -85,10 +85,10 @@
 						 %>
 						 <tr>
 						 	<td><%= pos %></td>
-						 	<td><%= reg %></td>
-						 	<td><%= name %></td>
+						 	<td><%= reg.toUppserCase() %></td>
+						 	<td><%= name.toUppserCase() %></td>
 						 	<td><%= score %></td>
-						 	<td><%= letter_grade %></td>
+						 	<td><%= letter_grade.toUppserCase() %></td>
 						 </tr>
 
 						<% }); %>	
@@ -143,10 +143,10 @@
 					}); %>
 					<tr>
 						<td><%= position %></td>
-						<td><%= subject_name %></td>
+						<td><%= subject_name.toUppserCase() %></td>
 						<td><%= mean_score %></td>
-						<td><%= mean_grade %></td>
-						<td><%= teacher_name %></td>
+						<td><%= mean_grade.toUppserCase() %></td>
+						<td><%= teacher_name.toUppserCase() %></td>
 					</tr>
 				<% }); %>
 			</tbody>

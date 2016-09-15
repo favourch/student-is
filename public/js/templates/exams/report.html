@@ -1,16 +1,16 @@
 
 	<div class="col-sm-12">
-		<p class="text-center"><%= client.school_name %></p>
+		<p class="text-center"><%= client.school_name.toUppserCase() %></p>
 		<p class="text-center"><%= client.phone %> <%= client.email %></p>
-		<p class="text-center"><%= client.address %> <%= client.code %>, <%= client.city %></p>
+		<p class="text-center"><%= client.address.toUppserCase() %> <%= client.code.toUppserCase() %>, <%= client.city.toUppserCase() %></p>
 	</div>
 	<div class="col-sm-12">
-		<div class="col-sm-4">STUDENT NAME: <u><%= first_name %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name %></u></div>
-		<div class="col-sm-4">REG. NO: <u><%= reg_number %></u></div>
-		<div class="col-sm-4">CLASS: <u><%= selected.class.class_name %></u></div>
+		<div class="col-sm-4">STUDENT NAME: <u><%= first_name.toUppserCase() %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name.toUppserCase() %></u></div>
+		<div class="col-sm-4">REG. NO: <u><%= reg_number.toUppserCase() %></u></div>
+		<div class="col-sm-4">CLASS: <u><%= selected.class.class_name.toUppserCase() %></u></div>
 	</div>
 	<div class="col-sm-12">
-		<p class="text-center">END OF <%= selected.term.term_abbr %> REPORT <%= selected.year %></p>
+		<p class="text-center">END OF <%= selected.term.term_abbr.toUppserCase() %> REPORT <%= selected.year %></p>
 	</div>
 	<div class="col-sm-12">
 		<table class="table table-hover table-striped table-bordered">
@@ -19,7 +19,7 @@
 				<th>SUBJECT</th>
 
 				<% $.each(exams, function(k, exam){ %>
-					<th><%= exam.exam_abbr %></th>
+					<th><%= exam.exam_abbr.toUppserCase() %></th>
 				<% }); %>
 
 				<th>AVERAGE</th>
@@ -29,8 +29,8 @@
 			<tbody>
 				<% $.each(subjects, function(k, subject){ %>
 					<tr>
-						<td><%= subject.subject_code %></td>
-						<td><%= subject.subject_name %></td>
+						<td><%= subject.subject_code.toUppserCase() %></td>
+						<td><%= subject.subject_name.toUppserCase() %></td>
 
 						<% $.each(exams, function(k, exam){ 
 							var examScore = null;
@@ -64,7 +64,7 @@
 
 							}); %>
 						<td><%= subjectAverage %></td>
-						<td><%= subjectGrade %></td>
+						<td><%= subjectGrade.toUppserCase() %></td>
 						<td><%= subjectRemarks %></td>
 					</tr>
 				<% }); %>
@@ -72,20 +72,23 @@
 		</table>
 	</div>
 	<div class="col-sm-12">
-		<p class="text-center">AVERAGE SCORE: <u><%= average %></u> 	OUT OF: <u>100</u> 		MEAN GRADE: 
+		<p class="text-center">AVERAGE SCORE: <u><%= average %></u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUT OF: <u>100</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEAN GRADE:	
 
 			<u><% $.each(grades, function(g, grade){
 					if((average >= grade.from_score) && (average <= grade.to_score)) { %>
-						<%= grade.letter_grade %>
+						<%= grade.letter_grade.toUppserCase() %>
 					<% }
 				}); %>
-			</u>
+			</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 					POSITION: <u><%= position %></u> 		OUT OF: <u><%= classPopulation %></u>
 		</p>
 	</div>
 	<div class="col-sm-12">
-		<p>CLASS TEACHER's REMARKS .............................................................................................................................................................. 
+		<p>CLASS TEACHER's REMARKS</p>
+		<p>...........................................................................................................................................................................................................................</p>
+		<br>
+		<p> 
 		NAME: 
 
 		<% 	var teacherName = null;
@@ -96,25 +99,28 @@
 			});
 
 			if(teacherName == null){ %>
-				..............................
+				..............................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<% } else { %>
-				<u><%= teacherName %></u>
+				<u><%= teacherName.toUppserCase() %></u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<% } 
-		%> SIGN ......................................	DATE: ..................... 	</p>
-		<p></p>
+		%> SIGN .......................................................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATE: ......................................... 	</p>
+		<br>
 	</div>
 
 	<div class="col-sm-12">
-		<p>HEAD TEACHER's REMARKS .................................................................................................................................................................. 
+		<p>HEAD TEACHER's REMARKS</p>
+		<p>.......................................................................................................................................................................................................................</p>
+		<br>
+		<p>
 		NAME: 
 
 		<% 	
 			if(client.headteacher_name == null){ %>
-				..............................
+				..............................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<% } else { %>
-				<u><%= client.headteacher_name %></u>
+				<u><%= client.headteacher_name.toUppserCase() %></u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<% } 
-		%> SIGN ................................ DATE: .....................		 </p>
+		%> SIGN ........................................................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATE: ............................................		 </p>
 		<hr>
 	</div>
 	

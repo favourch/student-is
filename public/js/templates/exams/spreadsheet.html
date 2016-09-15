@@ -1,6 +1,6 @@
 	<td><%= position %></td>
-	<td><%= reg_number %></td>
-	<td><%= first_name %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name %></td>
+	<td><%= reg_number.toUppserCase() %></td>
+	<td><%= first_name.toUppserCase() %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name.toUppserCase() %></td>
 	
 	<% $.each(subjects, function(key, subject){ 
 		var foundScore = false;
@@ -28,5 +28,5 @@
 				remarks = grade.remarks;
 			}
 		}); %>
-	<td><%= letter_grade %></td>
+	<td><%= letter_grade.toUppserCase() %></td>
 	<td><%= remarks %></td>
