@@ -25,7 +25,7 @@
 				<th>Name</th>
 				<th>Total</th>
 				<th>Avg</th>
-				<th>Grade</th>
+				<th>Grd</th>
 			</thead>
 			<tbody>
 				<% $.each(top5overall, function(pos, student){ %>
@@ -35,7 +35,6 @@
 						<td><%= student.first_name.toUpperCase() %> <%= student.middle_name.charAt(0).toUpperCase() %> <%= student.last_name.toUpperCase() %></td>
 						<td><%= student.total %></td>
 						<td><%= student.average %></td>
-						<td><%= student.grade %></td>
 
 						<% letter_grade = null;
 							$.each(grades, function(key, grade){
@@ -60,7 +59,7 @@
 						<th>Reg. No</th>
 						<th>Name</th>
 						<th>Score</th>
-						<th>Grade</th>
+						<th>Grd</th>
 					</thead>
 					<tbody>
 					<% 	var studs = (top3perSubject["ID" + subject.id]) ? top3perSubject["ID" + subject.id] : [];
@@ -109,8 +108,8 @@
 			<thead>
 				<th>POS</th>
 				<th>Subject</th>
-				<th>Mean Score</th>
-				<th>Mean Grade</th>
+				<th>M. Score</th>
+				<th>M. Grd</th>
 				<th>Teacher</th>
 			</thead>
 			<tbody>
