@@ -76,9 +76,10 @@ class AdminController extends BaseController {
 			)
 		);
 
+		$url = Url::base();
 		// The message
 		$message = "Hello {$client->first_name} {$client->last_name} your account for Student Infomation System software has been created succeddfully.\r\n";
-		$message .= "Email: {$client->email} \r\n Password: $password\r\n Institution: $client->institution\r\n  You can login using this link Url::base()";
+		$message .= "Email: {$client->email} \r\n Password: $password\r\n Institution: $client->institution\r\n  You can login using this link {$url}";
 		$headers = "From: geoffreybans@gmail.com \r\n Reply-To: geoffreybans@gmail.com \r\n X-Mailer: PHP/ phpversion()";
 
 		// In case any of our lines are larger than 70 characters, we should use wordwrap()
