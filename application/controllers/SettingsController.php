@@ -682,5 +682,18 @@ class SettingsController extends BaseController {
 
 	}
 
+	/**
+	 * This method returns the details for this client
+	 * @before authClientUser
+	 * @param null
+	 * @return JSON
+	 */
+	public function getClient(){
+		$client = ClientModel::where('id = ?', $this->client_id)
+						->first()
+						->result_array();
+		View::renderJSON($client);
+	}
+
 }
 
