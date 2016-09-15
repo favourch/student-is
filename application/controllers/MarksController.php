@@ -397,14 +397,26 @@ class MarksController extends BaseController {
 							->count()
 							->num_rows();
 
-		//get the list of all the students
-		$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
-								->where('client_id = ?', $this->client_id)
-								->where('archived != ?', true)
-								->where('class_id = ?', Input::get('class'))
-								->where('stream_id = ?', Input::get('stream'))
-								->all()
-								->result();
+		if (Input::get('stream')) {
+			//get the list of all the students
+			$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
+									->where('client_id = ?', $this->client_id)
+									->where('archived != ?', true)
+									->where('class_id = ?', Input::get('class'))
+									->where('stream_id = ?', Input::get('stream'))
+									->all()
+									->result();		
+		} 
+		else {
+			//get the list of all the students
+			$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
+									->where('client_id = ?', $this->client_id)
+									->where('archived != ?', true)
+									->where('class_id = ?', Input::get('class'))
+									->all()
+									->result();		
+		}
+		
 		//get the array of all marks entries for this term
 		$marks = MarkModel::select(array("student_id","exam_id","exam_percent","subject_id"))
 						->where('client_id = ?', $this->client_id)
@@ -433,6 +445,7 @@ class MarksController extends BaseController {
 					"middle_name" => $stud->middle_name,
 					"last_name" => $stud->last_name,
 					"marks" => array(),
+					"averages" => array(),
 					"total" => 0,
 					"average" => null
 				);
@@ -441,33 +454,46 @@ class MarksController extends BaseController {
 		//loop through the marks array populating the students list with marks
 		foreach ($marks as $key => $mark) {
 			if (isset($studentsList["ID".$mark->student_id])) {
-				$studentsList["ID".$mark->student_id]['marks'][] = $mark;
+				$studentsList["ID".$mark->student_id]['marks'][] = (array)$mark;
 			}
 			
 		}
 
 		//loop through the marks adding each subject together
-		foreach ($studentsList as $key => $student) {
+		foreach ($studentsList as $keyID => $student) {
 			//
-			$studentsList[$key]['marks'] = array();
 			$totalScore = 0;
-			foreach ($subjects as $key => $subject) {
-				$subjectTotal = 0;
-				foreach ($student['marks'] as $key => $exam) {
-					if ($exam->subject_id == $subject->id) {
-						$subjectTotal += $exam->exam_percent;
+			foreach ($subjects as $k => $subject) {
+				$subjectTotal = null;
+				$average = null;
+				foreach ($student['marks'] as $m => $mark) {
+					if ($mark->subject_id == $subject->id) {
+						if($subjectTotal == null) $subjectTotal = 0;
+						$subjectTotal += $mark->exam_percent;
 					}
 				}
-				$average = round($subjectTotal / $exams);
-				$studentsList[$key]['marks'][] = array(
+
+				if($subjectTotal != null AND $exams > 0) {
+					$average = round($subjectTotal / $exams);
+				}
+				
+				$studentsList[$keyID]['averages'][] = array(
 						"subject_id" => $subject->id,
 						"exam_percent" => $average
 					);
-				$total += $average;
+
+				if($average != null) $totalScore += $average;
+				
 			}
 			$studentsList[$key]["total"] = $totalScore;
 		}
-
+		
+		//get student list of arrays and then return
+		$studList = array();
+		foreach ($studentsList as $key => $student) {
+			$studList[] = $student;
+		}
+		View::renderJSON($studList);
 	}
 
 }
