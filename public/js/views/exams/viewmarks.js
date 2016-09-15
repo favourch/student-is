@@ -245,7 +245,7 @@ define([
 			/*
 			 this handler is NOT accessible - I dont know why
 			 */
-			this.$marksList = $("#marks-entries-list");
+			this.$marksList = $("#view-marks-list");
 
 			//fetch the list of students with marks, if they already have
 			Marklist.fetch({

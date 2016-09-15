@@ -262,7 +262,7 @@ define([
 				selected: this.selected
 			}));
 
-			this.$marksList = $(".marks-entries-list");
+			this.$marksList = $(".enter-marks-list");
 
 			//fetch the list of students with marks, if they already have
 			var that = this;
@@ -285,7 +285,7 @@ define([
 			$('.no-students-yet').hide();
 			Mark.set({exam: this.selected.exam});
 			Mark.set({grades: this.getGrades()});
-			
+
 			var view = new enterMark({
 				model: Mark 
 			});			

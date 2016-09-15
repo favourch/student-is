@@ -13,8 +13,10 @@ define([
 
 		events: {
 			'submit .save-mark' : 'saveMark',
+			'dblclick .exam-score' : 'editMark',
 			'click .editMark' : 'editMark',
-			'blur .mark-input' : 'saveMark'
+			'click .editDone' : 'saveMark',
+			'blur .exam-score-input' : 'saveMark'
 		},
 
 		initialize: function(){
@@ -37,10 +39,19 @@ define([
 
 			this.$editMark.addClass('hidden');
 			this.$editDone.removeClass('hidden');
-		},		
+		},
+
+		editDone: function(){
+			this.$scoreLabel.removeClass('hidden');
+			this.$scoreInput.addClass('hidden');
+
+			this.$editMark.removeClass('hidden');
+			this.$editDone.addClass('hidden');
+		},
 
 		saveMark: function(evt){
-			evt.preventDefault();
+			//check for form submit
+			if (evt) evt.preventDefault();
 
 			//check for update or new record
 			if (this.model.get('id')) {
@@ -57,7 +68,7 @@ define([
 					url: baseURL + 'marks/marks/' + '?token=' + tokenString
 				});			
 			}
-
+			
 			this.model.trigger('change');		
 		}
 
