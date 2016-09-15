@@ -3,8 +3,8 @@ define([
 	'backbone'
 	], function(_, Backbone){
 
-	var Spreadsheet = Backbone.Model;
+	var Report = Backbone.Model;
 
-	return Spreadsheet;
+	return Report;
 
 });

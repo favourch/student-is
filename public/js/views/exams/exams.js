@@ -7,7 +7,8 @@ define([
 	'views/exams/viewmarks',	
 	'views/exams/grades',
 	'views/exams/spreadsheets',
-	], function($, _, Backbone, MarksCol, enterMarks, viewMarks, viewGrades, viewSpreadsheets){
+	'views/exams/reports',
+	], function($, _, Backbone, MarksCol, enterMarks, viewMarks, viewGrades, viewSpreadsheets, viewReports){
 
 	var Exams = Backbone.View.extend({
 
@@ -53,6 +54,14 @@ define([
 					
 					//load the view marks view
 					var view = new viewSpreadsheets;
+					this.$main.html(view.render().el);
+					break;
+				case 'reports':
+					//update page title
+					$("title").html("Reports - " + this.title);
+					
+					//load the view marks view
+					var view = new viewReports;
 					this.$main.html(view.render().el);
 					break;
 

@@ -2,14 +2,14 @@ define([
 	'underscore',
 	'backbone',
 	'models/users/spreadsheet'
-	], function(_, Backbone, rowEntry){
+	], function(_, Backbone, Spreadsheet){
 
 	Backbone.emulateHTTP = true;
 	Backbone.emulateJSON = true;
 
-	var Spreadsheet = Backbone.Collection.extend({
+	var Spreadsheets = Backbone.Collection.extend({
 
-		model: rowEntry,
+		model: Spreadsheet,
 
 		url: function () {
 			return baseURL + "marks/spreadsheet";
@@ -21,6 +21,6 @@ define([
 		
 	});
 
-	return new Spreadsheet();
+	return new Spreadsheets();
 
 });

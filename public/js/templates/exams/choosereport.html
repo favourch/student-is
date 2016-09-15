@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-lg-12">
+		<p>Choose the report to generate:</p>
+	</div>
+	<div class="col-lg-12">
+	<form method="post" action="/" id="getreport">
+		<div class="col-lg-2" id="classes-list">
+			<select id="class_id" class="form-control" required=""> 
+				<option value="">--Class--</option>
+			</select>
+		</div>
+		<div class="col-lg-2" id="streams-list">
+			<select id="stream_id" class="form-control">
+				<option> --Stream-- </option>
+			</select>
+		</div>
+		<div class="col-lg-2" id="terms-list">
+			<select id="term_id" class="form-control" required="">
+				<option> --Term-- </option>
+			</select>
+		</div>
+		<div class="col-lg-2" id="years-list">
+			<select id="year" class="form-control" required="">
+				<option> --Year-- </option>
+				<option value="2015">2015</option>
+				<option value="2016">2016</option>
+				<option value="2017">2017</option>
+			</select>		
+		</div>
+		<br>
+		<br>
+		<div class="col-lg-2">
+			<button type="submit" class="btn btn-primary">Go!</button>
+		</div>
+	</form>
+	</div>	
+</div>

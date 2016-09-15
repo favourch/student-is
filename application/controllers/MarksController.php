@@ -431,8 +431,7 @@ class MarksController extends BaseController {
 		$subjects = SubjectModel::select(array("id"))
 						->where('client_id = ?', $this->client_id)
 						->where('class_id = ?', Input::get('class'))
-						->all()
-						->result();
+						->all();
 
 		$studentsList = array();
 
@@ -463,13 +462,13 @@ class MarksController extends BaseController {
 		foreach ($studentsList as $keyID => $student) {
 			//
 			$totalScore = 0;
-			foreach ($subjects as $k => $subject) {
+			foreach ($subjects->result() as $k => $subject) {
 				$subjectTotal = null;
 				$average = null;
 				foreach ($student['marks'] as $m => $mark) {
-					if ($mark->subject_id == $subject->id) {
+					if ($mark['subject_id'] == $subject->id) {
 						if($subjectTotal == null) $subjectTotal = 0;
-						$subjectTotal += $mark->exam_percent;
+						$subjectTotal += $mark['exam_percent'];
 					}
 				}
 
@@ -485,7 +484,9 @@ class MarksController extends BaseController {
 				if($average != null) $totalScore += $average;
 				
 			}
-			$studentsList[$key]["total"] = $totalScore;
+			$studentsList[$keyID]["total"] = $totalScore;
+			$subjectCount = count($subjects->result_array());
+			$studentsList[$keyID]["average"] = round($totalScore / $subjectCount);
 		}
 		
 		//get student list of arrays and then return

@@ -328,3 +328,20 @@ E_NOTICE Undefined offset: 0 in C:\xampp\htdocs\student-is\application\controlle
 #2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
 #3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
 
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_NOTICE Trying to get property of non-object in C:\xampp\htdocs\student-is\application\controllers\MarksController.php on line (470) As seen from  C:\xampp\htdocs\student-is\application\controllers\MarksController.php(470): handler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 470, Array)
+#1 [internal function]: Controllers\MarksController->getReports()
+#2 C:\xampp\htdocs\student-is\system\start.php(214): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
