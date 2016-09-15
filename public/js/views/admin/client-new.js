@@ -26,7 +26,6 @@ define([
 		render: function(){
 
 			this.$el.html(this.template());
-
 			return this;
 
 		},
@@ -52,11 +51,12 @@ define([
 			$(".success-message").hide(200);
 
 			Clients.create(newClient, {
+				url: baseURL + 'admin/clients' + '?token=' + tokenString,
 				success: function(){
 					$(".success-message").html("Client added successfully!").show(400);
 					$(".submit-button").html("Submit");
 				},
-				error: function(){
+				error: function(jqXHR, textStatus, errorThrown){
 				    if(textStatus.status != 401 && textStatus.status != 403) {
 				      					    	
 						$(".error-message").html("Please check the errors below!").show(400);

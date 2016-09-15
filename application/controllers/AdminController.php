@@ -49,7 +49,7 @@ class AdminController extends BaseController {
 		
 		//create new client
 		$newclient = array(
-			'institution' => $client->institution,
+			'school_name' => $client->institution,
 			'first_name' => $client->first_name,
 			'last_name' => $client->last_name,
 			'phone' => $client->phone,
@@ -117,6 +117,7 @@ class AdminController extends BaseController {
 			'last_name' => $user->last_name,
 			'password' => md5(sha1($user->password)),
 			'email' => $user->email,			
+			'activated' => true,			
 			'user_role' => 2
 		);
 

@@ -451,3 +451,14 @@ Drivers\Database\MySQL\MySQLException Column 'client_id' cannot be null<span cla
 #2 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
 #3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
 
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Database\MySQL\MySQLException Unknown column 'institution' in 'field list'<span class="query-string"> (INSERT INTO clients (institution, first_name, last_name, phone, email, address, code, city, date_created) VALUES ('Brother Beausang', 'Richard', 'Ogutu', '0726897481', 'v.cardoso@example.com.br', '1245 Ngong Hills', '00208', 'Kajiado', '2016-09-15 07:06:14')) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(903) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(194): Drivers\Database\MySQL\MySQLQuery->save(Array, true)
+#1 C:\xampp\htdocs\student-is\application\controllers\AdminController.php(62): Drivers\Models\BaseModelClass::save(Array)
+#2 [internal function]: Controllers\AdminController->postClients()
+#3 C:\xampp\htdocs\student-is\system\start.php(214): call_user_func_array(Array, Array)
+
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}

@@ -26,7 +26,6 @@ define([
 		render: function(){
 
 			this.$el.html(this.template());
-
 			return this;
 
 		},
@@ -47,6 +46,7 @@ define([
 			$(".success-message").hide(200);
 
 			Users.create(newUser, {
+				url: baseURL + 'admin/users' + '?token=' + tokenString,
 				success: function(){
 					$(".success-message").html("User added successfully!").show(400);
 					$(".submit-button").html("Submit");
