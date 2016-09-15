@@ -12,12 +12,13 @@ define([
 	'collections/users/grades',
 	'collections/users/students',
 	'collections/users/teachers',
+	'collections/users/clients',
 	'text!templates/exams/choosereport.html',
 	'text!templates/exams/classes.html',
 	'text!templates/exams/streams.html',
 	'text!templates/exams/terms.html',
 	'text!templates/exams/reports.html'
-	], function($, _, Backbone, ReportView, Reports, Classes, Streams, Subjects, Exams, Terms, Grades, Students, Teachers, chooseReportTpl, classesTpl, streamsTpl, termsTpl, reportsTpl){
+	], function($, _, Backbone, ReportView, Reports, Classes, Streams, Subjects, Exams, Terms, Grades, Students, Teachers, Clients, chooseReportTpl, classesTpl, streamsTpl, termsTpl, reportsTpl){
 
 	var Spreadsheets = Backbone.View.extend({
 
@@ -207,6 +208,13 @@ define([
 				data: $.param({ 
 					token: tokenString				
 				})
+			});				
+
+			//fetch the client details for this client
+			Clients.fetch({
+				data: $.param({ 
+					token: tokenString				
+				})
 			});	
 
 			//fetch the list of students with Reports, if they already have
@@ -271,12 +279,19 @@ define([
 
 		},
 
+		getClient: function(){
+
+			var regClient = Clients.at(0).toJSON();
+			return regClient;
+		},
+
 		addOneReport: function(Row, key){
 			$('.no-students-yet').hide();
 			//add the list of subject
 			Row.set({subjects: this.getSubjects()});
 			Row.set({grades: this.getGrades()});
 			Row.set({position: (key + 1)});
+			Row.set({client: this.getClient()});
 
 			var view = new ReportView({
 				model: Row 

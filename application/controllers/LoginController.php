@@ -77,7 +77,7 @@ class LoginController extends BaseController {
 							),
 						"token" => $token,
 						"client" => array(
-							"name" => $client['institution'],
+							"name" => $client['school_name'],
 							"email" => $client['email'],
 							"phone" => $client['phone'],
 							"activated" => $client['activated']

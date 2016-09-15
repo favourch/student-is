@@ -12,7 +12,7 @@ define([
 		model: Client,
 		
 		url: function () {
-			return baseURL + "admin/clients";
+			return baseURL + "settings/client";
 		},
 
 		//todos sorted by their original insertion order
