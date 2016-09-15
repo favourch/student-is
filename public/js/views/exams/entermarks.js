@@ -262,6 +262,9 @@ define([
 				selected: this.selected
 			}));
 
+			/*
+			 This label is not detected -- i dont know why
+			 */
 			this.$marksList = $("#enter-marks-list");
 
 			//fetch the list of students with marks, if they already have
@@ -289,11 +292,11 @@ define([
 			var view = new enterMark({
 				model: Mark 
 			});			
-			this.$marksList.append(view.render().el);
+			$("#enter-marks-list").append(view.render().el);
 		},
 
 		addAllMarks: function(){
-			this.$marksList.empty();
+			$("#enter-marks-list").empty();
 
 			if(Marks.length == 0) {
 				//there are not classes yet, show the no classes alert
