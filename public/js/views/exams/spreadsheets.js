@@ -383,9 +383,10 @@ define([
 			});
 
 			//get the mean score
-			if(SpreadsheetsCol.length > 0 && Subjects.length > 0) {
+			if(SpreadsheetsCol.length > 0 && subjects.length > 0) {
 				analysis.meanScore = Math.round(analysis.totalScore / SpreadsheetsCol.length);
-				analysis.avgMeanScore = Math.round(analysis.meanScore / Subjects.length)
+				analysis.avgMeanScore = Math.round(analysis.meanScore / subjects.length)
+				console.log(subjects.length);
 			}
 			//get the mean grade
 			if(analysis.avgMeanScore != null){
