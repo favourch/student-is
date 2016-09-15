@@ -55,6 +55,7 @@ class AdminController extends BaseController {
 			'phone' => $client->phone,
 			'email' => $client->email,
 			'address' => $client->address,
+			'activated' => true,
 			'code' => $client->code,
 			'city' => $client->city
 		);
