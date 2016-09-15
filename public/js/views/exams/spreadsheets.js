@@ -310,9 +310,15 @@ define([
 			analysis.totalScore = 0;
 			analysis.meanScore = null;
 			analysis.meanGrade = null;
+			analysis.avgMeanScore = null;
 			analysis.top5overall = [];
 			analysis.top3perSubject = [];
 			analysis.subjectPerformance = [];
+
+			//get the total score
+			SpreadsheetsCol.each(function(student){
+				analysis.totalScore += student.get("total");
+			}, this);
 
 			//collects the scores per subject together
 			var subjects = this.getSubjects();
@@ -322,7 +328,6 @@ define([
 				
 				SpreadsheetsCol.each(function(student){
 					
-					analysis.totalScore += student.get("total");					
 					var mks = student.get('marks');
 					$.each(mks, function(key, mark){
 
@@ -378,20 +383,19 @@ define([
 			});
 
 			//get the mean score
-			analysis.meanScore = null;
-			console.log(SpreadsheetsCol.length);
-			console.log(analysis.totalScore);
-			if(SpreadsheetsCol.length > 0) {
+			if(SpreadsheetsCol.length > 0 && Exams.length > 0) {
 				analysis.meanScore = Math.round(analysis.totalScore / SpreadsheetsCol.length);
+				analysis.avgMeanScore = Math.round(analysis.meanScore / Exams.length)
 			}
-
 			//get the mean grade
-			analysis.meanGrade = null;
-			Grades.each(function(grade){
-				if ((analysis.meanScore >= grade.get('from_score')) && (analysis.meanScore <= grade.get('to_score')) ) {
-					analysis.meanGrade = grade.get('letter_grade');
-				}
-			}, this);
+			if(analysis.avgMeanScore != null){
+				Grades.each(function(grade){
+					if ((analysis.avgMeanScore >= grade.get('from_score')) && (analysis.avgMeanScore <= grade.get('to_score')) ) {
+						analysis.meanGrade = grade.get('letter_grade');
+					}
+				}, this);
+			}
+			
 
 			//get the top 3 per subject
 			$.each(subjects, function(k, subject){
