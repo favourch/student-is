@@ -27,6 +27,7 @@ define([
 		streamsTpl: _.template(streamsTpl),
 		termsTpl: _.template(termsTpl),
 		spreadsheetsTpl: _.template(spreadsheetsTpl),
+		spreadsheetsAnalysisTpl: _.template(spreadsheetsAnalysisTpl),
 
 		tagName: 'div',
 
@@ -348,9 +349,28 @@ define([
 				});
 			}, this);
 
+			//computer the number of students taking each subject
+			analysis.subjectChoices = [];
+			Subjects.each(function(subject){
+				var studentsNum = 0;
+				SpreadsheetsCol.each(function(student){
+					$.each(student.get('exams'), function(key, exam){
+					if(subject.get('id') == exam.subject_id){ 
+						studentsNum += 1;
+					} 
+				});
+				analysis.subjectChoices.push({subject_id: subject.get('id'), totalStudents: studentsNum});
+				}, this);
+			},this);
+
 
 			//get the top 5 overall in ranking
-			analysis.top5overall = SpreadsheetsCol.slice(0, 5);
+			analysis.top5overall = [];
+			var studs = SpreadsheetsCol.slice(0, 5);
+			
+			$.each(studs, function(p, stud){
+				analysis.top5overall.push(stud.toJSON());
+			});
 
 			//get the mean score
 			analysis.meanScore = Math.round(analysis.totalScore / SpreadsheetsCol.length);
@@ -366,18 +386,19 @@ define([
 			Subjects.each(function(subject){
 				var marks = analysis.top3perSubject["ID" + subject.get('id')];
 				marks = _.sortBy(marks, function(mark){ return -mark.exam_percent;});
-				analysis.top3perSubject["ID" + subject.get('id')] = marks.slice(0,2);
+				analysis.top3perSubject["ID" + subject.get('id')] = marks.slice(0,3);
 			}, this);
 
 			analysis.subjects = this.getSubjects();
 			analysis.students = this.getStudents();
 			analysis.teachers = this.getTeachers();
+			analysis.grades = this.getGrades();
 
 			//ranks the subjects by performance
 			analysis.subjectPerformance = _.sortBy(analysis.subjectPerformance, function(subject){return -subject.subjectTotal;});
 
 			$(".spreadsheet-analysis").html(this.spreadsheetsAnalysisTpl(analysis));
-			
+
 		}
 
 	});

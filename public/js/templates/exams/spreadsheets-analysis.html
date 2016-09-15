@@ -1,9 +1,15 @@
 <div class="col-lg-12">
 	<div class="col-lg-4">
-		<p>Mean Score: <%= analysis.mean_score %></p>
+		<p>Mean Score: <%= meanScore %></p>
 	</div>
 	<div class="col-lg-4">
-		<p>Mean Grade: <%= analysis.mean_grade %></p>
+		<% mean_grade = null;
+			$.each(grades, function(key, grade){
+				if((meanScore >= grade.from_score) && (meanScore <= grade.to_score)) {
+					mean_grade = grade.letter_grade;
+				}
+		}); %>
+		<p>Mean Grade: <%= mean_grade %></p>
 	</div>
 	<div class="col-lg-4">
 		<p>Remarks: .........................</p>
@@ -22,20 +28,132 @@
 				<th>Grade</th>
 			</thead>
 			<tbody>
-				<% $.each(analysis.top5overall, function(pos, student){ %>
-					<tr><td><%= pos %></td><td><%= student.reg_number %></td><td><%= student.name %></td><td><%= student.total %></td><td><%= student.average %></td><td><%= student.grade %></td></tr>
+				<% $.each(top5overall, function(pos, student){ %>
+					<tr>
+						<td><%= pos %></td>
+						<td><%= student.reg_number.toUpperCase() %></td>
+						<td><%= student.first_name.toUpperCase() %> <%= student.middle_name.charAt(0).toUpperCase() %> <%= student.last_name.toUpperCase() %></td>
+						<td><%= student.total %></td>
+						<td><%= student.average %></td>
+						<td><%= student.grade %></td>
+
+						<% letter_grade = null;
+							$.each(grades, function(key, grade){
+								if((student.average >= grade.from_score) && (student.average <= grade.to_score)) {
+									letter_grade = grade.letter_grade;
+								}
+							}); %>
+
+						<td><%= letter_grade %></td>
+					</tr>
 				<% }); %>
 			</tbody>
 		</table>
+	
 		<p>Top 3 Per Subject</p>
 		<table class="table table-hover table-striped table-bordered">
-			
+			<% $.each(subjects, function(key, subject){ %>
+				<p><%= subject.subject_name %></p>
+				<table class="table table-hover table-bordered table-striped">
+					<thead>
+						<th>Pos</th>
+						<th>Reg. No</th>
+						<th>Name</th>
+						<th>Score</th>
+						<th>Grade</th>
+					</thead>
+					<tbody>
+					<% 	var studs = (top3perSubject["ID" + subject.id]) ? top3perSubject["ID" + subject.id] : [];
+						
+						$.each(studs, function(k, exam){
+							var pos = k;
+							var reg = null;
+							var name = null;
+							var score = null;
+							var letter_grade = null;
+
+							$.each(students, function(i, student){
+								if(student.id == exam.student_id){
+									reg = student.reg_number;
+									name = student.first_name + ' ' + student.middle_name.charAt(0) + ' ' + student.last_name;
+									score = exam.exam_percent;
+
+								}
+							});
+
+							$.each(grades, function(r, grade){
+								if((exam.exam_percent >= grade.from_score) && (exam.exam_percent <= grade.to_score)) {
+									letter_grade = grade.letter_grade;
+								}
+							});
+						 %>
+						 <tr>
+						 	<td><%= pos %></td>
+						 	<td><%= reg %></td>
+						 	<td><%= name %></td>
+						 	<td><%= score %></td>
+						 	<td><%= letter_grade %></td>
+						 </tr>
+
+						<% }); %>	
+					</tbody>
+				</table>
+				
+
+			<% }); %>
 		</table>
 	</div>
 	<div class="col-lg-6">
 		<p>Subject Performance</p>
 		<table class="table table-hover table-striped table-bordered">
-			
+			<thead>
+				<th>POS</th>
+				<th>Subject</th>
+				<th>Mean Score</th>
+				<th>Mean Grade</th>
+				<th>Teacher</th>
+			</thead>
+			<tbody>
+				<% $.each(subjectPerformance, function(p, score){
+					var position = p;
+					var subject_name = null;
+					var mean_score = null;
+					var mean_grade = null;
+					var teacher_name = null;
+
+					$.each(subjects, function(k, subject){
+						if(subject.id == score.subject_id){
+							subject_name = subject.subject_name;
+							teacher_name = subject.subject_teacher;
+						}
+					});
+
+					$.each(subjectChoices, function(k, subject){
+						if(subject.subject_id == score.subject_id){
+							mean_score = Math.round(score.subjectTotal / subject.totalStudents);
+						}
+					});
+
+					$.each(grades, function(r, grade){
+						if((mean_score >= grade.from_score) && (mean_score <= grade.to_score)) {
+							mean_grade = grade.letter_grade;
+						}
+					});
+
+					$.each(teachers, function(t, teacher){
+						if(teacher.id == teacher_name){
+							teacher_name = teacher.teacher_title + " " + teacher.first_name + " " + teacher.last_name;
+						}
+					}); %>
+					<tr>
+						<td><%= position %></td>
+						<td><%= subject_name %></td>
+						<td><%= mean_score %></td>
+						<td><%= mean_grade %></td>
+						<td><%= teacher_name %></td>
+					</tr>
+				<% }); %>
+			</tbody>
 		</table>
 	</div>
 </div>
