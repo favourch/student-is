@@ -284,10 +284,11 @@ define([
 
 		},
 
-		addOneMark: function(Mark){
+		addOneMark: function(Mark, key){
 			$('.no-students-yet').hide();
 			Mark.set({exam: this.selected.exam});
 			Mark.set({grades: this.getGrades()});
+			Mark.set({position: (key + 1)});
 
 			var view = new enterMark({
 				model: Mark 

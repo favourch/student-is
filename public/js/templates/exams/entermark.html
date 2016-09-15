@@ -1,4 +1,4 @@
-	<td></td>
+	<td><%= position %></td>
 	<td><%= reg_number %></td>
 	<td><%= first_name %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name %></td>
 	<td><span class="exam-score hidden"><%= exam_score %></span><form class="save-mark" method="post" action="/"><input type="text" class="form-control exam-score-input" value="<%= exam_score %>"><input type="submit" hidden=""></form>

@@ -15,8 +15,8 @@ define([
 			return baseURL + "marks/marks";
 		},
 
-		//todos sorted by their original insertion order
-		comparator: 'order'
+		//marks sorted by the reg_number score column
+		comparator: 'reg_number'
 
 	});
 
