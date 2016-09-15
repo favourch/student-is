@@ -393,3 +393,61 @@ Drivers\Routes\RouteException : The class Controllers\JsController is undefined 
 Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
 #1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
 #2 {main}
+Drivers\Routes\RouteException : Access to undefined method Controllers\HomeController->getmarks C:\xampp\htdocs\student-is\system\start.php(95) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_NOTICE Undefined offset: 0 in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (53) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(53): handler(8, 'Undefined offse...', 'C:\\xampp\\htdocs...', 53, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_NOTICE Undefined offset: 0 in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (53) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(53): handler(8, 'Undefined offse...', 'C:\\xampp\\htdocs...', 53, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_COMPILE_ERROR Namespace declaration statement has to be the very first statement in the script in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (2) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(64, 'Namespace decla...', 'C:\\xampp\\htdocs...', 2)
+#1 [internal function]: shut()
+#2 {main}
+E_COMPILE_ERROR Namespace declaration statement has to be the very first statement in the script in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (2) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(64, 'Namespace decla...', 'C:\\xampp\\htdocs...', 2)
+#1 [internal function]: shut()
+#2 {main}
+Drivers\Routes\RouteException : The class Controllers\JsController is undefined C:\xampp\htdocs\student-is\system\start.php(87) As seen from  C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+#1 C:\xampp\htdocs\student-is\public\index.php(60): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+E_COMPILE_ERROR Namespace declaration statement has to be the very first statement in the script in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (2) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(64, 'Namespace decla...', 'C:\\xampp\\htdocs...', 2)
+#1 [internal function]: shut()
+#2 {main}
+E_COMPILE_ERROR Namespace declaration statement has to be the very first statement in the script in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (2) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(64, 'Namespace decla...', 'C:\\xampp\\htdocs...', 2)
+#1 [internal function]: shut()
+#2 {main}
+E_NOTICE Undefined offset: 0 in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (53) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(53): handler(8, 'Undefined offse...', 'C:\\xampp\\htdocs...', 53, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+E_ERROR Call to a member function num_rows() on a non-object in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (47) As seen from  C:\xampp\htdocs\student-is\system\Exceptions\Debug\BaseShutdown.php(38): handler(1, 'Call to a membe...', 'C:\\xampp\\htdocs...', 47)
+#1 [internal function]: shut()
+#2 {main}
+E_NOTICE Undefined offset: 0 in C:\xampp\htdocs\student-is\application\controllers\LoginController.php on line (53) As seen from  C:\xampp\htdocs\student-is\application\controllers\LoginController.php(53): handler(8, 'Undefined offse...', 'C:\\xampp\\htdocs...', 53, Array)
+#1 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#2 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\student-is\system\bootstrap.php(93): {closure}()
+
+Drivers\Database\MySQL\MySQLException Column 'client_id' cannot be null<span class="query-string"> (INSERT INTO tokens (email, first_name, last_name, client_id, token, duration, user_role, date_created) VALUES ('admin@admin.com', 'Bans', 'Admin', NULL, 'b17b401d30f4fb84470ae5d7be6d4a0d9ac134a6', '3600', '1', '2016-09-15 06:53:49')) </span> C:\xampp\htdocs\student-is\system\Drivers\Database\MySQL\MySQLQuery.php(903) As seen from  C:\xampp\htdocs\student-is\system\Drivers\Models\BaseModelClass.php(194): Drivers\Database\MySQL\MySQLQuery->save(Array, true)
+#1 C:\xampp\htdocs\student-is\application\controllers\LoginController.php(64): Drivers\Models\BaseModelClass::save(Array)
+#2 [internal function]: Controllers\LoginController->checkuser(NULL, NULL)
+#3 C:\xampp\htdocs\student-is\system\start.php(235): call_user_func_array(Array, Array)
+

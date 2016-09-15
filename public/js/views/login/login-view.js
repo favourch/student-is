@@ -67,7 +67,7 @@ define([
 						userData = data['user'];
 						clientInfo = data['client'];
 
-						if (data['user']['user_role'] == 1) {
+						if (data['user']['user_role'] == 1 || data['user']['user_role'] == 2) {
 							window.location.replace(baseURL + '#admin/home/' + data['token']);
 						} else{
 							window.location.replace(baseURL + '#dashboard/home/' + data['token']);

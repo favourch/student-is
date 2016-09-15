@@ -47,21 +47,16 @@ class LoginController extends BaseController {
 			//check for active user account
 			if ($user['activated'] == true) {
 
-				//get client info
-				$client = ClientModel::where('id = ?', $user['client_id'])
-									->first();
-				$client = $client->result_array()[0];
-
-				//check for active client account
-				if ($client['activated'] == true) {
-
+				//check for admin or client login
+				if ($user['user_role'] == 1 OR $user['user_role'] == 2) {
+						
 					$token = sha1(md5($user['email'] + time()));
 
 					TokenModel::save(array(
 						'email' => $user['email'],
 						'first_name' => $user['first_name'],
 						'last_name' => $user['last_name'],
-						'client_id' => $user['client_id'],
+						'client_id' => 0,
 						'token' => $token,
 						'duration' => 3600,
 						'user_role' => $user['user_role']
@@ -76,20 +71,57 @@ class LoginController extends BaseController {
 							'user_role' => $user['user_role']
 							),
 						"token" => $token,
-						"client" => array(
-							"name" => $client['school_name'],
-							"email" => $client['email'],
-							"phone" => $client['phone'],
-							"activated" => $client['activated']
-							)
+						"client" => array()
 						)
 					);				
+
 				} 
-				//deactivated client account
 				else {
-					View::renderJSON(array("error" => "You are not able to access this service at this time!"));
+					//get client info
+					$client = ClientModel::where('id = ?', $user['client_id'])
+										->first();
+					$client = $client->result_array()[0];
+
+					//check for active client account
+					if ($client['activated'] == true) {
+
+						$token = sha1(md5($user['email'] + time()));
+
+						TokenModel::save(array(
+							'email' => $user['email'],
+							'first_name' => $user['first_name'],
+							'last_name' => $user['last_name'],
+							'client_id' => $user['client_id'],
+							'token' => $token,
+							'duration' => 3600,
+							'user_role' => $user['user_role']
+							)
+						);
+
+						View::renderJSON(array(
+							"user" => array(
+								'email' => $user['email'],
+								'first_name' => $user['first_name'],
+								'last_name' => $user['last_name'],
+								'user_role' => $user['user_role']
+								),
+							"token" => $token,
+							"client" => array(
+								"name" => $client['school_name'],
+								"email" => $client['email'],
+								"phone" => $client['phone'],
+								"activated" => $client['activated']
+								)
+							)
+						);				
+					} 
+					//deactivated client account
+					else {
+						View::renderJSON(array("error" => "You are not able to access this service at this time!"));
+					}
+					
 				}
-							
+						
 			} 
 			//account needs activation
 			else {
