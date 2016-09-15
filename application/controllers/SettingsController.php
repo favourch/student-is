@@ -81,7 +81,7 @@ class SettingsController extends BaseController {
 
 			// The message
 			$message = "Hello {$user->first_name} {$user->last_name} your account for Student Infomation System software has been created by {$this->client['first_name']} {$this->client['last_name']} .\r\n";
-			$message += "Email: {$user->email} \r\n Password: $password\r\n  You can login using this link Url::base()";
+			$message .= "Email: {$user->email} \r\n Password: $password\r\n  You can login using this link Url::base()";
 			$headers = "From: geoffreybans@gmail.com \r\n Reply-To: {$this->client['email']} \r\n X-Mailer: PHP/ phpversion()";
 			// In case any of our lines are larger than 70 characters, we should use wordwrap()
 			$message = wordwrap($message, 70, "\r\n");

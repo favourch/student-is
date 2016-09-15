@@ -29,6 +29,7 @@ class HomeController extends BaseController {
 	 */
 	public function getIndex( $id)
 	{
+		echo sha1(md5("example,.user@1"));exit();
 		$data['title'] = $this->site_title;
 		View::render('home.index',$data);
 

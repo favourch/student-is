@@ -69,16 +69,18 @@ class AdminController extends BaseController {
 			'first_name' => $client->first_name,
 			'last_name' => $client->last_name,
 			'email' => $client->email,
-			'password' => md5(sha1($client->email)),
+			'password' => md5(sha1($password)),
 			'client_id' => $clientId,
+			'activated' => true,
 			'user_role' => 3
 			)
 		);
 
 		// The message
 		$message = "Hello {$client->first_name} {$client->last_name} your account for Student Infomation System software has been created succeddfully.\r\n";
-		$message += "Email: {$client->email} \r\n Password: $password\r\n Institution: $client->institution\r\n  You can login using this link Url::base()";
+		$message .= "Email: {$client->email} \r\n Password: $password\r\n Institution: $client->institution\r\n  You can login using this link Url::base()";
 		$headers = "From: geoffreybans@gmail.com \r\n Reply-To: geoffreybans@gmail.com \r\n X-Mailer: PHP/ phpversion()";
+
 		// In case any of our lines are larger than 70 characters, we should use wordwrap()
 		$message = wordwrap($message, 70, "\r\n");
 
@@ -125,7 +127,7 @@ class AdminController extends BaseController {
 
 		// The message
 		$message = "Hello {$user->first_name} {$user->last_name} your account for Student Infomation System software has been created.\r\n";
-		$message += "Email: {$user->email} \r\n Password: $user->password\r\n  You can login using this link Url::base()";
+		$message .= "Email: {$user->email} \r\n Password: $user->password\r\n  You can login using this link Url::base()";
 		$headers = "From: geoffreybans@gmail.com \r\n Reply-To: geoffreybans@gmail.com \r\n X-Mailer: PHP/ phpversion()";
 		// In case any of our lines are larger than 70 characters, we should use wordwrap()
 		$message = wordwrap($message, 70, "\r\n");
