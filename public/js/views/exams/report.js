@@ -2,14 +2,16 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'text!templates/exams/spreadsheet.html'
-	], function($, _, Backbone, spreadsheetTpl){
+	'text!templates/exams/report.html'
+	], function($, _, Backbone, reportTpl){
 
-	var Spreadsheet = Backbone.View.extend({
+	var Report = Backbone.View.extend({
 
-		template: _.template(spreadsheetTpl),
+		template: _.template(reportTpl),
 
-		tagName: 'tr',
+		tagName: 'div',
+
+		className: 'row col-sm-10',
 
 		initialize: function(){
 			//
@@ -22,6 +24,6 @@ define([
 		
 	});
 
-	return Spreadsheet;
+	return Report;
 
 });

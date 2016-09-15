@@ -1,7 +1,7 @@
 define([
 	'underscore',
 	'backbone',
-	'models/user/client'
+	'models/users/client'
 	], function(_, Backbone, Client){
 	
 	Backbone.emulateHTTP = true;

@@ -1,5 +1,120 @@
-<div class="row">
-	<div class="col-lg-12">
-		
+
+	<div class="col-sm-12">
+		<p class="text-center"><%= client.school_name %></p>
+		<p class="text-center"><%= client.phone %> <%= client.email %></p>
+		<p class="text-center"><%= client.address %> <%= client.code %>, <%= client.city %></p>
 	</div>
-</div>
+	<div class="col-sm-12">
+		<div class="col-sm-4">STUDENT NAME: <u><%= first_name %> <%= middle_name.charAt(0).toUpperCase() %> <%= last_name %></u></div>
+		<div class="col-sm-4">REG. NO: <u><%= reg_number %></u></div>
+		<div class="col-sm-4">CLASS: <u><%= selected.class.class_name %></u></div>
+	</div>
+	<div class="col-sm-12">
+		<p class="text-center">END OF <%= selected.term.term_abbr %> REPORT <%= selected.year %></p>
+	</div>
+	<div class="col-sm-12">
+		<table class="table table-hover table-striped table-bordered">
+			<thead>
+				<th>CODE</th>
+				<th>SUBJECT</th>
+
+				<% $.each(exams, function(k, exam){ %>
+					<th><%= exam.exam_abbr %></th>
+				<% }); %>
+
+				<th>AVERAGE</th>
+				<th>GRADE</th>
+				<th>REMARKS</th>
+			</thead>
+			<tbody>
+				<% $.each(subjects, function(k, subject){ %>
+					<tr>
+						<td><%= subject.subject_code %></td>
+						<td><%= subject.subject_name %></td>
+
+						<% $.each(exams, function(k, exam){ 
+							var examScore = null;
+							$.each(marks, function(m, mark){
+								if(mark.exam_id == exam.id && mark.subject_id == subject.id){ 
+									examScore = mark.exam_percent;
+								}
+							}); %>
+							<td><%= examScore %></td>
+						<% });
+
+						 	var subjectAverage = null;
+							var subjectGrade = null;
+							var subjectRemarks = null;
+
+							$.each(averages, function(a, average){
+							
+								if(average.subject_id == subject.id){
+									subjectAverage = average.exam_percent;
+								}
+
+								if(subjectAverage !== null){
+							
+									$.each(grades, function(g, grade){
+										if((subjectAverage >= grade.from_score) && (subjectAverage <= grade.to_score)) {
+											subjectGrade = grade.letter_grade;
+											subjectRemarks = grade.remarks;
+										}
+									});						
+								}
+
+							}); %>
+						<td><%= subjectAverage %></td>
+						<td><%= subjectGrade %></td>
+						<td><%= subjectRemarks %></td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-sm-12">
+		<p class="text-center">AVERAGE SCORE: <u><%= average %></u> 	OUT OF: <u>100</u> 		MEAN GRADE: 
+
+			<u><% $.each(grades, function(g, grade){
+					if((average >= grade.from_score) && (average <= grade.to_score)) { %>
+						<%= grade.letter_grade %>
+					<% }
+				}); %>
+			</u>
+
+					POSITION: <u><%= position %></u> 		OUT OF: <u><%= classPopulation %></u>
+		</p>
+	</div>
+	<div class="col-sm-12">
+		<p>CLASS TEACHER's REMARKS .............................................................................................................................................................. 
+		NAME: 
+
+		<% 	var teacherName = null;
+			$.each(teachers, function(t, teacher){
+				if(teacher.id = selected.class.class_teacher){ 
+					teacherName = teacher.teacher_title + " " + teacher.first_name + " " + teacher.last_name;
+				} 
+			});
+
+			if(teacherName == null){ %>
+				..............................
+			<% } else { %>
+				<u><%= teacherName %></u>
+			<% } 
+		%> SIGN ......................................	DATE: ..................... 	</p>
+		<p></p>
+	</div>
+
+	<div class="col-sm-12">
+		<p>HEAD TEACHER's REMARKS .................................................................................................................................................................. 
+		NAME: 
+
+		<% 	
+			if(client.headteacher_name == null){ %>
+				..............................
+			<% } else { %>
+				<u><%= client.headteacher_name %></u>
+			<% } 
+		%> SIGN ................................ DATE: .....................		 </p>
+		<hr>
+	</div>
+	

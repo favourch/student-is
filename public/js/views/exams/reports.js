@@ -20,7 +20,7 @@ define([
 	'text!templates/exams/reports.html'
 	], function($, _, Backbone, ReportView, Reports, Classes, Streams, Subjects, Exams, Terms, Grades, Students, Teachers, Clients, chooseReportTpl, classesTpl, streamsTpl, termsTpl, reportsTpl){
 
-	var Spreadsheets = Backbone.View.extend({
+	var ReportsView = Backbone.View.extend({
 
 		chooseReportTpl: _.template(chooseReportTpl),
 		classesTpl: _.template(classesTpl),
@@ -30,7 +30,9 @@ define([
 
 		tagName: 'div',
 
-		thisClass: '', //the class for getting the spreadsheet
+		thisClass: null, //the class for getting the spreadsheet
+
+		selected: {}, //selected options for this report
 
 		events: {
 			'change #class_id' : 'setStreams',
@@ -87,8 +89,21 @@ define([
 					token: tokenString
 				}),
 				reset: true
+			});			
+				
+			//fetch the list of teachers for this class/stream
+			Teachers.fetch({
+				data: $.param({ 
+					token: tokenString				
+				})
 			});				
 
+			//fetch the client details for this client
+			Clients.fetch({
+				data: $.param({ 
+					token: tokenString				
+				})
+			});	
 		},
 
 		render: function(){
@@ -179,17 +194,16 @@ define([
 
 			this.thisClass = $("#class_id").val().trim();
 
-			var selected = {};
 			//populate with the actual models/objects
-			selected.class = Classes.where({id: selectedOps.class})[0].toJSON();
-			selected.stream = (Streams.where({id: selectedOps.stream})[0]) ? Streams.where({id: selectedOps.stream})[0].toJSON() : null;
-			selected.subjects = this.getSubjects();
-			selected.term = Terms.where({id: selectedOps.term})[0].toJSON();
-			selected.year = selectedOps.year;
+			this.selected.class = Classes.where({id: selectedOps.class})[0].toJSON();
+			this.selected.stream = (Streams.where({id: selectedOps.stream})[0]) ? Streams.where({id: selectedOps.stream})[0].toJSON() : null;
+			this.selected.subjects = this.getSubjects();
+			this.selected.term = Terms.where({id: selectedOps.term})[0].toJSON();
+			this.selected.year = selectedOps.year;
 
 			//load the template into view
 			this.$main.html(this.reportsTpl({
-				selected: selected
+				selected: this.selected
 			}));
 
 			//this.$rowsTable = this.$("#rows-entries-list");
@@ -203,20 +217,6 @@ define([
 				})
 			});				
 			
-			//fetch the list of teachers for this class/stream
-			Teachers.fetch({
-				data: $.param({ 
-					token: tokenString				
-				})
-			});				
-
-			//fetch the client details for this client
-			Clients.fetch({
-				data: $.param({ 
-					token: tokenString				
-				})
-			});	
-
 			//fetch the list of students with Reports, if they already have
 			Reports.fetch({
 				data: $.param({ 
@@ -279,9 +279,24 @@ define([
 
 		},
 
+		getExams: function(){
+
+			var regExams = [];
+			var exs = Exams.where({class_id: this.thisClass});
+			$.each(exs, function(key, ex){
+				regExams.push(ex.toJSON());
+			});			
+
+			return regExams;
+
+		},
+
 		getClient: function(){
 
-			var regClient = Clients.at(0).toJSON();
+			var regClient; 
+			Clients.each(function(client){
+				regClient = client.toJSON();
+			}, this);
 			return regClient;
 		},
 
@@ -290,17 +305,21 @@ define([
 			//add the list of subject
 			Row.set({subjects: this.getSubjects()});
 			Row.set({grades: this.getGrades()});
+			Row.set({exams: this.getExams()});
+			Row.set({teachers: this.getTeachers()});
 			Row.set({position: (key + 1)});
+			Row.set({classPopulation: Reports.length});
 			Row.set({client: this.getClient()});
+			Row.set({selected: this.selected});
 
 			var view = new ReportView({
 				model: Row 
 			});		
-			$("#rows-entries-list").append(view.render().el);
+			$("#reports-list").append(view.render().el);
 		},
 
 		addAllReports: function(){
-			$("#rows-entries-list").empty();
+			$("#reports-list").empty();
 
 			if(Reports.length == 0) {
 				//there are not classes yet, show the no classes alert
@@ -316,6 +335,6 @@ define([
 
 	});
 
-	return Spreadsheets;
+	return ReportsView;
 
 });
