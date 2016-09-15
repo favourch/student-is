@@ -15,8 +15,10 @@ define([
 			return baseURL + "marks/marklist";
 		},
 
-		//todos sorted by their original insertion order
-		comparator: 'order'
+		//marks sorted by the average score column
+		comparator: function(model){
+			return -model.get('average');
+		}
 
 	});
 

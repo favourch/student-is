@@ -245,7 +245,7 @@ define([
 			/*
 			 this handler is NOT accessible - I dont know why
 			 */
-			this.$marksList = $("#view-marks-list");
+			//this.$marksList = $("#view-marks-list");
 
 			//fetch the list of students with marks, if they already have
 			Marklist.fetch({
@@ -262,18 +262,19 @@ define([
 
 		},
 
-		addOneStudent: function(mark){
+		addOneStudent: function(Mark, key){
 			$('.no-students-yet').hide();
-			mark.set({grades: this.getGrades()});
+			Mark.set({grades: this.getGrades()});
+			Mark.set({position: (key + 1)});
 			var view = new viewMark({
-				model: mark
+				model: Mark
 			});		
-			this.$marksList.append(view.render().el);
+			$("#view-marks-list").append(view.render().el);
 		},
 
 		addAllStudents: function(){
 
-			this.$marksList.empty();
+			$("#view-marks-list").empty();
 			if(Marklist.length == 0) {
 				//there are not classes yet, show the no classes alert
 				$('.no-students-yet').show();
