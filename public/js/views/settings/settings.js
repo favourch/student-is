@@ -30,6 +30,7 @@ define([
 					$("title").html("Classes - " + this.title);
 					//load the classes view
 					var view = new classesView();
+					this.$main.html(view.render().el);
 					break;
 				case 'viewclass':
 					//update the page title

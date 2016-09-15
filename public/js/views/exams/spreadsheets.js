@@ -16,8 +16,9 @@ define([
 	'text!templates/exams/classes.html',
 	'text!templates/exams/streams.html',
 	'text!templates/exams/terms.html',
-	'text!templates/exams/spreadsheets.html'
-	], function($, _, Backbone, SpreadsheetView, SpreadsheetsCol, Classes, Streams, Subjects, Exams, Terms, Grades, Students, Teachers, chooseSheetTpl, classesTpl, streamsTpl, termsTpl, spreadsheetsTpl){
+	'text!templates/exams/spreadsheets.html',
+	'text!templates/exams/spreadsheets-analysis.html'
+	], function($, _, Backbone, SpreadsheetView, SpreadsheetsCol, Classes, Streams, Subjects, Exams, Terms, Grades, Students, Teachers, chooseSheetTpl, classesTpl, streamsTpl, termsTpl, spreadsheetsTpl, spreadsheetsAnalysisTpl){
 
 	var Spreadsheets = Backbone.View.extend({
 
@@ -32,7 +33,7 @@ define([
 		thisClass: '', //the class for getting the spreadsheet
 
 		events: {
-			'change #class_id' : 'getStreams',
+			'change #class_id' : 'setStreams',
 			'submit form#getspreadsheet' : 'getSpreadsheet'
 		},
 
@@ -41,7 +42,7 @@ define([
 			this.$main = $(".container-fluid");
 			this.listenTo(SpreadsheetsCol, 'reset', this.addAllRows);
 			this.listenTo(Classes, 'reset', this.setClasses);
-			this.listenTo(Terms, 'reset', this.getTerms);
+			this.listenTo(Terms, 'reset', this.setTerms);
 
 			//fetch list of all classes for this class from the database
 			Classes.fetch({
@@ -86,7 +87,7 @@ define([
 					token: tokenString
 				}),
 				reset: true
-			});	
+			});				
 
 		},
 
@@ -100,20 +101,33 @@ define([
 
 		setClasses: function(){
 			this.$classes.empty();
-			var regClasses = [];
+			
+			this.$classes.html(this.classesTpl({
+				regClasses: this.getClasses()
+			}));
 
+			this.setTerms();
+	
+		},
+
+		getClasses: function(){
+			var regClasses = [];
 			Classes.each(function(oneClass){
 				regClasses.push(oneClass.toJSON());
 			}, this);
 
-			this.$classes.html(this.classesTpl({
-				regClasses: regClasses
-			}));
-
-			this.getTerms();
+			return regClasses;
 	
 		},
 
+		setStreams: function(){		
+
+			this.$streams.html(this.streamsTpl({
+				regStreams: this.getStreams()
+			}));
+
+		},		
+		
 		getStreams: function(){
 
 			var classID = $("#class_id").val();
@@ -126,11 +140,17 @@ define([
 				regStreams.push(oneStream.toJSON());
 			});			
 
-			this.$streams.html(this.streamsTpl({
-				regStreams: regStreams
-			}));
+			return regStreams;
 
 		},		
+
+		setTerms: function(){		
+
+			this.$terms.html(this.termsTpl({
+				regTerms: this.getTerms()
+			}));
+
+		},
 
 		getTerms: function(){
 
@@ -140,9 +160,7 @@ define([
 				regTerms.push(term.toJSON());
 			}, this);		
 
-			this.$terms.html(this.termsTpl({
-				regTerms: regTerms
-			}));
+			return regTerms;
 
 		},
 
@@ -164,7 +182,7 @@ define([
 			var selected = {};
 			//populate with the actual models/objects
 			selected.class = Classes.where({id: selectedOps.class})[0].toJSON();
-			selected.stream = Streams.where({id: selectedOps.stream})[0].toJSON();
+			selected.stream = (Streams.where({id: selectedOps.stream})[0]) ? Streams.where({id: selectedOps.stream})[0].toJSON() : null;
 			selected.subjects = this.getSubjects();
 			selected.term = Terms.where({id: selectedOps.term})[0].toJSON();
 			selected.year = selectedOps.year;
@@ -174,7 +192,7 @@ define([
 				selected: selected
 			}));
 
-			this.$rowsTable = this.$("#rows-entries-list");
+			//this.$rowsTable = this.$("#rows-entries-list");
 
 			//fetch the list of students with SpreadsheetsCol, if they already have
 			SpreadsheetsCol.fetch({
@@ -198,7 +216,7 @@ define([
 			});				
 			
 			//fetch the list of teachers for this class/stream
-			Students.fetch({
+			Teachers.fetch({
 				data: $.param({ 
 					token: tokenString				
 				})
@@ -232,20 +250,43 @@ define([
 
 		},
 
-		addOneRow: function(Row){
+		getStudents: function(){
+
+			var regStudents = [];
+			Students.each(function(student){
+				regStudents.push(student.toJSON());
+			}, this);			
+
+			return regStudents;
+
+		},
+
+		getTeachers: function(){
+
+			var regTeachers = [];
+			Teachers.each(function(teacher){
+				regTeachers.push(teacher.toJSON());
+			}, this);			
+
+			return regTeachers;
+
+		},
+
+		addOneRow: function(Row, key){
 			$('.no-students-yet').hide();
 			//add the list of subject
 			Row.set({subjects: this.getSubjects()});
 			Row.set({grades: this.getGrades()});
+			Row.set({position: (key + 1)});
 
 			var view = new SpreadsheetView({
 				model: Row 
 			});		
-			this.$rowsTable.append(view.render().el);
+			$("#rows-entries-list").append(view.render().el);
 		},
 
 		addAllRows: function(){
-			this.$rowsTable.empty();
+			$("#rows-entries-list").empty();
 
 			if(SpreadsheetsCol.length == 0) {
 				//there are not classes yet, show the no classes alert
@@ -328,9 +369,15 @@ define([
 				analysis.top3perSubject["ID" + subject.get('id')] = marks.slice(0,2);
 			}, this);
 
+			analysis.subjects = this.getSubjects();
+			analysis.students = this.getStudents();
+			analysis.teachers = this.getTeachers();
+
 			//ranks the subjects by performance
 			analysis.subjectPerformance = _.sortBy(analysis.subjectPerformance, function(subject){return -subject.subjectTotal;});
 
+			$(".spreadsheet-analysis").html(this.spreadsheetsAnalysisTpl(analysis));
+			
 		}
 
 	});

@@ -1,8 +1,13 @@
 <div class="row">
 	<div class="col-lg-12">
 		<h3>Spreadsheet</h3>
-		<p class="lead">
-			<%= selected.class.class_name %> <%= selected.stream.stream_name %> <%= selected.term.term_name %> <%= selected.year %> Result Analysis
+		<p class="">
+			<%= selected.class.class_name %> 
+
+			<% if(selected.stream !== null){ %>
+				<%= selected.stream.stream_name %> 
+			<% } %>
+			<%= selected.term.term_name %> <%= selected.year %> Result Analysis
 		</p>
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
@@ -14,8 +19,8 @@
 					<th><%= subject.subject_abbr %></th>
 				<% }); %>
 				<th>Total</th>
-				<th>Average</th>
-				<th>Grade</th>
+				<th>Avg</th>
+				<th>Grd</th>
 				<th>Remarks</th>
 			</thead>
 			<tbody id="rows-entries-list">
@@ -24,4 +29,7 @@
 		</table>
 		<p class="alert alert-danger no-students-yet" style="display:none;"> There are no students yet.</p>
 	</div>
+</div>
+<div class="spreadsheet-analysis row">
+			
 </div>

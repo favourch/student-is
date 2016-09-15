@@ -1,0 +1,41 @@
+<div class="col-lg-12">
+	<div class="col-lg-4">
+		<p>Mean Score: <%= analysis.mean_score %></p>
+	</div>
+	<div class="col-lg-4">
+		<p>Mean Grade: <%= analysis.mean_grade %></p>
+	</div>
+	<div class="col-lg-4">
+		<p>Remarks: .........................</p>
+	</div>
+</div>
+<div class="col-lg-12">
+	<div class="col-lg-6">
+		<p>Top 5 Overall</p>
+		<table class="table table-hover table-striped table-bordered">
+			<thead>
+				<th>Pos</th>
+				<th>Reg. No</th>
+				<th>Name</th>
+				<th>Total</th>
+				<th>Avg</th>
+				<th>Grade</th>
+			</thead>
+			<tbody>
+				<% $.each(analysis.top5overall, function(pos, student){ %>
+					<tr><td><%= pos %></td><td><%= student.reg_number %></td><td><%= student.name %></td><td><%= student.total %></td><td><%= student.average %></td><td><%= student.grade %></td></tr>
+				<% }); %>
+			</tbody>
+		</table>
+		<p>Top 3 Per Subject</p>
+		<table class="table table-hover table-striped table-bordered">
+			
+		</table>
+	</div>
+	<div class="col-lg-6">
+		<p>Subject Performance</p>
+		<table class="table table-hover table-striped table-bordered">
+			
+		</table>
+	</div>
+</div>

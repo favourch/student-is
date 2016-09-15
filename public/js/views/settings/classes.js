@@ -13,6 +13,8 @@ define([
 
 		tagName: 'div',
 
+		className: 'classes-main',
+
 		template: _.template(classesTpl),
 
 		events: {
@@ -23,6 +25,8 @@ define([
 			
 			this.listenTo(ClassesCol, 'add', this.addOneClass);
 			this.listenTo(ClassesCol, 'reset', this.addAllClasses);
+
+			this.listenTo(Teachers, 'reset', this.renderHead);
 
 			//this.listenTo(Teachers, 'reset', this.render);
 			Teachers.fetch({
@@ -38,14 +42,15 @@ define([
 				})
 			});	
 
-
-
 		},
 
 		render: function(){
-			$(".container-fluid").html(this.$el.html(this.template({
-				teachers: this.getTeachers()
-			})));
+			this.$el.html('');
+			return this;
+		},
+
+		renderHead: function(){
+			$(".classes-main").html(this.template({teachers: this.getTeachers()}));
 			//define the table reference to use for adding individual classes
 			this.$classesList = this.$("#classes-table");
 		},
@@ -107,12 +112,12 @@ define([
 			var view = new ClassView({
 				model: Class 
 			});
-			this.$classesList.append(view.render().el);
+			$("#classes-table").append(view.render().el);
 		},
 
 		addAllClasses: function(){
-			this.render();
-			this.$classesList.empty();
+			this.renderHead();
+			$("#classes-table").empty();
 
 			if(ClassesCol.length === 0) {
 				//there are not classes yet, show the no classes alert

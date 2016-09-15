@@ -277,14 +277,26 @@ class MarksController extends BaseController {
 							->count()
 							->num_rows();
 
-		//get the list of all the students
-		$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
-								->where('client_id = ?', $this->client_id)
-								->where('archived != ?', true)
-								->where('class_id = ?', Input::get('class'))
-								->where('stream_id = ?', Input::get('stream'))
-								->all()
-								->result();
+		if (Input::get('stream')) {
+			//get the list of all the students
+			$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
+									->where('client_id = ?', $this->client_id)
+									->where('archived != ?', true)
+									->where('class_id = ?', Input::get('class'))
+									->where('stream_id = ?', Input::get('stream'))
+									->all()
+									->result();
+		} 
+		else {
+			//get the list of all the students
+			$students = StudentModel::select(array("id","reg_number","first_name","middle_name","last_name"))
+									->where('client_id = ?', $this->client_id)
+									->where('archived != ?', true)
+									->where('class_id = ?', Input::get('class'))
+									->all()
+									->result();
+		}
+		
 		//get the array of all marks entries for this term
 		$marks = MarkModel::select(array("student_id","exam_id","exam_percent","subject_id"))
 						->where('client_id = ?', $this->client_id)
@@ -299,8 +311,7 @@ class MarksController extends BaseController {
 		$subjects = SubjectModel::select(array("id"))
 						->where('client_id = ?', $this->client_id)
 						->where('class_id = ?', Input::get('class'))
-						->all()
-						->result();
+						->all();
 
 		$studentsList = array();
 
@@ -312,7 +323,7 @@ class MarksController extends BaseController {
 					"first_name" => $stud->first_name,
 					"middle_name" => $stud->middle_name,
 					"last_name" => $stud->last_name,
-					"reg_exams" => (array)$exams,
+					"reg_exams" => $exams,
 					"exams" => array(),
 					"total" => 0,
 					"average" => 0
@@ -321,14 +332,17 @@ class MarksController extends BaseController {
 
 		//loop through the marks array populating the students list with marks
 		foreach ($marks as $key => $mark) {
-			$studentsList["ID".$mark->student_id]['exams'][] = $mark;
+			if (isset($studentsList["ID".$mark->student_id])) {
+				$studentsList["ID".$mark->student_id]['exams'][] = $mark;
+			}
+			
 		}
 
 		//loop through the marks adding each subject together
 		foreach ($studentsList as $studID => $student) {
 			$studentsList[$studID]['exams'] = array();
 			$totalScore = 0;
-			foreach ($subjects as $subID => $subject) {
+			foreach ($subjects->result() as $subID => $subject) {
 				$subjectTotal = null;
 				$average = null;
 				foreach ($student['exams'] as $examID => $exam) {
@@ -355,6 +369,8 @@ class MarksController extends BaseController {
 				$totalScore += $average;
 			}
 			$studentsList[$studID]["total"] = $totalScore;
+			$subjectCount = count($subjects->result_array());
+			$studentsList[$studID]["average"] = round($totalScore / $subjectCount);
 		}
 
 		//get student list of arrays and then return
